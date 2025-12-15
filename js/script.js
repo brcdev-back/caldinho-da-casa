@@ -1,11 +1,12 @@
-let quantidade = 1;
 const chavePix = "81991610473";
 const numero = "5581991610473";
+
 const produtos = {
   completo: { preco: 5.00, qtd: 0 },
   simples: { preco: 4.00, qtd: 0 }
 };
 
+// ================= QUANTIDADE =================
 function alterarQtd(tipo, valor) {
   produtos[tipo].qtd += valor;
 
@@ -17,6 +18,7 @@ function alterarQtd(tipo, valor) {
   atualizarTotais();
 }
 
+// ================= TOTAIS =================
 function atualizarTotais() {
   let totalGeral = 0;
 
@@ -28,42 +30,65 @@ function atualizarTotais() {
       `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
   }
 
-  document.getElementById("total-geral").innerText =
-    `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
+  // Se você ainda não criou esse elemento no HTML, crie:
+  // <div id="total-geral"></div>
+  const totalGeralEl = document.getElementById("total-geral");
+  if (totalGeralEl) {
+    totalGeralEl.innerText =
+      `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
+  }
 }
 
+// ================= PIX =================
 function copiarPix() {
   navigator.clipboard.writeText(chavePix);
   alert("Chave Pix copiada!");
 }
 
+// ================= PEDIDO =================
 function pedido(tipo, id) {
   const bloco = document.getElementById("bloco" + id).value;
   const apto = document.getElementById("apto" + id).value;
   const piscina = document.getElementById("piscina" + id).checked;
 
   if (!bloco || !apto) {
-    alert("Informe bloco e apartamento");
+    alert("Informe o bloco e o apartamento.");
+    return;
+  }
+
+  if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
+    alert("Selecione ao menos um produto.");
     return;
   }
 
   const local = piscina ? "Piscina" : "Apartamento";
 
-  const msg =
-`PEDIDO - CALDINHO DE FEIJÃO
+  let mensagem =
+`PEDIDO – CALDINHO DE FEIJÃO
 
- if (produtos.completo.qtd > 0) {
+`;
+
+  if (produtos.completo.qtd > 0) {
     mensagem += `• Feijão Completo: ${produtos.completo.qtd}\n`;
   }
+
   if (produtos.simples.qtd > 0) {
     mensagem += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
   }
 
+  const totalFinal =
+    produtos.completo.qtd * produtos.completo.preco +
+    produtos.simples.qtd * produtos.simples.preco;
+
+  mensagem += `
 Bloco: ${bloco}
 Apartamento: ${apto}
 Entrega: ${local}
 
-Pagamento: Pix`;
+Total: R$ ${totalFinal.toFixed(2).replace(".", ",")}
+Pagamento: Pix
+`;
 
-  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
+  const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+  window.open(link, "_blank");
 }
