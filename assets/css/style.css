@@ -151,16 +151,16 @@ body {
   }
 
   .endereco input {
-    padding: 6px 6px;
-    font-size: 15px;
+    padding: 6px 8px;
+    font-size: 13px;
   }
 
   .endereco input:first-child {
-    flex: 0.4;   /* Bloco */
+    flex: 0.2;   /* Bloco */
   }
 
   .endereco input:last-child {
-    flex: 0.4;   /* Apartamento BEM MENOR */
+    flex: 0.2;   /* Apartamento BEM MENOR */
   }
 
 }
