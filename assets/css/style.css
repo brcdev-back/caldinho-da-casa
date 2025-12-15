@@ -105,3 +105,15 @@ body {
   font-size: 14px;
   color: #666;
 }
+
+.aviso-condominio {
+  max-width: 900px;
+  margin: 20px auto 0;
+  background: #fff4d6;
+  color: #7a5a00;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #ffe6a3;
+}
