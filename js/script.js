@@ -1,5 +1,5 @@
 let quantidade = 1;
-const chavePix = "SUA_CHAVE_PIX_AQUI";
+const chavePix = "81991610473";
 
 function alterarQtd(valor) {
   quantidade += valor;
