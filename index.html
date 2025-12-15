@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Caldinho de Feijão</title>
 
+  <!-- Responsividade (celular) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Conectando o CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- TOPO DO SITE -->
+  <header class="topo">
+    <h1>🍲 Caldinho de Feijão</h1>
+    <p>Receita caseira, bem temperada e servida bem quentinha</p>
+  </header>
+
+  <!-- CARDÁPIO -->
+  <main class="cardapio">
+    <h2>Nosso Cardápio</h2>
+
+    <section class="produtos">
+
+      <!-- FEIJÃO COMPLETO -->
+      <div class="produto">
+        <h3>Feijão Completo</h3>
+        <p class="descricao">
+          Caldinho de feijão acompanhado de <strong>charque, ovos de codorna e azeitona</strong>.
+        </p>
+        <p class="preco">R$ 5,00</p>
+        <button onclick="pedido('Feijão completo')">
+          Pedir no WhatsApp
+        </button>
+      </div>
+
+      <!-- FEIJÃO SEM CHARQUE -->
+      <div class="produto">
+        <h3>Feijão sem Charque</h3>
+        <p class="descricao">
+          Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
+        </p>
+        <p class="preco">R$ 4,50</p>
+        <button onclick="pedido('Feijão sem charque')">
+          Pedir no WhatsApp
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <p>📲 Pedidos via WhatsApp | 💳 Pagamento via Pix</p>
+    <p>🕒 Funcionamento conforme disponibilidade</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
