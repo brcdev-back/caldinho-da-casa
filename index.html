@@ -30,41 +30,60 @@
 
     <section class="produtos">
 
-      <!-- FEIJÃO COMPLETO -->
-      <div class="produto">
-        <h3>Feijão Completo</h3>
-        <p class="descricao">
-          Caldinho de feijão acompanhado de <strong>charque, ovos de codorna e azeitona</strong>.
-        </p>
-        <p class="preco">R$ 5,00</p>
-        <div class="endereco">
-  <input type="text" id="bloco" placeholder="Bloco">
-  <input type="text" id="apartamento" placeholder="Apartamento">
-</div>
-        <button onclick="pedido('Feijão completo')">
-          Pedir no WhatsApp
-        </button>
+      <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Caldinhos Delivery</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- PRODUTO 1 -->
+    <div class="produto">
+      <h2>Caldinho de Feijão Completo</h2>
+      <p>Charque, ovos de codorna e azeitona</p>
+
+      <div class="endereco">
+        <input type="text" id="bloco" placeholder="Bloco">
+        <input type="text" id="apartamento" placeholder="Apartamento">
       </div>
 
-      <!-- FEIJÃO SEM CHARQUE -->
-      <div class="produto">
-        <h3>Feijão sem Charque</h3>
-        <p class="descricao">
-          Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
-        </p>
-        <p class="preco">R$ 4,00</p>
-        <div class="endereco">
-  <input type="text" id="bloco" placeholder="Bloco">
-  <input type="text" id="apartamento" placeholder="Apartamento">
-</div>
-        <button onclick="pedido('Feijão sem charque')">
-          Pedir no WhatsApp
-        </button>
+      <div class="piscina-opcao">
+        <label>
+          <input type="checkbox" id="piscina">
+          Estou na piscina
+        </label>
       </div>
 
-    </section>
-  </main>
+      <div class="quantidade">
+        <button onclick="alterarQtd(-1)">−</button>
+        <span id="qtd">1</span>
+        <button onclick="alterarQtd(1)">+</button>
+      </div>
 
+      <button class="pix-btn" onclick="copiarPix()">Copiar chave Pix</button>
+
+      <button onclick="pedido('Feijão Completo')">Pedir no WhatsApp</button>
+    </div>
+
+    <!-- PRODUTO 2 -->
+    <div class="produto">
+      <h2>Caldinho de Feijão sem Charque</h2>
+      <p>Ovos de codorna e azeitona</p>
+
+      <button onclick="pedido('Feijão sem Charque')">Pedir no WhatsApp</button>
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+      
   <!-- RODAPÉ -->
   <footer class="rodape">
     <p> Pedidos via WhatsApp |  Pagamento via Pix</p>
