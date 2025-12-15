@@ -164,3 +164,46 @@ body {
   color: #666;
   padding: 20px;
 }
+
+/* ===== AJUSTES PARA CELULAR ===== */
+@media (max-width: 600px) {
+
+  .cardapio {
+    padding: 12px;
+  }
+
+  .produto {
+    padding: 16px;
+  }
+
+  .endereco {
+    gap: 8px;
+  }
+
+  .endereco input {
+    padding: 6px 8px;     /* MENOR NO CELULAR */
+    font-size: 13px;
+    border-radius: 6px;
+  }
+
+  .quantidade {
+    gap: 12px;
+  }
+
+  .quantidade button {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .pix {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .whats {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+}
