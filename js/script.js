@@ -9,14 +9,14 @@ function alterarQtd(valor) {
 
 function copiarPix() {
   navigator.clipboard.writeText(chavePix);
-  alert("Chave Pix copiada!");
+  alert("Chave Pix copiada com sucesso!");
 }
 
 function pedido(tipo) {
   const numero = "5581991610473";
 
-  const bloco = document.getElementById("bloco").value;
-  const apartamento = document.getElementById("apartamento").value;
+  const bloco = document.getElementById("bloco").value.trim();
+  const apartamento = document.getElementById("apartamento").value.trim();
   const piscina = document.getElementById("piscina").checked;
 
   if (bloco === "" || apartamento === "") {
@@ -24,18 +24,19 @@ function pedido(tipo) {
     return;
   }
 
-  const localEntrega = piscina ? "Na piscina" : "No apartamento";
+  const localEntrega = piscina ? "Piscina" : "Apartamento";
 
   const mensagem =
-`PEDIDO – CALDINHO DE FEIJÃO
- Tipo: ${tipo}
- Quantidade: ${quantidade}
+` *PEDIDO – CALDINHO DE FEIJÃO*
 
- Bloco: ${bloco}
- Apartamento: ${apartamento}
- Entrega: ${localEntrega}
+ *Tipo:* ${tipo}
+ *Quantidade:* ${quantidade}
 
- Pagamento: Pix
+ *Bloco:* ${bloco}
+ *Apartamento:* ${apartamento}
+ *Entrega:* ${localEntrega}
+
+ *Pagamento:* Pix
 `;
 
   const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
