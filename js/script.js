@@ -1,44 +1,41 @@
 let quantidade = 1;
 const chavePix = "81991610473";
+const numero = "5581991610473";
 
 function alterarQtd(valor) {
   quantidade += valor;
   if (quantidade < 1) quantidade = 1;
-  document.getElementById("qtd").innerText = quantidade;
+  document.querySelectorAll("#qtd").forEach(q => q.innerText = quantidade);
 }
 
 function copiarPix() {
   navigator.clipboard.writeText(chavePix);
-  alert("Chave Pix copiada com sucesso!");
+  alert("Chave Pix copiada!");
 }
 
-function pedido(tipo) {
-  const numero = "5581991610473";
+function pedido(tipo, id) {
+  const bloco = document.getElementById("bloco" + id).value;
+  const apto = document.getElementById("apto" + id).value;
+  const piscina = document.getElementById("piscina" + id).checked;
 
-  const bloco = document.getElementById("bloco").value.trim();
-  const apartamento = document.getElementById("apartamento").value.trim();
-  const piscina = document.getElementById("piscina").checked;
-
-  if (bloco === "" || apartamento === "") {
-    alert("Por favor, informe o bloco e o apartamento.");
+  if (!bloco || !apto) {
+    alert("Informe bloco e apartamento");
     return;
   }
 
-  const localEntrega = piscina ? "Piscina" : "Apartamento";
+  const local = piscina ? "Piscina" : "Apartamento";
 
-  const mensagem =
-` *PEDIDO – CALDINHO DE FEIJÃO*
+  const msg =
+`PEDIDO - CALDINHO DE FEIJÃO
 
- *Tipo:* ${tipo}
- *Quantidade:* ${quantidade}
+Tipo: ${tipo}
+Quantidade: ${quantidade}
 
- *Bloco:* ${bloco}
- *Apartamento:* ${apartamento}
- *Entrega:* ${localEntrega}
+Bloco: ${bloco}
+Apartamento: ${apto}
+Entrega: ${local}
 
- *Pagamento:* Pix
-`;
+Pagamento: Pix`;
 
-  const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-  window.open(link, "_blank");
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
