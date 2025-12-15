@@ -1,17 +1,17 @@
+mude o tamanho do espaço de colocar o bloco e o apartamento: 
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BASE */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f4f4f4;
   color: #333;
 }
 
-/* TOPO */
 .topo {
   background: #fff;
   text-align: center;
@@ -28,7 +28,6 @@ body {
   color: #666;
 }
 
-/* AVISO */
 .aviso {
   max-width: 900px;
   margin: 20px auto;
@@ -40,7 +39,6 @@ body {
   font-size: 14px;
 }
 
-/* CARDÁPIO */
 .cardapio {
   max-width: 900px;
   margin: auto;
@@ -52,14 +50,12 @@ body {
   margin-bottom: 25px;
 }
 
-/* PRODUTOS */
 .produtos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
-/* CARD */
 .produto {
   background: #fff;
   padding: 20px;
@@ -84,48 +80,36 @@ body {
   margin-bottom: 15px;
 }
 
-/* ENDEREÇO */
 .endereco {
   display: flex;
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .endereco input {
-  padding: 14px 12px;        /* MAIS ALTO */
-  border-radius: 10px;      /* MAIS MODERNO */
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 16px;          /* TEXTO MAIOR */
 }
 
-/* Bloco menor, apto maior */
-.endereco input:first-child {
-  flex: 0.8;
-}
-
-.endereco input:last-child {
-  flex: 1.2;
-}
-
-/* PISCINA */
 .piscina {
   font-size: 14px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   display: block;
 }
 
-/* QUANTIDADE */
 .quantidade {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 14px;
+  gap: 15px;
+  margin-bottom: 12px;
 }
 
 .quantidade button {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: none;
   background: #333;
@@ -134,22 +118,20 @@ body {
   cursor: pointer;
 }
 
-/* PIX */
 .pix {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
   background: #f1f1f1;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   cursor: pointer;
 }
 
-/* WHATSAPP */
 .whats {
   width: 100%;
-  padding: 14px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 6px;
   border: none;
   background: #25d366;
   color: #fff;
@@ -157,7 +139,6 @@ body {
   cursor: pointer;
 }
 
-/* RODAPÉ */
 .rodape {
   text-align: center;
   font-size: 13px;
