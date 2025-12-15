@@ -1,81 +1,107 @@
-/* RESET BÁSICO */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* CONFIGURAÇÃO GERAL */
+/* BASE */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f3f3f3;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f6f6f6;
   color: #333;
+  line-height: 1.5;
 }
 
 /* TOPO */
 .topo {
-  background: linear-gradient(#7a0c0c, #a4161a);
-  color: white;
+  background: #ffffff;
+  padding: 50px 20px 30px;
   text-align: center;
-  padding: 40px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.topo h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.topo p {
+  color: #666;
+  font-size: 16px;
 }
 
 /* CARDÁPIO */
 .cardapio {
-  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.cardapio h2 {
   text-align: center;
+  margin-bottom: 30px;
+  font-size: 26px;
 }
 
+/* LISTA DE PRODUTOS */
 .produtos {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
-/* PRODUTO */
+/* CARD DO PRODUTO */
 .produto {
-  background: white;
-  width: 260px;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .produto h3 {
+  font-size: 20px;
   margin-bottom: 10px;
-  color: #7a0c0c;
 }
 
 .descricao {
   font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.preco {
-  font-size: 18px;
-  font-weight: bold;
+  color: #555;
   margin-bottom: 15px;
 }
 
+.preco {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 /* BOTÃO */
-button {
-  width: 100%;
-  padding: 10px;
+.produto button {
   background: #25d366;
   color: white;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  padding: 14px;
+  border-radius: 12px;
   font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.produto button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
 }
 
 /* RODAPÉ */
 .rodape {
-  background: #222;
-  color: white;
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
   text-align: center;
-  padding: 15px;
-  margin-top: 30px;
+  padding: 20px;
+  font-size: 14px;
+  color: #666;
 }
