@@ -1,22 +1,17 @@
 let quantidade = 1;
 const chavePix = "81991610473";
 const numero = "5581991610473";
-
-
 const produtos = {
-  completo: {
-    preco: 5.00,
-    qtd: 0
-  },
-  simples: {
-    preco: 4.00,
-    qtd: 0
-  }
+  completo: { preco: 5.00, qtd: 0 },
+  simples: { preco: 4.00, qtd: 0 }
 };
 
 function alterarQtd(tipo, valor) {
   produtos[tipo].qtd += valor;
-  if (produtos[tipo].qtd < 0) produtos[tipo].qtd = 0;
+
+  if (produtos[tipo].qtd < 0) {
+    produtos[tipo].qtd = 0;
+  }
 
   document.getElementById(`qtd-${tipo}`).innerText = produtos[tipo].qtd;
   atualizarTotais();
@@ -35,12 +30,6 @@ function atualizarTotais() {
 
   document.getElementById("total-geral").innerText =
     `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
-}
-
-function alterarQtd(valor) {
-  quantidade += valor;
-  if (quantidade < 1) quantidade = 1;
-  document.querySelectorAll("#qtd").forEach(q => q.innerText = quantidade);
 }
 
 function copiarPix() {
