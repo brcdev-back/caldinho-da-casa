@@ -131,3 +131,15 @@ body {
   border: 1px solid #ccc;
   font-size: 14px;
 }
+
+.piscina-opcao {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.piscina-opcao label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
