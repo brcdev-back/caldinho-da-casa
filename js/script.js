@@ -1,3 +1,17 @@
+let quantidade = 1;
+const chavePix = "SUA_CHAVE_PIX_AQUI";
+
+function alterarQtd(valor) {
+  quantidade += valor;
+  if (quantidade < 1) quantidade = 1;
+  document.getElementById("qtd").innerText = quantidade;
+}
+
+function copiarPix() {
+  navigator.clipboard.writeText(chavePix);
+  alert("Chave Pix copiada!");
+}
+
 function pedido(tipo) {
   const numero = "5581991610473";
 
@@ -13,14 +27,15 @@ function pedido(tipo) {
   const localEntrega = piscina ? "Na piscina" : "No apartamento";
 
   const mensagem =
-` PEDIDO – CALDINHO DE FEIJÃO
-  Tipo: ${tipo}
+`PEDIDO – CALDINHO DE FEIJÃO
+ Tipo: ${tipo}
+ Quantidade: ${quantidade}
 
  Bloco: ${bloco}
  Apartamento: ${apartamento}
  Entrega: ${localEntrega}
 
- Forma de pagamento: Pix
+ Pagamento: Pix
 `;
 
   const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
