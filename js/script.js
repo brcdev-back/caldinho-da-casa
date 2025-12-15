@@ -3,18 +3,22 @@ function pedido(tipo) {
 
   const bloco = document.getElementById("bloco").value;
   const apartamento = document.getElementById("apartamento").value;
+  const piscina = document.getElementById("piscina").checked;
 
   if (bloco === "" || apartamento === "") {
     alert("Por favor, informe o bloco e o apartamento.");
     return;
   }
 
+  const localEntrega = piscina ? "Na piscina" : "No apartamento";
+
   const mensagem =
-`PEDIDO – CALDINHO DE FEIJÃO
- Tipo: ${tipo}
- 
+` PEDIDO – CALDINHO DE FEIJÃO
+  Tipo: ${tipo}
+
  Bloco: ${bloco}
  Apartamento: ${apartamento}
+ Entrega: ${localEntrega}
 
  Forma de pagamento: Pix
 `;
