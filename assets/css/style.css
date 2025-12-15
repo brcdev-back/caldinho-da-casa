@@ -143,3 +143,72 @@ body {
   gap: 8px;
   cursor: pointer;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.produto {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.endereco {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.endereco input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.piscina-opcao {
+  margin-bottom: 15px;
+}
+
+.quantidade {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.quantidade button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background: #8b0000;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.pix-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 2px solid #2ecc71;
+  background: #eafff2;
+  color: #2ecc71;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
