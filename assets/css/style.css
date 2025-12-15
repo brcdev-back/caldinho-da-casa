@@ -144,19 +144,23 @@ body {
   padding: 20px;
 }
 
-/* AJUSTE FINO – APARTAMENTO NO CELULAR */
 @media (max-width: 600px) {
 
   .endereco {
     gap: 6px;
   }
 
+  .endereco input {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
   .endereco input:first-child {
-    flex: 0.6;   /* Bloco menor */
+    flex: 0.5;   /* Bloco */
   }
 
   .endereco input:last-child {
-    flex: 0.9;   /* Apartamento MENOR para não quebrar linha */
+    flex: 0.7;   /* Apartamento BEM MENOR */
   }
 
 }
