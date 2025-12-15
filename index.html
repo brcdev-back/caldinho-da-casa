@@ -3,85 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <title>Caldinho de Feijão</title>
-
-  <!-- Responsividade -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
-  <!-- TOPO -->
-  <header class="topo">
-    <h1>Caldinho de Feijão</h1>
-    <p>Receita caseira, bem temperada e servida bem quentinha</p>
-  </header>
+<header class="topo">
+  <h1>Caldinho de Feijão</h1>
+  <p>Receita caseira, bem temperada e servida bem quentinha</p>
+</header>
 
-  <!-- AVISO -->
-  <div class="aviso-condominio">
-    Entrega exclusiva para moradores do condomínio
-  </div>
+<div class="aviso">
+  Entrega exclusiva para moradores do condomínio
+</div>
 
-  <!-- CARDÁPIO -->
-  <main class="cardapio">
-    <h2>Nosso Cardápio</h2>
+<main class="cardapio">
+  <h2>Nosso Cardápio</h2>
 
-    <section class="produtos">
+  <div class="produtos">
 
-      <!-- FORMULÁRIO ÚNICO -->
-      <div class="produto">
+    <!-- PRODUTO 1 -->
+    <div class="produto">
+      <h3>Feijão Completo</h3>
+      <p class="descricao">
+        Caldinho de feijão acompanhado de <strong>charque, ovos de codorna e azeitona</strong>.
+      </p>
+      <span class="preco">R$ 5,00</span>
 
-        <div class="endereco">
-          <input type="text" id="bloco" placeholder="Bloco">
-          <input type="text" id="apartamento" placeholder="Apartamento">
-        </div>
-
-        <div class="piscina-opcao">
-          <label>
-            <input type="checkbox" id="piscina">
-            Estou na piscina
-          </label>
-        </div>
-
-        <div class="quantidade">
-          <button onclick="alterarQtd(-1)">−</button>
-          <span id="qtd">1</span>
-          <button onclick="alterarQtd(1)">+</button>
-        </div>
-
-        <button class="pix-btn" onclick="copiarPix()">
-          Copiar chave Pix
-        </button>
-
-        <hr>
-
-        <!-- PRODUTO 1 -->
-        <button onclick="pedido('Feijão Completo')">
-          🥣 Caldinho de Feijão Completo
-          <small>Charque, ovos de codorna e azeitona</small>
-        </button>
-
-        <!-- PRODUTO 2 -->
-        <button onclick="pedido('Feijão sem Charque')">
-          🥣 Caldinho de Feijão sem Charque
-          <small>Ovos de codorna e azeitona</small>
-        </button>
-
+      <div class="endereco">
+        <input id="bloco1" placeholder="Bloco">
+        <input id="apto1" placeholder="Apartamento">
       </div>
 
-    </section>
-  </main>
+      <label class="piscina">
+        <input type="checkbox" id="piscina1"> Estou na piscina
+      </label>
 
-  <!-- RODAPÉ -->
-  <footer class="rodape">
-    <p>Pedidos via WhatsApp | Pagamento via Pix</p>
-    <p>Funcionamento conforme disponibilidade</p>
-  </footer>
+      <div class="quantidade">
+        <button onclick="alterarQtd(-1)">−</button>
+        <span id="qtd">1</span>
+        <button onclick="alterarQtd(1)">+</button>
+      </div>
 
-  <!-- JavaScript -->
-  <script src="js/script.js"></script>
+      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
+      <button class="whats" onclick="pedido('Feijão Completo', 1)">Pedir no WhatsApp</button>
+    </div>
 
+    <!-- PRODUTO 2 -->
+    <div class="produto">
+      <h3>Feijão sem Charque</h3>
+      <p class="descricao">
+        Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
+      </p>
+      <span class="preco">R$ 4,00</span>
+
+      <div class="endereco">
+        <input id="bloco2" placeholder="Bloco">
+        <input id="apto2" placeholder="Apartamento">
+      </div>
+
+      <label class="piscina">
+        <input type="checkbox" id="piscina2"> Estou na piscina
+      </label>
+
+      <div class="quantidade">
+        <button onclick="alterarQtd(-1)">−</button>
+        <span id="qtd">1</span>
+        <button onclick="alterarQtd(1)">+</button>
+      </div>
+
+      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
+      <button class="whats" onclick="pedido('Feijão sem Charque', 2)">Pedir no WhatsApp</button>
+    </div>
+
+  </div>
+</main>
+
+<footer class="rodape">
+  Pedidos via WhatsApp | Pagamento via Pix<br>
+  Funcionamento conforme disponibilidade
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
