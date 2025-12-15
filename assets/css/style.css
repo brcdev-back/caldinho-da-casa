@@ -151,8 +151,8 @@ body {
   }
 
   .endereco input {
-    padding: 6px 8px;
-    font-size: 13px;
+    padding: 6px 6px;
+    font-size: 15px;
   }
 
   .endereco input:first-child {
