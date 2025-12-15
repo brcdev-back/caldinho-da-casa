@@ -156,11 +156,11 @@ body {
   }
 
   .endereco input:first-child {
-    flex: 0.5;   /* Bloco */
+    flex: 0.4;   /* Bloco */
   }
 
   .endereco input:last-child {
-    flex: 0.7;   /* Apartamento BEM MENOR */
+    flex: 0.4;   /* Apartamento BEM MENOR */
   }
 
 }
