@@ -165,7 +165,8 @@ body {
 
   /* Apartamento */
   .endereco input:last-child {
-    width: 60%;
-  }
+  width: 50%;
+}
+
 
 }
