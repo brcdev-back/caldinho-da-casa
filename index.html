@@ -4,25 +4,25 @@
   <meta charset="UTF-8">
   <title>Caldinho de Feijão</title>
 
-  <!-- Responsividade (celular) -->
+  <!-- Responsividade -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Conectando o CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
-  <!-- TOPO DO SITE -->
+  <!-- TOPO -->
   <header class="topo">
-    <h1> Caldinho de Feijão</h1>
+    <h1>Caldinho de Feijão</h1>
     <p>Receita caseira, bem temperada e servida bem quentinha</p>
   </header>
 
+  <!-- AVISO -->
   <div class="aviso-condominio">
-  Entrega exclusiva para moradores do condomínio
-</div>
-
+    Entrega exclusiva para moradores do condomínio
+  </div>
 
   <!-- CARDÁPIO -->
   <main class="cardapio">
@@ -30,55 +30,54 @@
 
     <section class="produtos">
 
-  <meta charset="UTF-8">
-  <title>Caldinhos Delivery</title>
+      <!-- FORMULÁRIO ÚNICO -->
+      <div class="produto">
 
-    <!-- PRODUTO 1 -->
-    <div class="produto">
-      <h2>Caldinho de Feijão Completo</h2>
-      <p>Charque, ovos de codorna e azeitona</p>
+        <div class="endereco">
+          <input type="text" id="bloco" placeholder="Bloco">
+          <input type="text" id="apartamento" placeholder="Apartamento">
+        </div>
 
-      <div class="endereco">
-        <input type="text" id="bloco" placeholder="Bloco">
-        <input type="text" id="apartamento" placeholder="Apartamento">
+        <div class="piscina-opcao">
+          <label>
+            <input type="checkbox" id="piscina">
+            Estou na piscina
+          </label>
+        </div>
+
+        <div class="quantidade">
+          <button onclick="alterarQtd(-1)">−</button>
+          <span id="qtd">1</span>
+          <button onclick="alterarQtd(1)">+</button>
+        </div>
+
+        <button class="pix-btn" onclick="copiarPix()">
+          Copiar chave Pix
+        </button>
+
+        <hr>
+
+        <!-- PRODUTO 1 -->
+        <button onclick="pedido('Feijão Completo')">
+          🥣 Caldinho de Feijão Completo
+          <small>Charque, ovos de codorna e azeitona</small>
+        </button>
+
+        <!-- PRODUTO 2 -->
+        <button onclick="pedido('Feijão sem Charque')">
+          🥣 Caldinho de Feijão sem Charque
+          <small>Ovos de codorna e azeitona</small>
+        </button>
+
       </div>
 
-      <div class="piscina-opcao">
-        <label>
-          <input type="checkbox" id="piscina">
-          Estou na piscina
-        </label>
-      </div>
+    </section>
+  </main>
 
-      <div class="quantidade">
-        <button onclick="alterarQtd(-1)">−</button>
-        <span id="qtd">1</span>
-        <button onclick="alterarQtd(1)">+</button>
-      </div>
-
-      <button class="pix-btn" onclick="copiarPix()">Copiar chave Pix</button>
-
-      <button onclick="pedido('Feijão Completo')">Pedir no WhatsApp</button>
-    </div>
-
-    <!-- PRODUTO 2 -->
-    <div class="produto">
-      <h2>Caldinho de Feijão sem Charque</h2>
-      <p>Ovos de codorna e azeitona</p>
-
-      <button onclick="pedido('Feijão sem Charque')">Pedir no WhatsApp</button>
-    </div>
-
-  </div>
-
-  <script src="js/script.js"></script>
-</body>
-</html>
-      
   <!-- RODAPÉ -->
   <footer class="rodape">
-    <p> Pedidos via WhatsApp |  Pagamento via Pix</p>
-    <p> Funcionamento conforme disponibilidade</p>
+    <p>Pedidos via WhatsApp | Pagamento via Pix</p>
+    <p>Funcionamento conforme disponibilidade</p>
   </footer>
 
   <!-- JavaScript -->
@@ -86,10 +85,3 @@
 
 </body>
 </html>
-
-<div class="piscina-opcao">
-  <label>
-    <input type="checkbox" id="piscina">
-    Estou na piscina
-  </label>
-</div>
