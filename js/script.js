@@ -73,44 +73,31 @@ Pagamento: Pix`;
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
 
-const admin = {
-  user: "admin",
-  pass: "1234"
-};
-
+// ABRIR LOGIN
 function abrirLogin() {
   document.getElementById("adminModal").style.display = "flex";
 }
 
+// FECHAR LOGIN
 function fecharLogin() {
   document.getElementById("adminModal").style.display = "none";
 }
 
+// LOGIN ADMIN (usuário e senha padrão)
 function loginAdmin() {
-  const u = document.getElementById("adminUser").value;
-  const p = document.getElementById("adminPass").value;
+  const user = document.getElementById("adminUser").value;
+  const pass = document.getElementById("adminPass").value;
 
-  if (u === admin.user && p === admin.pass) {
-    alert("Login admin realizado com sucesso!");
+  // Defina seu usuário e senha aqui
+  const usuarioAdmin = "admin";
+  const senhaAdmin = "1234";
+
+  if (user === usuarioAdmin && pass === senhaAdmin) {
+    alert("Login realizado com sucesso!");
     fecharLogin();
-    // futuro: ativar modo admin
+    abrirPainel(); // abre painel admin
   } else {
-    alert("Usuário ou senha incorretos.");
-  }
-}
-
-let pedidos = []; // lista de pedidos do dia
-
-function loginAdmin() {
-  const u = document.getElementById("adminUser").value;
-  const p = document.getElementById("adminPass").value;
-
-  if (u === admin.user && p === admin.pass) {
-    alert("Login admin realizado com sucesso!");
-    fecharLogin();
-    abrirPainel();
-  } else {
-    alert("Usuário ou senha incorretos.");
+    alert("Usuário ou senha incorretos!");
   }
 }
 
