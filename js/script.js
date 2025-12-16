@@ -1,58 +1,39 @@
-const chavePix = "81991610473";
 const numero = "5581991610473";
+const chavePix = "81991610473";
 
 const produtos = {
-  completo: { preco: 5.00, qtd: 0 },
-  simples: { preco: 4.00, qtd: 0 }
+  completo: { preco: 5, qtd: 0 },
+  simples: { preco: 4, qtd: 0 }
 };
 
-// ================= QUANTIDADE =================
 function alterarQtd(tipo, valor) {
   produtos[tipo].qtd += valor;
-
-  if (produtos[tipo].qtd < 0) {
-    produtos[tipo].qtd = 0;
-  }
+  if (produtos[tipo].qtd < 0) produtos[tipo].qtd = 0;
 
   document.getElementById(`qtd-${tipo}`).innerText = produtos[tipo].qtd;
   atualizarTotais();
 }
 
-// ================= TOTAIS =================
 function atualizarTotais() {
-  let totalGeral = 0;
+  document.getElementById("total-completo").innerText =
+    `Total: R$ ${(produtos.completo.qtd * produtos.completo.preco).toFixed(2).replace(".", ",")}`;
 
-  for (let tipo in produtos) {
-    const total = produtos[tipo].qtd * produtos[tipo].preco;
-    totalGeral += total;
-
-    document.getElementById(`total-${tipo}`).innerText =
-      `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
-  }
-
-  // Se você ainda não criou esse elemento no HTML, crie:
-  // <div id="total-geral"></div>
-  const totalGeralEl = document.getElementById("total-geral");
-  if (totalGeralEl) {
-    totalGeralEl.innerText =
-      `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
-  }
+  document.getElementById("total-simples").innerText =
+    `Total: R$ ${(produtos.simples.qtd * produtos.simples.preco).toFixed(2).replace(".", ",")}`;
 }
 
-// ================= PIX =================
 function copiarPix() {
   navigator.clipboard.writeText(chavePix);
   alert("Chave Pix copiada!");
 }
 
-// ================= PEDIDO =================
-function pedido(tipo, id) {
+function pedido(id) {
   const bloco = document.getElementById("bloco" + id).value;
   const apto = document.getElementById("apto" + id).value;
   const piscina = document.getElementById("piscina" + id).checked;
 
   if (!bloco || !apto) {
-    alert("Informe o bloco e o apartamento.");
+    alert("Informe bloco e apartamento.");
     return;
   }
 
@@ -61,34 +42,15 @@ function pedido(tipo, id) {
     return;
   }
 
-  const local = piscina ? "Piscina" : "Apartamento";
+  let msg = "PEDIDO – CALDINHO DE FEIJÃO\n\n";
 
-  let mensagem =
-`PEDIDO – CALDINHO DE FEIJÃO
+  if (produtos.completo.qtd > 0)
+    msg += `• Feijão Completo: ${produtos.completo.qtd}\n`;
 
-`;
+  if (produtos.simples.qtd > 0)
+    msg += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
 
-  if (produtos.completo.qtd > 0) {
-    mensagem += `• Feijão Completo: ${produtos.completo.qtd}\n`;
-  }
+  msg += `\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina ? "Piscina" : "Apartamento"}\nPagamento: Pix`;
 
-  if (produtos.simples.qtd > 0) {
-    mensagem += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
-  }
-
-  const totalFinal =
-    produtos.completo.qtd * produtos.completo.preco +
-    produtos.simples.qtd * produtos.simples.preco;
-
-  mensagem += `
-Bloco: ${bloco}
-Apartamento: ${apto}
-Entrega: ${local}
-
-Total: R$ ${totalFinal.toFixed(2).replace(".", ",")}
-Pagamento: Pix
-`;
-
-  const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
-  window.open(link, "_blank");
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
