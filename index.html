@@ -9,6 +9,23 @@
 
 <body>
 
+  <!-- TELA DE CONFIRMAÇÃO -->
+<div class="confirmacao-overlay" id="confirmacao">
+  <div class="confirmacao-box">
+    <h3>Confirmar Pedido</h3>
+
+    <div class="resumo" id="resumo-pedido">
+      <!-- JS preenche -->
+    </div>
+
+    <div class="confirmacao-botoes">
+      <button class="cancelar" onclick="fecharConfirmacao()">Cancelar</button>
+      <button class="confirmar" onclick="enviarPedido()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+
 <header class="topo">
   <h1>Caldinho de Feijão</h1>
   <p>Receita caseira, bem temperada e servida bem quentinha</p>
