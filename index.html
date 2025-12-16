@@ -4,31 +4,14 @@
   <meta charset="UTF-8">
   <title>Caldinho de Feijão</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- TELA DE CONFIRMAÇÃO -->
-<div class="confirmacao-overlay" id="confirmacao">
-  <div class="confirmacao-box">
-    <h3>Confirmar Pedido</h3>
-
-    <div class="resumo" id="resumo-pedido">
-      <!-- JS preenche -->
-    </div>
-
-    <div class="confirmacao-botoes">
-      <button class="cancelar" onclick="fecharConfirmacao()">Cancelar</button>
-      <button class="confirmar" onclick="enviarPedido()">Confirmar</button>
-    </div>
-  </div>
-</div>
-
-
 <header class="topo">
   <h1>Caldinho de Feijão</h1>
-  <p>Receita caseira, bem temperada e servida bem quentinha</p>
+  <p>Receita caseira, bem temperada e servida quentinha</p>
 </header>
 
 <div class="aviso">
@@ -40,13 +23,20 @@
 
   <div class="produtos">
 
-    <!-- FEIJÃO COMPLETO -->
+    <!-- COMPLETO -->
     <div class="produto">
       <h3>Feijão Completo</h3>
-      <p class="descricao">
-        Caldinho de feijão com <strong>charque, ovos de codorna e azeitona</strong>.
-      </p>
+      <p class="descricao">Charque, ovos de codorna e azeitona</p>
       <span class="preco">R$ 5,00</span>
+
+      <div class="endereco">
+        <input id="bloco1" placeholder="Bloco">
+        <input id="apto1" placeholder="Apto">
+      </div>
+
+      <label class="piscina">
+        <input type="checkbox" id="piscina1"> Estou na piscina
+      </label>
 
       <div class="quantidade">
         <button onclick="alterarQtd('completo', -1)">−</button>
@@ -57,13 +47,20 @@
       <div class="total" id="total-completo">Total: R$ 0,00</div>
     </div>
 
-    <!-- FEIJÃO SEM CHARQUE -->
+    <!-- SIMPLES -->
     <div class="produto">
       <h3>Feijão sem Charque</h3>
-      <p class="descricao">
-        Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
-      </p>
+      <p class="descricao">Ovos de codorna e azeitona</p>
       <span class="preco">R$ 4,00</span>
+
+      <div class="endereco">
+        <input id="bloco2" placeholder="Bloco">
+        <input id="apto2" placeholder="Apto">
+      </div>
+
+      <label class="piscina">
+        <input type="checkbox" id="piscina2"> Estou na piscina
+      </label>
 
       <div class="quantidade">
         <button onclick="alterarQtd('simples', -1)">−</button>
@@ -76,20 +73,6 @@
 
   </div>
 
-  <!-- ENDEREÇO ÚNICO -->
-  <div class="produto">
-    <h3>Endereço de Entrega</h3>
-
-    <div class="endereco">
-      <input id="bloco" placeholder="Bloco">
-      <input id="apto" placeholder="Apartamento">
-    </div>
-
-    <label class="piscina">
-      <input type="checkbox" id="piscina"> Estou na piscina
-    </label>
-  </div>
-
   <!-- FINALIZAR -->
   <div class="finalizar">
     <div class="total-geral" id="total-geral">
@@ -97,16 +80,29 @@
     </div>
 
     <button class="finalizar-btn" onclick="finalizarPedido()">
-      Finalizar Pedido no WhatsApp
+      Finalizar Pedido
     </button>
   </div>
 
 </main>
 
 <footer class="rodape">
-  Pedidos via WhatsApp | Pagamento via Pix
+  Pedidos via WhatsApp • Pagamento via Pix
 </footer>
 
-<script src="js/script.js"></script>
+<!-- CONFIRMAÇÃO -->
+<div class="confirmacao-overlay" id="confirmacao">
+  <div class="confirmacao-box">
+    <h3>Confirmar Pedido</h3>
+    <div class="resumo" id="resumo-pedido"></div>
+
+    <div class="confirmacao-botoes">
+      <button class="cancelar" onclick="fecharConfirmacao()">Cancelar</button>
+      <button class="confirmar" onclick="enviarPedido()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
