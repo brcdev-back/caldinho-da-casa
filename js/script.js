@@ -15,11 +15,18 @@ function alterarQtd(tipo, valor) {
 }
 
 function atualizarTotais() {
+  const totalCompleto = produtos.completo.qtd * produtos.completo.preco;
+  const totalSimples = produtos.simples.qtd * produtos.simples.preco;
+  const totalGeral = totalCompleto + totalSimples;
+
   document.getElementById("total-completo").innerText =
-    `Total: R$ ${(produtos.completo.qtd * produtos.completo.preco).toFixed(2).replace(".", ",")}`;
+    `Total: R$ ${totalCompleto.toFixed(2).replace(".", ",")}`;
 
   document.getElementById("total-simples").innerText =
-    `Total: R$ ${(produtos.simples.qtd * produtos.simples.preco).toFixed(2).replace(".", ",")}`;
+    `Total: R$ ${totalSimples.toFixed(2).replace(".", ",")}`;
+
+  document.getElementById("total-geral").innerText =
+    `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
 }
 
 function copiarPix() {
@@ -27,16 +34,7 @@ function copiarPix() {
   alert("Chave Pix copiada!");
 }
 
-function pedido(id) {
-  const bloco = document.getElementById("bloco" + id).value;
-  const apto = document.getElementById("apto" + id).value;
-  const piscina = document.getElementById("piscina" + id).checked;
-
-  if (!bloco || !apto) {
-    alert("Informe bloco e apartamento.");
-    return;
-  }
-
+function finalizarPedido() {
   if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
     alert("Selecione ao menos um produto.");
     return;
@@ -50,7 +48,7 @@ function pedido(id) {
   if (produtos.simples.qtd > 0)
     msg += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
 
-  msg += `\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina ? "Piscina" : "Apartamento"}\nPagamento: Pix`;
+  msg += "\nPagamento: Pix";
 
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
