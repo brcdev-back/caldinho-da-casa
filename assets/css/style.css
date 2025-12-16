@@ -1,252 +1,252 @@
 :root {
-    /* Paleta para Comida Caseira e Moderna */
-    --cor-primaria: #ff6347; /* Vermelho-Tomate (Calor e Sabor) */
-    --cor-secundaria: #ffcc00; /* Amarelo (Destaque e Pix) */
-    --cor-fundo: #f8f8f8; /* Fundo Clean */
+    /* Paleta de Cores */
+    --cor-principal: #e74c3c; /* Vermelho/Laranja de Caldinho */
+    --cor-secundaria: #f39c12; /* Laranja para Destaque */
+    --cor-fundo: #f8f8f8;
     --cor-texto: #333;
     --cor-whatsapp: #25d366;
-    --sombra-card: 0 5px 15px rgba(0,0,0,0.08);
+    --sombra-suave: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Reset Básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--cor-fundo);
-    color: var(--cor-texto);
-    line-height: 1.6;
+  font-family: 'Roboto', Arial, sans-serif; /* Fonte moderna */
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
 }
 
-/* Estrutura Central (para alinhar tudo) */
-.conteiner {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 15px; /* Padding nas laterais para telemóveis */
+/* --- CABEÇALHO (TOPO) --- */
+.topo {
+  background: var(--cor-principal);
+  color: white;
+  text-align: center;
+  padding: 30px 25px;
+  border-bottom: none;
 }
 
-/* --- HEADER --- */
-.header-principal {
-    background: var(--cor-primaria);
-    color: white;
-    text-align: center;
-    padding: 40px 0;
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Logo em formato redondo */
+    margin-bottom: 10px;
+    object-fit: cover;
+    border: 3px solid white;
 }
 
-.marca {
-    font-size: 2.5rem;
-    font-weight: 700;
+.topo h1 {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.slogan {
-    font-size: 1rem;
-    opacity: 0.9;
+.topo p {
+  font-size: 0.9rem;
+  color: #f9f9f9;
 }
 
-/* --- AVISO / BANNER --- */
-.aviso-banner {
-    background: #fffbe6; /* Amarelo claro */
-    border-bottom: 3px solid var(--cor-secundaria);
-    padding: 15px;
-    text-align: center;
-    font-size: 0.95rem;
-    color: #8a6d3b;
-    margin-bottom: 30px;
+/* --- AVISO --- */
+.aviso {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #fffbe6;
+  border: 1px solid var(--cor-secundaria);
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #8a6d3b;
 }
 
-/* --- TÍTULOS DE SEÇÃO --- */
-.titulo-seccao {
-    text-align: center;
-    margin: 30px 0;
-    color: var(--cor-primaria);
-    font-weight: 600;
-    font-size: 2rem;
+/* --- CARDÁPIO GERAL --- */
+.cardapio {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
-/* --- GRID DE PRODUTOS --- */
-.produtos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-    margin-bottom: 40px;
+.cardapio h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--cor-principal);
+  font-weight: 700;
 }
 
-/* --- CARTÃO DE PRODUTO (ALINHAMENTO INTERNO) --- */
-.card-produto {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: var(--sombra-card); 
-    text-align: center;
-    display: flex; /* Usamos Flexbox para garantir alinhamento vertical */
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s;
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
 }
 
-.card-produto:hover {
-    transform: translateY(-5px);
+/* --- CARTÃO DE PRODUTO --- */
+.produto {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--sombra-suave);
+  text-align: center;
+  transition: transform 0.2s;
 }
 
-.nome-produto {
-    font-size: 1.6rem;
-    color: var(--cor-texto);
-    margin-bottom: 5px;
+.produto:hover {
+    transform: translateY(-3px);
+}
+
+.imagem-produto {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.produto h3 {
+  margin-bottom: 5px;
+  color: var(--cor-texto);
 }
 
 .descricao {
-    font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 15px;
 }
 
-.preco-item {
-    font-size: 2.2rem;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 20px;
-    color: var(--cor-secundaria);
+.preco {
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 20px;
+  color: var(--cor-secundaria);
 }
 
-/* --- CONTROLE DE QUANTIDADE --- */
-.controle-quantidade {
-    display: flex;
-    justify-content: center; /* ALINHA O CENTRO */
-    align-items: center;
-    gap: 20px;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px dashed #eee;
+/* --- ENDEREÇO E PISCINA --- */
+.endereco {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.endereco input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+.piscina {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* --- QUANTIDADE --- */
+.quantidade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  border-top: 1px dashed #eee;
+  padding-top: 15px;
 }
 
 .btn-controle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    background: var(--cor-primaria);
-    color: white;
-    font-size: 1.8rem;
-    cursor: pointer;
-    line-height: 40px; /* Alinhamento do texto no botão */
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cor-principal);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-.controle-quantidade span {
-    font-size: 1.5rem;
+.total {
     font-weight: 600;
-}
-
-.total-item {
-    font-weight: 500;
-    margin-top: 10px;
-    color: var(--cor-texto);
-}
-
-
-/* --- CHECKOUT --- */
-.bloco-checkout {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: var(--sombra-card);
-    margin-bottom: 50px;
-    border-top: 5px solid var(--cor-primaria);
-}
-
-.subtitulo-checkout {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: var(--cor-texto);
-    text-align: center;
-}
-
-.campos-entrega {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.campos-entrega input {
-    flex: 1;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-}
-
-.opcao-local {
-    font-size: 0.95rem;
-    margin-bottom: 25px;
-    display: block;
-    text-align: center; /* CENTRALIZA O CHECKBOX/TEXTO */
-}
-
-.total-final {
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    color: var(--cor-primaria);
-    margin: 30px 0;
-    padding: 15px 0;
-    background: #fef0f0; /* Fundo suave para destaque */
-    border-radius: 8px;
+    margin-bottom: 15px;
+    color: #444;
 }
 
 /* --- BOTÕES DE AÇÃO --- */
 .btn-acao {
     width: 100%;
-    padding: 15px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1.2rem;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: opacity 0.2s;
-    margin-bottom: 10px;
 }
 
-.btn-whatsapp {
-    background: var(--cor-whatsapp);
-    color: #fff;
+.pix {
+  border: 1px solid var(--cor-principal);
+  background: white;
+  color: var(--cor-principal);
+  margin-bottom: 8px;
 }
 
-.btn-whatsapp:hover {
+.whats {
+  border: none;
+  background: var(--cor-whatsapp);
+  color: #fff;
+}
+
+.whats:hover {
     opacity: 0.9;
 }
-
-.btn-pix {
-    background: white;
-    color: var(--cor-primaria);
-    border: 1px solid var(--cor-primaria);
-}
-
-.btn-pix:hover {
+.pix:hover {
     background: #fdf5f5;
 }
 
-/* --- RODAPÉ --- */
-.rodape {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #888;
-    padding: 20px;
-    border-top: 1px solid #ddd;
+/* --- TOTAL GERAL --- */
+.total-geral {
+    margin-top: 30px;
+    padding: 15px;
+    font-weight: 700;
+    text-align: center;
+    background: #fff;
+    border: 2px solid var(--cor-principal);
+    border-radius: 8px;
+    font-size: 1.2rem;
 }
 
-/* --- RESPONSIVIDADE (MOBILE) --- */
+
+/* --- RODAPÉ --- */
+.rodape {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+  padding: 20px;
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+/* --- MEDIA QUERIES (RESPONSIVO) --- */
 @media (max-width: 600px) {
-    .produtos-grid {
-        grid-template-columns: 1fr;
-    }
-    .marca { font-size: 1.8rem; }
-    .titulo-seccao { font-size: 1.5rem; }
-    .bloco-checkout { padding: 20px; }
-    .campos-entrega {
-        flex-direction: column;
-        gap: 10px;
-    }
+
+  .endereco {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .endereco input {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  /* Bloco */
+  .endereco input:first-child {
+    width: 45%;
+  }
+
+  /* Apartamento */
+  .endereco input:last-child {
+    width: 55%;
+  }
+
 }
