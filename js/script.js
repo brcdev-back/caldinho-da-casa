@@ -1,9 +1,34 @@
+const numero = "5581991610473";
+
+const produtos = {
+  completo: { nome: "Feijão Completo", preco: 5, qtd: 0 },
+  simples: { nome: "Feijão sem Charque", preco: 4, qtd: 0 }
+};
+
 let mensagemFinal = "";
 
-function finalizarPedido() {
-  let resumo = "";
+function alterarQtd(tipo, valor) {
+  produtos[tipo].qtd += valor;
+  if (produtos[tipo].qtd < 0) produtos[tipo].qtd = 0;
+  document.getElementById(`qtd-${tipo}`).innerText = produtos[tipo].qtd;
+  atualizarTotais();
+}
+
+function atualizarTotais() {
   let total = 0;
 
+  for (let tipo in produtos) {
+    const subtotal = produtos[tipo].qtd * produtos[tipo].preco;
+    total += subtotal;
+    document.getElementById(`total-${tipo}`).innerText =
+      `Total: R$ ${subtotal.toFixed(2).replace(".", ",")}`;
+  }
+
+  document.getElementById("total-geral").innerText =
+    `Total do pedido: R$ ${total.toFixed(2).replace(".", ",")}`;
+}
+
+function finalizarPedido() {
   if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
     alert("Adicione pelo menos um item.");
     return;
@@ -18,39 +43,23 @@ function finalizarPedido() {
     return;
   }
 
-  resumo += "<strong>Itens:</strong><br>";
+  let resumo = "";
+  let total = 0;
 
-  if (produtos.completo.qtd > 0) {
-    const subt = produtos.completo.qtd * produtos.completo.preco;
-    total += subt;
-    resumo += `• Feijão Completo: ${produtos.completo.qtd}x<br>`;
+  for (let tipo in produtos) {
+    if (produtos[tipo].qtd > 0) {
+      resumo += `• ${produtos[tipo].nome}: ${produtos[tipo].qtd}x<br>`;
+      total += produtos[tipo].qtd * produtos[tipo].preco;
+    }
   }
 
-  if (produtos.simples.qtd > 0) {
-    const subt = produtos.simples.qtd * produtos.simples.preco;
-    total += subt;
-    resumo += `• Feijão sem Charque: ${produtos.simples.qtd}x<br>`;
-  }
-
-  resumo += `
-    <br><strong>Endereço:</strong><br>
-    Bloco: ${bloco}<br>
-    Apartamento: ${apto}<br>
-    Entrega: ${piscina ? "Piscina" : "Apartamento"}<br><br>
-    <strong>Total:</strong> R$ ${total.toFixed(2).replace(".", ",")}
-  `;
+  resumo += `<br>Bloco: ${bloco}<br>Apto: ${apto}<br>Entrega: ${piscina ? "Piscina" : "Apartamento"}<br><br>Total: R$ ${total.toFixed(2).replace(".", ",")}`;
 
   mensagemFinal =
 `PEDIDO - CALDINHO DE FEIJÃO
 
-${produtos.completo.qtd > 0 ? `• Feijão Completo: ${produtos.completo.qtd}\n` : ""}
-${produtos.simples.qtd > 0 ? `• Feijão sem Charque: ${produtos.simples.qtd}\n` : ""}
+${resumo.replace(/<br>/g, "\n")}
 
-Bloco: ${bloco}
-Apartamento: ${apto}
-Entrega: ${piscina ? "Piscina" : "Apartamento"}
-
-Total: R$ ${total.toFixed(2).replace(".", ",")}
 Pagamento: Pix`;
 
   document.getElementById("resumo-pedido").innerHTML = resumo;
@@ -62,9 +71,6 @@ function fecharConfirmacao() {
 }
 
 function enviarPedido() {
-  window.open(
-    `https://wa.me/5581991610473?text=${encodeURIComponent(mensagemFinal)}`,
-    "_blank"
-  );
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagemFinal)}`, "_blank");
   fecharConfirmacao();
 }
