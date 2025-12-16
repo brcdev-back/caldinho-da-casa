@@ -10,16 +10,15 @@ body {
   color: #333;
 }
 
-/* TOPO */
 .topo {
   background: #fff;
-  padding: 20px;
   text-align: center;
+  padding: 25px;
   border-bottom: 1px solid #ddd;
 }
 
 .topo h1 {
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .topo p {
@@ -27,76 +26,87 @@ body {
   color: #666;
 }
 
-/* AVISO */
 .aviso {
   max-width: 900px;
-  margin: 16px auto;
+  margin: 20px auto;
   background: #fff4d6;
   border: 1px solid #ffe6a3;
   padding: 12px;
   text-align: center;
   border-radius: 10px;
+  font-size: 14px;
 }
 
-/* CARDÁPIO */
 .cardapio {
   max-width: 900px;
   margin: auto;
-  padding: 16px;
+  padding: 20px;
+}
+
+.cardapio h2 {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .produtos {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .produto {
   background: #fff;
-  padding: 16px;
+  padding: 20px;
   border-radius: 14px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .descricao {
   font-size: 14px;
-  margin-bottom: 6px;
+  color: #555;
+  margin-bottom: 10px;
 }
 
 .preco {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   display: block;
 }
 
-/* ENDEREÇO */
 .endereco {
   display: flex;
+  flex-wrap: nowrap;
   gap: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .endereco input {
-  padding: 8px;
-  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  width: 100%;
+}
+
+.endereco input:first-child {
+  width: 40%;
+}
+
+.endereco input:last-child {
+  width: 60%;
 }
 
 .piscina {
   font-size: 14px;
-  margin-bottom: 10px;
-  display: flex;
-  gap: 6px;
+  margin-bottom: 12px;
+  display: block;
 }
 
-/* QUANTIDADE */
 .quantidade {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 14px;
+  margin-bottom: 10px;
 }
 
 .quantidade button {
@@ -110,86 +120,32 @@ body {
 }
 
 .total {
-  text-align: center;
-  font-weight: bold;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
-/* FINALIZAR */
-.finalizar {
-  background: #fff;
-  padding: 16px;
-  border-radius: 14px;
-  margin-top: 20px;
-}
-
-.total-geral {
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 12px;
-}
-
-.finalizar-btn {
+.pix {
   width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-  background: #25d366;
-  color: #fff;
-  font-size: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f1f1f1;
+  margin-bottom: 8px;
 }
 
-/* CONFIRMAÇÃO */
-.confirmacao-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.confirmacao-box {
-  background: #fff;
-  width: 90%;
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 14px;
-}
-
-.confirmacao-botoes {
-  display: flex;
-  gap: 10px;
-}
-
-.confirmacao-botoes button {
-  flex: 1;
+.whats {
+  width: 100%;
   padding: 12px;
+  border-radius: 6px;
   border: none;
-  border-radius: 8px;
-}
-
-.cancelar {
-  background: #ccc;
-}
-
-.confirmar {
   background: #25d366;
   color: #fff;
+  font-size: 15px;
 }
 
-/* RODAPÉ */
 .rodape {
   text-align: center;
-  padding: 20px;
   font-size: 13px;
   color: #666;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-  .produtos {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  padding: 20px;
 }
