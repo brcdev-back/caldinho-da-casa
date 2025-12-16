@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Painel Admin - Caldinho</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pedido {
+  background: #fff;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+.pedido textarea,
+.pedido input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+}
+
+.confirmar {
+  flex: 1;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.recusar {
+  flex: 1;
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.status {
+  margin-top: 10px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📋 Painel Admin – Pedidos</h1>
+
+<div class="pedido">
+  <label><strong>Número do cliente (com DDI)</strong></label>
+  <input id="numeroCliente" placeholder="Ex: 5581999999999">
+
+  <label><strong>Pedido recebido</strong></label>
+  <textarea id="pedidoTexto" rows="6" placeholder="Cole aqui o pedido do WhatsApp"></textarea>
+
+  <div class="botoes">
+    <button class="confirmar" onclick="confirmarPedido()">Aceitar Pedido</button>
+    <button class="recusar" onclick="recusarPedido()">Recusar Pedido</button>
+  </div>
+
+  <div class="status" id="status"></div>
+</div>
+
+<script>
+function confirmarPedido() {
+  const numero = document.getElementById("numeroCliente").value;
+  const status = document.getElementById("status");
+
+  if (!numero) {
+    alert("Informe o número do cliente.");
+    return;
+  }
+
+  const mensagem = 
+`✅ PEDIDO CONFIRMADO!
+
+Seu pedido foi confirmado e já está sendo preparado 🍲🔥
+Em breve ele será entregue.
+
+Obrigado pela preferência!`;
+
+  window.open(
+    `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
+    "_blank"
+  );
+
+  status.innerHTML = "✅ Pedido confirmado e cliente avisado no WhatsApp.";
+  status.style.color = "green";
+}
+
+function recusarPedido() {
+  const numero = document.getElementById("numeroCliente").value;
+  const status = document.getElementById("status");
+
+  if (!numero) {
+    alert("Informe o número do cliente.");
+    return;
+  }
+
+  const mensagem = 
+`❌ PEDIDO NÃO CONFIRMADO
+
+Infelizmente não conseguiremos atender seu pedido neste momento.
+Pedimos desculpas 🙏`;
+
+  window.open(
+    `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
+    "_blank"
+  );
+
+  status.innerHTML = "❌ Pedido recusado e cliente avisado.";
+  status.style.color = "red";
+}
+</script>
+
+</body>
+</html>
 
