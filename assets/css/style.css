@@ -1,222 +1,151 @@
-:root {
-    /* Paleta de Cores */
-    --cor-principal: #e74c3c; /* Vermelho/Laranja de Caldinho */
-    --cor-secundaria: #f39c12; /* Laranja para Destaque (Preço) */
-    --cor-fundo: #f8f8f8;
-    --cor-texto: #333;
-    --cor-whatsapp: #25d366;
-    --sombra-card: 0 4px 10px rgba(0,0,0,0.08); /* Sombra suave */
-}
-
-/* Reset Básico e Fonte */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background: var(--cor-fundo);
-    color: var(--cor-texto);
-    line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f4;
+  color: #333;
 }
 
-/* Estrutura Central */
-.conteiner {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 15px; 
+.topo {
+  background: #fff;
+  text-align: center;
+  padding: 25px;
+  border-bottom: 1px solid #ddd;
 }
 
-/* --- HEADER --- */
-.header-principal {
-    background: var(--cor-principal);
-    color: white;
-    text-align: center;
-    padding: 30px 0;
+.topo h1 {
+  font-size: 26px;
 }
 
-.marca {
-    font-size: 2rem;
-    font-weight: 700;
+.topo p {
+  font-size: 14px;
+  color: #666;
 }
 
-.slogan {
-    font-size: 0.9rem;
-    opacity: 0.9;
+.aviso {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #fff4d6;
+  border: 1px solid #ffe6a3;
+  padding: 12px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 14px;
 }
 
-/* --- AVISO BANNER --- */
-.aviso-banner {
-    background: #fffbe6;
-    color: #8a6d3b;
-    padding: 15px;
-    text-align: center;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-/* --- CARDÁPIO GERAL --- */
 .cardapio {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
-.titulo-seccao {
-    text-align: center;
-    margin: 30px 0;
-    color: var(--cor-texto);
-    font-weight: 700;
-    font-size: 1.8rem;
+.cardapio h2 {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.produtos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
-/* --- CARTÃO DE PRODUTO (O FOCO DO NOVO DESIGN) --- */
-.card-produto {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: var(--sombra-card);
-    transition: transform 0.2s;
-}
-
-.nome-produto {
-    font-size: 1.4rem;
-    color: var(--cor-texto);
-    margin-bottom: 5px;
+.produto {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .descricao {
-    font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 10px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
 }
 
-.preco-item {
-    font-size: 2.2rem;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 15px;
-    color: var(--cor-secundaria); /* Destaque no preço */
+.preco {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  display: block;
 }
 
-/* --- CAMPOS DE ENDEREÇO (Bloco/Apto Lado a Lado) --- */
-.campos-entrega {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+.endereco {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
-.campos-entrega input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 0.9rem;
+.endereco input {
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-.opcoes-entrega {
-    text-align: left;
-    margin-bottom: 15px;
+.endereco input:first-child {
+  width: 40%;
 }
 
-.opcao-local {
-    font-size: 0.9rem;
-    display: block;
+.endereco input:last-child {
+  width: 60%;
 }
 
-/* --- CONTROLE DE QUANTIDADE (Compacto) --- */
-.controle-quantidade {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 20px 0;
+.piscina {
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: block;
 }
 
-.btn-controle {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background: var(--cor-principal);
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
+.quantidade {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 10px;
 }
 
-.controle-quantidade span {
-    font-size: 1.2rem;
-    font-weight: 600;
+.quantidade button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #333;
+  color: #fff;
+  font-size: 18px;
 }
 
-.total-item {
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #444;
+.total {
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
-/* --- BOTÕES DE AÇÃO --- */
-.btn-acao {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-bottom: 8px;
+.pix {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f1f1f1;
+  margin-bottom: 8px;
 }
 
-.btn-pix {
-    border: 1px solid #ccc;
-    background: #f1f1f1;
-    color: var(--cor-texto);
+.whats {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background: #25d366;
+  color: #fff;
+  font-size: 15px;
 }
 
-.btn-whatsapp {
-    border: none;
-    background: var(--cor-whatsapp);
-    color: #fff;
-}
-
-/* --- TOTAL GERAL --- */
-.total-geral {
-    margin-top: 30px;
-    padding: 15px;
-    font-weight: 700;
-    text-align: center;
-    background: #fff;
-    border: 2px solid var(--cor-principal);
-    border-radius: 8px;
-    font-size: 1.2rem;
-}
-
-/* --- RODAPÉ --- */
 .rodape {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #888;
-    padding: 20px;
-    margin-top: 30px;
-    border-top: 1px solid #eee;
-}
-
-/* --- RESPONSIVIDADE (MOBILE) --- */
-@media (max-width: 600px) {
-
-  .campos-entrega {
-    flex-wrap: nowrap;
-    gap: 8px;
-  }
-  
-  .card-produto {
-      padding: 15px;
-  }
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  padding: 20px;
 }
