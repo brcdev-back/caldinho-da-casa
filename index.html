@@ -2,91 +2,90 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Caldinhos Gourmet - Condomínio</title>
+  <title>Sabor na Panela - Pedido Online</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header class="topo">
-  
-      <div class="logo-placeholder">🌶️</div>
-  
-  <h1>Caldinhos Gourmet</h1>
-  <p>Sabor caseiro, entregue quentinho no teu bloco.</p>
+<header class="header-principal">
+  <div class="conteiner">
+    <h1 class="marca">Sabor na Panela</h1>
+    <p class="slogan">O conforto de um caldinho quente, à porta do teu apartamento.</p>
+  </div>
 </header>
 
-<div class="aviso">
-  🔔 **Exclusivo para Moradores:** Faz o teu pedido via WhatsApp e paga por Pix.
+<div class="aviso-banner">
+  📢 **Entregas Exclusivas:** Atendemos apenas moradores do condomínio. Pagamento via Pix.
 </div>
 
-<main class="cardapio-area">
+<main class="conteiner">
   
-  <h2 class="titulo-seccao">O Nosso Menu</h2>
+  <h2 class="titulo-seccao">O Nosso Cardápio</h2>
 
   <div class="produtos-grid">
 
-        <div class="produto-card">
+        <div class="card-produto">
       <h3 class="nome-produto">Feijão Completo</h3>
       <p class="descricao">
-        Caldinho de feijão rico, com <strong>charque desfiada, ovos de codorna e azeitonas</strong>.
+        Receita tradicional com bacon crocante, <strong>charque desfiada</strong>, ovos de codorna e azeitonas.
       </p>
       
-      <span class="preco" data-preco="5.00">R$ 5,00</span>
+      <span class="preco-item" data-preco="5.00">R$ 5,00</span>
 
       <div class="controle-quantidade">
-        <button type="button" class="btn-qtd" onclick="alterarQtd('completo', -1)">−</button>
+        <button type="button" class="btn-controle" onclick="alterarQtd('completo', -1)">−</button>
         <span id="qtd-completo">0</span>
-        <button type="button" class="btn-qtd" onclick="alterarQtd('completo', 1)">+</button>
+        <button type="button" class="btn-controle" onclick="alterarQtd('completo', 1)">+</button>
       </div>
 
       <div class="total-item" id="total-completo">Total: R$ 0,00</div>
     </div>
 
-        <div class="produto-card">
-      <h3 class="nome-produto">Feijão Veggie</h3>
+        <div class="card-produto">
+      <h3 class="nome-produto">Feijão Simples</h3>
       <p class="descricao">
-        A opção mais leve! Caldinho de feijão com <strong>ovos de codorna e azeitonas</strong>.
+        O caldinho na sua essência: cremoso, com ovos de codorna e azeitonas. **Sem Charque.**
       </p>
       
-      <span class="preco" data-preco="4.00">R$ 4,00</span>
+      <span class="preco-item" data-preco="4.00">R$ 4,00</span>
 
       <div class="controle-quantidade">
-        <button type="button" class="btn-qtd" onclick="alterarQtd('simples', -1)">−</button>
+        <button type="button" class="btn-controle" onclick="alterarQtd('simples', -1)">−</button>
         <span id="qtd-simples">0</span>
-        <button type="button" class="btn-qtd" onclick="alterarQtd('simples', 1)">+</button>
+        <button type="button" class="btn-controle" onclick="alterarQtd('simples', 1)">+</button>
       </div>
 
       <div class="total-item" id="total-simples">Total: R$ 0,00</div>
     </div>
   </div>
 
-    <div class="checkout-box">
-    <h3 class="titulo-seccao">Finalizar Pedido</h3>
+    <div class="bloco-checkout">
+    <h3 class="subtitulo-checkout">Detalhes da Entrega</h3>
 
-    <div class="input-grupo">
-      <input id="bloco-final" placeholder="Bloco (Ex: C)" required>
-      <input id="apto-final" placeholder="Apartamento (Ex: 302)" required>
+    <div class="campos-entrega">
+      <input id="bloco-final" placeholder="Bloco (Ex: A)" required>
+      <input id="apto-final" placeholder="Apartamento (Ex: 101)" required>
     </div>
 
-    <label class="local-entrega">
-      <input type="checkbox" id="piscina-final"> Estou na Piscina / Área de Lazer
+    <label class="opcao-local">
+      <input type="checkbox" id="piscina-final"> Entrega na Piscina / Área de Lazer
     </label>
     
-    <div id="total-geral" class="total-pedido">
+    <div id="total-geral" class="total-final">
       Total do teu Pedido: R$ 0,00
     </div>
     
-    <button class="btn-whatsapp" onclick="pedido()">Pedir Agora via WhatsApp</button>
-    <button class="btn-pix" onclick="copiarPix()">Copiar Chave Pix</button>
+    <button class="btn-acao btn-whatsapp" onclick="pedido()">Finalizar Pedido (WhatsApp)</button>
+    <button class="btn-acao btn-pix" onclick="copiarPix()">Copiar Chave Pix</button>
   </div>
 
 </main>
 
 <footer class="rodape">
-  <p>Pagamento exclusivo via Pix. Entregas rápidas no teu condomínio.</p>
+  <p>&copy; 2025 Sabor na Panela. Pedidos sujeitos à disponibilidade.</p>
 </footer>
 
 <script src="js/script.js"></script>
