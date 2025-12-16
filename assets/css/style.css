@@ -149,3 +149,22 @@ body {
   color: #666;
   padding: 20px;
 }
+
+.carrinho .endereco {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.carrinho .endereco input {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.carrinho .endereco input:first-child {
+  width: 35%;
+}
+
+.carrinho .endereco input:last-child {
+  width: 65%;
+}
