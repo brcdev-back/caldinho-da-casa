@@ -31,15 +31,6 @@
       </p>
       <span class="preco">R$ 5,00</span>
 
-      <div class="endereco">
-        <input id="bloco1" placeholder="Bloco">
-        <input id="apto1" placeholder="Apartamento">
-      </div>
-
-      <label class="piscina">
-        <input type="checkbox" id="piscina1"> Estou na piscina
-      </label>
-
       <div class="quantidade">
         <button onclick="alterarQtd('completo', -1)">−</button>
         <span id="qtd-completo">0</span>
@@ -47,9 +38,6 @@
       </div>
 
       <div class="total" id="total-completo">Total: R$ 0,00</div>
-
-      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-      <button class="whats" onclick="pedido(1)">Pedir no WhatsApp</button>
     </div>
 
     <!-- FEIJÃO SEM CHARQUE -->
@@ -60,15 +48,6 @@
       </p>
       <span class="preco">R$ 4,00</span>
 
-      <div class="endereco">
-        <input id="bloco2" placeholder="Bloco">
-        <input id="apto2" placeholder="Apartamento">
-      </div>
-
-      <label class="piscina">
-        <input type="checkbox" id="piscina2"> Estou na piscina
-      </label>
-
       <div class="quantidade">
         <button onclick="alterarQtd('simples', -1)">−</button>
         <span id="qtd-simples">0</span>
@@ -76,17 +55,39 @@
       </div>
 
       <div class="total" id="total-simples">Total: R$ 0,00</div>
-
-      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-      <button class="whats" onclick="pedido(2)">Pedir no WhatsApp</button>
     </div>
 
   </div>
+
+  <!-- ENDEREÇO ÚNICO -->
+  <div class="produto">
+    <h3>Endereço de Entrega</h3>
+
+    <div class="endereco">
+      <input id="bloco" placeholder="Bloco">
+      <input id="apto" placeholder="Apartamento">
+    </div>
+
+    <label class="piscina">
+      <input type="checkbox" id="piscina"> Estou na piscina
+    </label>
+  </div>
+
+  <!-- FINALIZAR -->
+  <div class="finalizar">
+    <div class="total-geral" id="total-geral">
+      Total do pedido: R$ 0,00
+    </div>
+
+    <button class="finalizar-btn" onclick="finalizarPedido()">
+      Finalizar Pedido no WhatsApp
+    </button>
+  </div>
+
 </main>
 
 <footer class="rodape">
-  Pedidos via WhatsApp | Pagamento via Pix<br>
-  Funcionamento conforme disponibilidade
+  Pedidos via WhatsApp | Pagamento via Pix
 </footer>
 
 <script src="js/script.js"></script>
