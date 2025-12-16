@@ -313,3 +313,22 @@ body {
   color: #666;
   cursor: pointer;
 }
+
+/* 🔹 Subtotal e total mais visual */
+.total {
+  font-size: 16px;
+  font-weight: bold;
+  color: #25d366; /* verde do WhatsApp */
+  margin-bottom: 10px;
+}
+
+.total-geral {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff6600; /* destaque laranja */
+  text-align: center;
+  margin: 15px 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: #fff3e0;
+}
