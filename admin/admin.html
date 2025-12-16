@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Admin - Caldinho</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login" id="login">
+  <h2>Painel Administrativo</h2>
+  <input type="password" id="senha" placeholder="Senha do admin">
+  <button onclick="login()">Entrar</button>
+</div>
+
+<!-- PAINEL -->
+<div class="admin-container" id="painel" style="display:none;">
+  <h1>Confirmar Pedido</h1>
+
+  <label>Número do cliente (WhatsApp)</label>
+  <input type="text" id="numeroCliente" placeholder="Ex: 5581999999999">
+
+  <label>Mensagem de confirmação</label>
+  <textarea id="mensagem">
+🍲 *Pedido Confirmado!*
+
+Seu pedido de Caldinho de Feijão foi confirmado com sucesso ✅  
+Já estamos preparando tudo com carinho ❤️
+
+Qualquer dúvida, é só chamar.
+Obrigado pela preferência!
+  </textarea>
+
+  <button onclick="confirmarPedido()">Enviar Confirmação</button>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
 
