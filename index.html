@@ -2,90 +2,91 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Sabor na Panela - Caldinhos Gourmet</title>
+  <title>Sabor na Panela - Pedido Online</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header class="topo">
-  <img src="https://via.placeholder.com/80x80?text=LOGO" alt="Logo Sabor na Panela" class="logo">
-  
-  <h1>Sabor na Panela</h1>
-  <p>Receita caseira, bem temperada e servida bem quentinha</p>
+<header class="header-principal">
+  <div class="conteiner">
+    <h1 class="marca">Sabor na Panela</h1>
+    <p class="slogan">O conforto de um caldinho quente, à porta do teu apartamento.</p>
+  </div>
 </header>
 
-<div class="aviso">
-  📢 Entrega exclusiva para moradores do condomínio
+<div class="aviso-banner">
+  Entrega exclusiva para moradores do condomínio
 </div>
 
-<main class="cardapio">
-  <h2>Nosso Cardápio</h2>
+<main class="conteiner">
+  
+  <h2 class="titulo-seccao">Nosso Cardápio</h2>
 
-  <div class="produtos">
+  <div class="produtos-grid">
 
-        <div class="produto">
-      <img src="https://via.placeholder.com/280x150?text=FEIJAO+COMPLETO" alt="Caldinho de Feijão Completo" class="imagem-produto">
-      
-      <h3>Feijão Completo</h3>
+        <div class="card-produto">
+      <h3 class="nome-produto">Feijão Completo</h3>
       <p class="descricao">
         Caldinho de feijão acompanhado de <strong>charque, ovos de codorna e azeitona</strong>.
       </p>
+      
+      <span class="preco-item" data-preco="5.00">R$ 5,00</span>
 
-      <span class="preco" data-preco="5.00">R$ 5,00</span>
-
-      <div class="endereco">
+      <div class="campos-entrega">
         <input id="bloco1" placeholder="Bloco">
         <input id="apto1" placeholder="Apartamento">
       </div>
+      
+      <div class="opcoes-entrega">
+        <label class="opcao-local">
+          <input type="checkbox" id="piscina1"> Estou na piscina
+        </label>
+      </div>
 
-      <label class="piscina">
-        <input type="checkbox" id="piscina1"> Estou na piscina
-      </label>
-
-      <div class="quantidade">
+      <div class="controle-quantidade">
         <button type="button" class="btn-controle" onclick="alterarQtd('completo', -1)">−</button>
         <span id="qtd-completo">0</span>
         <button type="button" class="btn-controle" onclick="alterarQtd('completo', 1)">+</button>
       </div>
 
-      <div class="total" id="total-completo">Total: R$ 0,00</div>
+      <div class="total-item" id="total-completo">Total: R$ 0,00</div>
 
-      <button class="pix btn-acao" onclick="copiarPix()">Copiar chave Pix</button>
-      <button class="whats btn-acao" onclick="pedido('Feijão Completo', 1)">Pedir no WhatsApp</button>
+      <button class="btn-acao btn-pix" onclick="copiarPix()">Copiar chave Pix</button>
+      <button class="btn-acao btn-whatsapp" onclick="pedido('Feijão Completo', 1)">Pedir no WhatsApp</button>
     </div>
 
-        <div class="produto">
-      <img src="https://via.placeholder.com/280x150?text=FEIJAO+SIMPLES" alt="Caldinho de Feijão Simples" class="imagem-produto">
-      
-      <h3>Feijão sem Charque</h3>
+        <div class="card-produto">
+      <h3 class="nome-produto">Feijão sem Charque</h3>
       <p class="descricao">
         Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
       </p>
+      
+      <span class="preco-item" data-preco="4.00">R$ 4,00</span>
 
-      <span class="preco" data-preco="4.00">R$ 4,00</span>
-
-      <div class="endereco">
+      <div class="campos-entrega">
         <input id="bloco2" placeholder="Bloco">
         <input id="apto2" placeholder="Apartamento">
       </div>
 
-      <label class="piscina">
-        <input type="checkbox" id="piscina2"> Estou na piscina
-      </label>
+      <div class="opcoes-entrega">
+        <label class="opcao-local">
+          <input type="checkbox" id="piscina2"> Estou na piscina
+        </label>
+      </div>
 
-      <div class="quantidade">
+      <div class="controle-quantidade">
         <button type="button" class="btn-controle" onclick="alterarQtd('simples', -1)">−</button>
         <span id="qtd-simples">0</span>
         <button type="button" class="btn-controle" onclick="alterarQtd('simples', 1)">+</button>
       </div>
 
-      <div class="total" id="total-simples">Total: R$ 0,00</div>
+      <div class="total-item" id="total-simples">Total: R$ 0,00</div>
 
-      <button class="pix btn-acao" onclick="copiarPix()">Copiar chave Pix</button>
-      <button class="whats btn-acao" onclick="pedido('Feijão sem Charque', 2)">Pedir no WhatsApp</button>
+      <button class="btn-acao btn-pix" onclick="copiarPix()">Copiar chave Pix</button>
+      <button class="btn-acao btn-whatsapp" onclick="pedido('Feijão sem Charque', 2)">Pedir no WhatsApp</button>
     </div>
 
   </div>
@@ -98,7 +99,6 @@
 
 <footer class="rodape">
   <p>Pedidos via WhatsApp | Pagamento via Pix. Sabor na Panela &copy; 2025</p>
-  <p>Funcionamento conforme disponibilidade.</p>
 </footer>
 
 <script src="js/script.js"></script>
