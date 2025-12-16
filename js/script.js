@@ -340,3 +340,76 @@ Pagamento: Pix`;
   atualizarTotais();
 }
 
+let historicoPedidos = []; // armazena todos os pedidos enviados
+
+// Atualiza o histórico
+function atualizarHistorico() {
+  const lista = document.getElementById("listaHistorico");
+  lista.innerHTML = "";
+
+  if (historicoPedidos.length === 0) {
+    lista.innerHTML = "<p>Nenhum pedido histórico ainda.</p>";
+    return;
+  }
+
+  historicoPedidos.forEach((p, i) => {
+    const div = document.createElement("div");
+    div.style.background = p.entregue ? "#d4edda" : "#fff";
+    div.innerHTML = `<strong>Pedido ${i + 1}</strong><br>${p.text.replace(/\n/g, "<br>")}`;
+    lista.appendChild(div);
+  });
+}
+
+// Modificação na função finalizarPedido
+function finalizarPedido() {
+  const bloco = document.getElementById("bloco").value;
+  const apto = document.getElementById("apto").value;
+  const piscina = document.getElementById("piscina").checked;
+
+  if (!bloco || !apto) {
+    alert("Informe bloco e apartamento.");
+    return;
+  }
+
+  let msg = "PEDIDO – CALDINHO DE FEIJÃO\n\n";
+  let temProduto = false;
+  let total = 0;
+
+  for (let tipo in produtos) {
+    if (produtos[tipo].qtd > 0) {
+      temProduto = true;
+      const subtotal = produtos[tipo].qtd * produtos[tipo].preco;
+      total += subtotal;
+      msg += `• ${produtos[tipo].nome}\nQtd: ${produtos[tipo].qtd} | R$ ${subtotal.toFixed(2).replace(".", ",")}\n\n`;
+    }
+  }
+
+  if (!temProduto) {
+    alert("Selecione ao menos um produto.");
+    return;
+  }
+
+  msg +=
+`Total Geral: R$ ${total.toFixed(2).replace(".", ",")}
+
+Bloco: ${bloco}
+Apartamento: ${apto}
+Entrega: ${piscina ? "Piscina" : "Apartamento"}
+Pagamento: Pix`;
+
+  // adiciona ao painel admin
+  const pedidoObj = { text: msg, entregue: false };
+  pedidos.push(pedidoObj);
+
+  // adiciona ao histórico
+  historicoPedidos.push(pedidoObj);
+
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
+
+  // reseta carrinho
+  for (let tipo in produtos) produtos[tipo].qtd = 0;
+  atualizarTotais();
+  atualizarPainel();
+  atualizarHistorico();
+}
+
