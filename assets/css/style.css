@@ -1,172 +1,163 @@
 :root {
     /* Paleta de Cores */
     --cor-principal: #e74c3c; /* Vermelho/Laranja de Caldinho */
-    --cor-secundaria: #f39c12; /* Laranja para Destaque */
+    --cor-secundaria: #f39c12; /* Laranja para Destaque (Preço) */
     --cor-fundo: #f8f8f8;
     --cor-texto: #333;
     --cor-whatsapp: #25d366;
-    --sombra-suave: 0 4px 10px rgba(0,0,0,0.08);
+    --sombra-card: 0 4px 10px rgba(0,0,0,0.08); /* Sombra suave */
 }
 
+/* Reset Básico e Fonte */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', Arial, sans-serif; /* Fonte moderna */
-  background: var(--cor-fundo);
-  color: var(--cor-texto);
-  line-height: 1.5;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.5;
 }
 
-/* --- CABEÇALHO (TOPO) --- */
-.topo {
-  background: var(--cor-principal);
-  color: white;
-  text-align: center;
-  padding: 30px 25px;
-  border-bottom: none;
+/* Estrutura Central */
+.conteiner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px; 
 }
 
-.logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* Logo em formato redondo */
-    margin-bottom: 10px;
-    object-fit: cover;
-    border: 3px solid white;
+/* --- HEADER --- */
+.header-principal {
+    background: var(--cor-principal);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
 }
 
-.topo h1 {
-  font-size: 2rem;
-  font-weight: 700;
+.marca {
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-.topo p {
-  font-size: 0.9rem;
-  color: #f9f9f9;
+.slogan {
+    font-size: 0.9rem;
+    opacity: 0.9;
 }
 
-/* --- AVISO --- */
-.aviso {
-  max-width: 900px;
-  margin: 20px auto;
-  background: #fffbe6;
-  border: 1px solid var(--cor-secundaria);
-  padding: 12px;
-  text-align: center;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: #8a6d3b;
+/* --- AVISO BANNER --- */
+.aviso-banner {
+    background: #fffbe6;
+    color: #8a6d3b;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 /* --- CARDÁPIO GERAL --- */
 .cardapio {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
-.cardapio h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: var(--cor-principal);
-  font-weight: 700;
+.titulo-seccao {
+    text-align: center;
+    margin: 30px 0;
+    color: var(--cor-texto);
+    font-weight: 700;
+    font-size: 1.8rem;
 }
 
-.produtos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
 }
 
-/* --- CARTÃO DE PRODUTO --- */
-.produto {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: var(--sombra-suave);
-  text-align: center;
-  transition: transform 0.2s;
+/* --- CARTÃO DE PRODUTO (O FOCO DO NOVO DESIGN) --- */
+.card-produto {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-card);
+    transition: transform 0.2s;
 }
 
-.produto:hover {
-    transform: translateY(-3px);
-}
-
-.imagem-produto {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.produto h3 {
-  margin-bottom: 5px;
-  color: var(--cor-texto);
+.nome-produto {
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+    margin-bottom: 5px;
 }
 
 .descricao {
-  font-size: 0.9rem;
-  color: #777;
-  margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
 }
 
-.preco {
-  font-size: 1.8rem;
-  font-weight: 700;
-  display: block;
-  margin-bottom: 20px;
-  color: var(--cor-secundaria);
+.preco-item {
+    font-size: 2.2rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 15px;
+    color: var(--cor-secundaria); /* Destaque no preço */
 }
 
-/* --- ENDEREÇO E PISCINA --- */
-.endereco {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
+/* --- CAMPOS DE ENDEREÇO (Bloco/Apto Lado a Lado) --- */
+.campos-entrega {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-.endereco input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 0.9rem;
+.campos-entrega input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
 }
 
-.piscina {
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-  display: block;
+.opcoes-entrega {
+    text-align: left;
+    margin-bottom: 15px;
 }
 
-/* --- QUANTIDADE --- */
-.quantidade {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
-  border-top: 1px dashed #eee;
-  padding-top: 15px;
+.opcao-local {
+    font-size: 0.9rem;
+    display: block;
+}
+
+/* --- CONTROLE DE QUANTIDADE (Compacto) --- */
+.controle-quantidade {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
 }
 
 .btn-controle {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: none;
-  background: var(--cor-principal);
-  color: #fff;
-  font-size: 1.5rem;
-  cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--cor-principal);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
-.total {
+.controle-quantidade span {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.total-item {
     font-weight: 600;
     margin-bottom: 15px;
     color: #444;
@@ -176,31 +167,23 @@ body {
 .btn-acao {
     width: 100%;
     padding: 12px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: opacity 0.2s;
+    margin-bottom: 8px;
 }
 
-.pix {
-  border: 1px solid var(--cor-principal);
-  background: white;
-  color: var(--cor-principal);
-  margin-bottom: 8px;
+.btn-pix {
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    color: var(--cor-texto);
 }
 
-.whats {
-  border: none;
-  background: var(--cor-whatsapp);
-  color: #fff;
-}
-
-.whats:hover {
-    opacity: 0.9;
-}
-.pix:hover {
-    background: #fdf5f5;
+.btn-whatsapp {
+    border: none;
+    background: var(--cor-whatsapp);
+    color: #fff;
 }
 
 /* --- TOTAL GERAL --- */
@@ -215,38 +198,25 @@ body {
     font-size: 1.2rem;
 }
 
-
 /* --- RODAPÉ --- */
 .rodape {
-  text-align: center;
-  font-size: 0.8rem;
-  color: #888;
-  padding: 20px;
-  margin-top: 30px;
-  border-top: 1px solid #eee;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+    padding: 20px;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
 }
 
-/* --- MEDIA QUERIES (RESPONSIVO) --- */
+/* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 600px) {
 
-  .endereco {
+  .campos-entrega {
     flex-wrap: nowrap;
-    gap: 6px;
+    gap: 8px;
   }
-
-  .endereco input {
-    padding: 8px;
-    font-size: 0.8rem;
-  }
-
-  /* Bloco */
-  .endereco input:first-child {
-    width: 45%;
-  }
-
-  /* Apartamento */
-  .endereco input:last-child {
-    width: 55%;
+  
+  .card-produto {
+      padding: 15px;
   }
-
 }
