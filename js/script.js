@@ -123,11 +123,26 @@ function fecharPainel() {
   document.getElementById("painelPedidos").style.display = "none";
 }
 
+function limparPedidos() {
+  if (confirm("Deseja realmente limpar todos os pedidos?")) {
+    pedidos = [];
+    atualizarPainel();
+  }
+}
+
 function atualizarPainel() {
   const lista = document.getElementById("listaPedidos");
-  lista.innerHTML = "";
+  const totalSpan = document.getElementById("contadorTotal");
+  const entreguesSpan = document.getElementById("contadorEntregues");
 
-  if (pedidos.length === 0) {
+  lista.innerHTML = "";
+  let totalPedidos = pedidos.length;
+  let totalEntregues = pedidos.filter(p => p.entregue).length;
+
+  totalSpan.innerText = totalPedidos;
+  entreguesSpan.innerText = totalEntregues;
+
+  if (totalPedidos === 0) {
     lista.innerHTML = "<p>Nenhum pedido até o momento.</p>";
     return;
   }
@@ -136,9 +151,27 @@ function atualizarPainel() {
     const div = document.createElement("div");
     div.style.borderBottom = "1px solid #ddd";
     div.style.padding = "8px 0";
-    div.innerHTML = `<strong>Pedido ${i + 1}</strong><br>${p.replace(/\n/g, "<br>")}`;
+    div.style.marginBottom = "5px";
+    div.style.background = p.entregue ? "#d4edda" : "#fff";
+    div.style.transition = "0.3s";
+
+    div.innerHTML = `
+      <strong>Pedido ${i + 1}</strong><br>${p.text.replace(/\n/g, "<br>")}
+      <br>
+      <button onclick="marcarEntregue(${i})" style="
+        margin-top: 5px;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 5px;
+        background: ${p.entregue ? '#6c757d' : '#28a745'};
+        color: #fff;
+        cursor: pointer;
+        font-size: 13px;
+      ">${p.entregue ? 'Entregue' : 'Marcar como Entregue'}</button>
+    `;
     lista.appendChild(div);
   });
+}
 }
 
 function limparPedidos() {
@@ -306,3 +339,4 @@ Pagamento: Pix`;
   for (let tipo in produtos) produtos[tipo].qtd = 0;
   atualizarTotais();
 }
+
