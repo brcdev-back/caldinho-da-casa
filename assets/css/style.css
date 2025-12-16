@@ -336,3 +336,24 @@ body {
 .listaPedidos button:hover {
   opacity: 0.8;
 }
+
+
+.contadores {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.painel-box {
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.painel-box div {
+  word-wrap: break-word;
+}
+
+.painel-box button {
+  cursor: pointer;
+}
