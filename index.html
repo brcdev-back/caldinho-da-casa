@@ -9,70 +9,68 @@
 
 <body>
 
-<header class="header">
-  <div class="header-overlay">
-    <h1>Caldinho de Feijão</h1>
-    <p>Caseiro • Quentinho • Sabor de verdade</p>
-  </div>
+<header class="topo">
+  <h1>Caldinho de Feijão</h1>
+  <p>Caseiro • Quentinho • Sabor de verdade</p>
 </header>
 
-<section class="aviso">
-   Entrega exclusiva para moradores do condomínio
-</section>
+<div class="aviso">
+  Entrega exclusiva para moradores do condomínio
+</div>
 
-<main class="container">
+<main class="cardapio">
 
-  <!-- PRODUTO 1 -->
-  <div class="card">
-    <h2>Feijão Completo</h2>
-    <p>Charque, ovos de codorna e azeitona</p>
-    <span class="price">R$ 5,00</span>
+  <div class="produto">
+    <h3>Feijão Completo</h3>
+    <p class="descricao">Charque, ovos de codorna e azeitona</p>
+    <span class="preco">R$ 5,00</span>
 
-    <div class="counter">
+    <div class="quantidade">
       <button onclick="alterarQtd('completo', -1)">−</button>
       <span id="qtd-completo">0</span>
       <button onclick="alterarQtd('completo', 1)">+</button>
     </div>
 
-    <div class="subtotal" id="total-completo">Total: R$ 0,00</div>
+    <div class="total" id="total-completo">Total: R$ 0,00</div>
   </div>
 
-  <!-- PRODUTO 2 -->
-  <div class="card">
-    <h2>Feijão sem Charque</h2>
-    <p>Ovos de codorna e azeitona</p>
-    <span class="price">R$ 4,00</span>
+  <div class="produto">
+    <h3>Feijão sem Charque</h3>
+    <p class="descricao">Ovos de codorna e azeitona</p>
+    <span class="preco">R$ 4,00</span>
 
-    <div class="counter">
+    <div class="quantidade">
       <button onclick="alterarQtd('simples', -1)">−</button>
       <span id="qtd-simples">0</span>
       <button onclick="alterarQtd('simples', 1)">+</button>
     </div>
 
-    <div class="subtotal" id="total-simples">Total: R$ 0,00</div>
+    <div class="total" id="total-simples">Total: R$ 0,00</div>
   </div>
 
-  <!-- ENTREGA -->
-  <div class="card">
-    <h2>Entrega</h2>
+  <div class="entrega">
+    <input id="bloco" placeholder="Bloco">
+    <input id="apto" placeholder="Apartamento">
 
-    <div class="inputs">
-      <input id="bloco" placeholder="Bloco">
-      <input id="apto" placeholder="Apartamento">
+    <label>
+      <input type="checkbox" id="piscina"> Estou na piscina
+    </label>
+  </div>
+
+  <div class="finalizar">
+    <div class="total-geral" id="total-geral">
+      Total do pedido: R$ 0,00
     </div>
 
-    <label class="check">
-      <input type="checkbox" id="piscina">
-      Estou na piscina
-    </label>
+    <button onclick="finalizarPedido()">
+      Confirmar Pedido
+    </button>
   </div>
 
 </main>
 
-<!-- FINALIZAÇÃO -->
-<footer class="finalizar">
-  <div id="total-geral">Total do pedido: R$ 0,00</div>
-  <button onclick="finalizarPedido()">Confirmar Pedido</button>
+<footer class="rodape">
+  Pedidos via WhatsApp • Pagamento via Pix
 </footer>
 
 <script src="script.js"></script>
