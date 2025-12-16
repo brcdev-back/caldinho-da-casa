@@ -58,9 +58,9 @@
 
   </div>
 
-  <!-- 📦 CARRINHO -->
+  <!--  CARRINHO -->
   <div class="carrinho">
-    <h3>🧾 Resumo do Pedido</h3>
+    <h3> Resumo do Pedido</h3>
 
     <div class="endereco">
       <input id="bloco" placeholder="Bloco">
@@ -85,7 +85,7 @@
   Pedidos via WhatsApp | Pagamento via Pix
 </footer>
 
-<!-- 🔐 MODAL LOGIN ADMIN -->
+<!--  MODAL LOGIN ADMIN -->
 <div class="admin-modal" id="adminModal">
   <div class="admin-box">
     <h3>Login Admin</h3>
@@ -99,5 +99,19 @@
 </div>
 
 <script src="js/script.js"></script>
+
+  <!-- 🗂 PAINEL DE PEDIDOS (ADMIN) -->
+<div class="painel-pedidos" id="painelPedidos">
+  <div class="painel-box">
+    <h3> Pedidos do Dia</h3>
+    <div id="listaPedidos">
+      <!-- Pedidos serão adicionados aqui pelo JS -->
+      <p>Nenhum pedido até o momento.</p>
+    </div>
+    <button onclick="limparPedidos()">Limpar Pedidos</button>
+    <span onclick="fecharPainel()" class="fechar-painel">Cancelar</span>
+  </div>
+</div>
+
 </body>
 </html>
