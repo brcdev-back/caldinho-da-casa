@@ -194,3 +194,26 @@ Pagamento: Pix`;
   for (let tipo in produtos) produtos[tipo].qtd = 0;
   atualizarTotais();
 }
+
+function atualizarTotais() {
+  let totalGeral = 0;
+
+  for (let tipo in produtos) {
+    const total = produtos[tipo].qtd * produtos[tipo].preco;
+    document.getElementById(`total-${tipo}`).innerText =
+      `Subtotal: R$ ${total.toFixed(2).replace(".", ",")}`;
+    totalGeral += total;
+
+    // Feedback visual simples: piscando quando altera
+    const elem = document.getElementById(`total-${tipo}`);
+    elem.style.transition = "0.3s";
+    elem.style.background = "#e0ffe0";
+    setTimeout(() => { elem.style.background = "transparent"; }, 300);
+  }
+
+  const totalElem = document.getElementById("total-geral");
+  totalElem.innerText = `Total Geral: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
+  totalElem.style.transition = "0.3s";
+  totalElem.style.background = "#fff3e0";
+  setTimeout(() => { totalElem.style.background = "transparent"; }, 300);
+}
