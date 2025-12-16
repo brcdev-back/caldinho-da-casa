@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <title>Caldinho de Feijão</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 
 <header class="topo">
@@ -14,7 +15,7 @@
 </header>
 
 <div class="aviso">
-   Entrega exclusiva para moradores do condomínio
+  Entrega exclusiva para moradores do condomínio
 </div>
 
 <main class="cardapio">
@@ -26,17 +27,31 @@
     <div class="produto">
       <h3>Feijão Completo</h3>
       <p class="descricao">
-        Caldinho de feijão com <strong>charque, ovos de codorna e azeitona</strong>.
+        Caldinho de feijão acompanhado de <strong>charque, ovos de codorna e azeitona</strong>.
       </p>
-      <span class="preco">R$ 5,00</span>
+
+      <!-- PREÇO COM DATA -->
+      <span class="preco" data-preco="5.00">R$ 5,00</span>
+
+      <div class="endereco">
+        <input id="bloco1" placeholder="Bloco">
+        <input id="apto1" placeholder="Apartamento">
+      </div>
+
+      <label class="piscina">
+        <input type="checkbox" id="piscina1"> Estou na piscina
+      </label>
 
       <div class="quantidade">
-        <button onclick="alterarQtd('completo', -1)">−</button>
+        <button type="button" onclick="alterarQtd('completo', -1)">−</button>
         <span id="qtd-completo">0</span>
-        <button onclick="alterarQtd('completo', 1)">+</button>
+        <button type="button" onclick="alterarQtd('completo', 1)">+</button>
       </div>
 
       <div class="total" id="total-completo">Total: R$ 0,00</div>
+
+      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
+      <button class="whats" onclick="pedido('Feijão Completo', 1)">Pedir no WhatsApp</button>
     </div>
 
     <!-- PRODUTO 2 -->
@@ -45,48 +60,45 @@
       <p class="descricao">
         Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
       </p>
-      <span class="preco">R$ 4,00</span>
+
+      <!-- PREÇO COM DATA -->
+      <span class="preco" data-preco="4.00">R$ 4,00</span>
+
+      <div class="endereco">
+        <input id="bloco2" placeholder="Bloco">
+        <input id="apto2" placeholder="Apartamento">
+      </div>
+
+      <label class="piscina">
+        <input type="checkbox" id="piscina2"> Estou na piscina
+      </label>
 
       <div class="quantidade">
-        <button onclick="alterarQtd('simples', -1)">−</button>
+        <button type="button" onclick="alterarQtd('simples', -1)">−</button>
         <span id="qtd-simples">0</span>
-        <button onclick="alterarQtd('simples', 1)">+</button>
+        <button type="button" onclick="alterarQtd('simples', 1)">+</button>
       </div>
 
       <div class="total" id="total-simples">Total: R$ 0,00</div>
+
+      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
+      <button class="whats" onclick="pedido('Feijão sem Charque', 2)">Pedir no WhatsApp</button>
     </div>
 
   </div>
 
-  <!-- DADOS DO CLIENTE -->
-  <div class="dados">
-    <h3>Dados para entrega</h3>
-
-    <div class="endereco">
-      <input id="bloco" placeholder="Bloco">
-      <input id="apto" placeholder="Apartamento">
-    </div>
-
-    <label class="piscina">
-      <input type="checkbox" id="piscina"> Estou na piscina
-    </label>
-  </div>
-
-  <!-- FINALIZAR -->
-  <div class="finalizar">
-    <div class="total-geral" id="total-geral">Total Geral: R$ 0,00</div>
-    <button class="finalizar-btn" onclick="finalizarPedido()">
-       Finalizar pedido no WhatsApp
-    </button>
+  <!-- TOTAL GERAL DO PEDIDO -->
+  <div id="total-geral" style="margin-top:20px; font-weight:bold; text-align:center;">
+    Total do pedido: R$ 0,00
   </div>
 
 </main>
 
 <footer class="rodape">
-  Pedidos via WhatsApp • Pagamento via Pix<br>
+  Pedidos via WhatsApp | Pagamento via Pix<br>
   Funcionamento conforme disponibilidade
 </footer>
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
