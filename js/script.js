@@ -1,8 +1,8 @@
-const numeroWhatsApp = "5581991610473";
+const numero = "5581991610473"; // SEU NÚMERO
 
 const produtos = {
-  completo: { preco: 5, qtd: 0 },
-  simples: { preco: 4, qtd: 0 }
+  completo: { nome: "Feijão Completo", preco: 5, qtd: 0 },
+  simples: { nome: "Feijão sem Charque", preco: 4, qtd: 0 }
 };
 
 function alterarQtd(tipo, valor) {
@@ -14,18 +14,18 @@ function alterarQtd(tipo, valor) {
 }
 
 function atualizarTotais() {
-  const totalCompleto = produtos.completo.qtd * produtos.completo.preco;
-  const totalSimples = produtos.simples.qtd * produtos.simples.preco;
-  const totalGeral = totalCompleto + totalSimples;
+  let totalGeral = 0;
 
-  document.getElementById("total-completo").innerText =
-    `Total: R$ ${totalCompleto.toFixed(2).replace(".", ",")}`;
+  for (let key in produtos) {
+    const total = produtos[key].qtd * produtos[key].preco;
+    totalGeral += total;
 
-  document.getElementById("total-simples").innerText =
-    `Total: R$ ${totalSimples.toFixed(2).replace(".", ",")}`;
+    document.getElementById(`total-${key}`).innerText =
+      `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
+  }
 
   document.getElementById("total-geral").innerText =
-    `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
+    `Total Geral: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
 }
 
 function finalizarPedido() {
@@ -34,27 +34,35 @@ function finalizarPedido() {
   const piscina = document.getElementById("piscina").checked;
 
   if (!bloco || !apto) {
-    alert("Informe bloco e apartamento");
+    alert("Informe bloco e apartamento.");
     return;
   }
 
-  if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
-    alert("Selecione ao menos um produto");
+  let pedido = "";
+  let total = 0;
+
+  for (let key in produtos) {
+    if (produtos[key].qtd > 0) {
+      pedido += `• ${produtos[key].nome}: ${produtos[key].qtd}\n`;
+      total += produtos[key].qtd * produtos[key].preco;
+    }
+  }
+
+  if (pedido === "") {
+    alert("Selecione ao menos um produto.");
     return;
   }
 
-  let msg = " *PEDIDO – CALDINHO DE FEIJÃO*\n\n";
+  let msg =
+` *PEDIDO – CALDINHO DE FEIJÃO*
 
-  if (produtos.completo.qtd > 0)
-    msg += `• Feijão Completo: ${produtos.completo.qtd}\n`;
+${pedido}
+ Bloco: ${bloco}
+ Apartamento: ${apto}
+ Entrega: ${piscina ? "Piscina" : "Apartamento"}
 
-  if (produtos.simples.qtd > 0)
-    msg += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
+ Total: R$ ${total.toFixed(2).replace(".", ",")}
+ Pagamento: Pix`;
 
-  msg += `\n Bloco: ${bloco}\n Apto: ${apto}\n Entrega: ${piscina ? "Piscina" : "Apartamento"}`;
-
-  window.open(
-    `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(msg)}`,
-    "_blank"
-  );
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
