@@ -1,10 +1,9 @@
-const chavePix = "81991610473";
-const nomePix = "Caldinho de Feijão";
 const numero = "5581991610473";
+const chavePix = "81991610473";
 
 const produtos = {
-  completo: { nome: "Feijão Completo", preco: 5.00, qtd: 0 },
-  simples: { nome: "Feijão sem Charque", preco: 4.00, qtd: 0 }
+  completo: { preco: 5, qtd: 0 },
+  simples: { preco: 4, qtd: 0 }
 };
 
 function alterarQtd(tipo, valor) {
@@ -16,67 +15,42 @@ function alterarQtd(tipo, valor) {
 }
 
 function atualizarTotais() {
-  let totalGeral = 0;
+  document.getElementById("total-completo").innerText =
+    `Total: R$ ${(produtos.completo.qtd * produtos.completo.preco).toFixed(2).replace(".", ",")}`;
 
-  for (let tipo in produtos) {
-    const total = produtos[tipo].qtd * produtos[tipo].preco;
-    totalGeral += total;
-
-    document.getElementById(`total-${tipo}`).innerText =
-      `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
-  }
-
-  document.getElementById("total-geral").innerText =
-    `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
+  document.getElementById("total-simples").innerText =
+    `Total: R$ ${(produtos.simples.qtd * produtos.simples.preco).toFixed(2).replace(".", ",")}`;
 }
 
 function copiarPix() {
-  navigator.clipboard.writeText(`${chavePix} - ${nomePix}`);
+  navigator.clipboard.writeText(chavePix);
   alert("Chave Pix copiada!");
 }
 
-function finalizarPedido() {
-  let mensagem = "PEDIDO - CALDINHO DE FEIJÃO\n\n";
-  let totalGeral = 0;
-
-  // Verifica se tem item
-  if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
-    alert("Adicione pelo menos um produto ao pedido.");
-    return;
-  }
-
-  // Endereço (usa o primeiro preenchido)
-  const bloco = document.getElementById("bloco1").value || document.getElementById("bloco2").value;
-  const apto = document.getElementById("apto1").value || document.getElementById("apto2").value;
-  const piscina = document.getElementById("piscina1").checked || document.getElementById("piscina2").checked;
+function pedido(id) {
+  const bloco = document.getElementById("bloco" + id).value;
+  const apto = document.getElementById("apto" + id).value;
+  const piscina = document.getElementById("piscina" + id).checked;
 
   if (!bloco || !apto) {
     alert("Informe bloco e apartamento.");
     return;
   }
 
-  for (let tipo in produtos) {
-    if (produtos[tipo].qtd > 0) {
-      const subtotal = produtos[tipo].qtd * produtos[tipo].preco;
-      totalGeral += subtotal;
-
-      mensagem += `• ${produtos[tipo].nome}: ${produtos[tipo].qtd}x\n`;
-    }
+  if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
+    alert("Selecione ao menos um produto.");
+    return;
   }
 
-  mensagem += `
-------------------
-Total: R$ ${totalGeral.toFixed(2).replace(".", ",")}
+  let msg = "PEDIDO – CALDINHO DE FEIJÃO\n\n";
 
-Bloco: ${bloco}
-Apartamento: ${apto}
-Entrega: ${piscina ? "Piscina" : "Apartamento"}
+  if (produtos.completo.qtd > 0)
+    msg += `• Feijão Completo: ${produtos.completo.qtd}\n`;
 
-Pagamento: Pix
-`;
+  if (produtos.simples.qtd > 0)
+    msg += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
 
-  window.open(
-    `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
-    "_blank"
-  );
+  msg += `\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina ? "Piscina" : "Apartamento"}\nPagamento: Pix`;
+
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
