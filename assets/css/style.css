@@ -4,14 +4,12 @@
   box-sizing: border-box;
 }
 
-/* BASE */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f4f4f4;
   color: #333;
 }
 
-/* TOPO */
 .topo {
   background: #fff;
   text-align: center;
@@ -28,7 +26,6 @@ body {
   color: #666;
 }
 
-/* AVISO */
 .aviso {
   max-width: 900px;
   margin: 20px auto;
@@ -40,7 +37,6 @@ body {
   font-size: 14px;
 }
 
-/* CARDÁPIO */
 .cardapio {
   max-width: 900px;
   margin: auto;
@@ -52,23 +48,17 @@ body {
   margin-bottom: 25px;
 }
 
-/* PRODUTOS */
 .produtos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
-/* CARD */
 .produto {
   background: #fff;
   padding: 20px;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-.produto h3 {
-  margin-bottom: 8px;
 }
 
 .descricao {
@@ -80,84 +70,79 @@ body {
 .preco {
   font-size: 20px;
   font-weight: bold;
+  margin-bottom: 12px;
   display: block;
-  margin-bottom: 15px;
 }
 
-/* ENDEREÇO */
 .endereco {
   display: flex;
-  gap: 12px;
-  margin-bottom: 14px;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
 .endereco input {
-  padding: 14px 12px;        /* MAIS ALTO */
-  border-radius: 10px;      /* MAIS MODERNO */
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 16px;          /* TEXTO MAIOR */
 }
 
-/* Bloco menor, apto maior */
 .endereco input:first-child {
-  flex: 0.8;
+  width: 40%;
 }
 
 .endereco input:last-child {
-  flex: 1.2;
+  width: 60%;
 }
 
-/* PISCINA */
 .piscina {
   font-size: 14px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   display: block;
 }
 
-/* QUANTIDADE */
 .quantidade {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 14px;
+  gap: 14px;
+  margin-bottom: 10px;
 }
 
 .quantidade button {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: none;
   background: #333;
   color: #fff;
   font-size: 18px;
-  cursor: pointer;
 }
 
-/* PIX */
+.total {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
 .pix {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
   background: #f1f1f1;
-  margin-bottom: 10px;
-  cursor: pointer;
+  margin-bottom: 8px;
 }
 
-/* WHATSAPP */
 .whats {
   width: 100%;
-  padding: 14px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 6px;
   border: none;
   background: #25d366;
   color: #fff;
   font-size: 15px;
-  cursor: pointer;
 }
 
-/* RODAPÉ */
 .rodape {
   text-align: center;
   font-size: 13px;
@@ -165,45 +150,3 @@ body {
   padding: 20px;
 }
 
-/* ===== AJUSTES PARA CELULAR ===== */
-@media (max-width: 600px) {
-
-  .cardapio {
-    padding: 12px;
-  }
-
-  .produto {
-    padding: 16px;
-  }
-
-  .endereco {
-    gap: 8px;
-  }
-
-  .endereco input {
-    padding: 6px 8px;     /* MENOR NO CELULAR */
-    font-size: 13px;
-    border-radius: 6px;
-  }
-
-  .quantidade {
-    gap: 12px;
-  }
-
-  .quantidade button {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-  }
-
-  .pix {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .whats {
-    padding: 12px;
-    font-size: 14px;
-  }
-
-}
