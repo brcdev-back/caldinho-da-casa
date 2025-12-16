@@ -15,6 +15,7 @@ body {
   text-align: center;
   padding: 25px;
   border-bottom: 1px solid #ddd;
+  position: relative; /* garante que o botão admin fique posicionado */
 }
 
 .topo h1 {
@@ -24,6 +25,21 @@ body {
 .topo p {
   font-size: 14px;
   color: #666;
+}
+
+/* Botão Admin */
+.admin-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .aviso {
@@ -76,24 +92,23 @@ body {
 
 .endereco {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 12px;
 }
 
 .endereco input {
-  padding: 6px 8px;
-  font-size: 13px;
+  padding: 10px;
+  font-size: 14px;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
 .endereco input:first-child {
-  width: 40%;
+  width: 35%;
 }
 
 .endereco input:last-child {
-  width: 60%;
+  width: 65%;
 }
 
 .piscina {
@@ -117,11 +132,25 @@ body {
   background: #333;
   color: #fff;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .total {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #25d366; /* verde do WhatsApp */
   margin-bottom: 10px;
+}
+
+.total-geral {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff6600; /* destaque laranja */
+  text-align: center;
+  margin: 15px 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: #fff3e0;
 }
 
 .pix {
@@ -131,6 +160,7 @@ body {
   border: 1px solid #ccc;
   background: #f1f1f1;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .whats {
@@ -141,6 +171,7 @@ body {
   background: #25d366;
   color: #fff;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .rodape {
@@ -150,38 +181,7 @@ body {
   padding: 20px;
 }
 
-.carrinho .endereco {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.carrinho .endereco input {
-  padding: 10px;
-  font-size: 14px;
-}
-
-.carrinho .endereco input:first-child {
-  width: 35%;
-}
-
-.carrinho .endereco input:last-child {
-  width: 65%;
-}
-
-.admin-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  padding: 6px 12px;
-  font-size: 13px;
-  border: none;
-  border-radius: 6px;
-  background: #333;
-  color: #fff;
-  cursor: pointer;
-}
-
+/* Admin Modal */
 .admin-modal {
   display: none;
   position: fixed;
@@ -189,7 +189,8 @@ body {
   background: rgba(0,0,0,0.6);
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9999;
+  display: flex;
 }
 
 .admin-box {
@@ -221,6 +222,7 @@ body {
   color: #fff;
   font-size: 15px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .admin-box span {
@@ -229,47 +231,7 @@ body {
   cursor: pointer;
 }
 
-/* 🔐 ADMIN FIX */
-
-/* garante que o botão funcione */
-.topo {
-  position: relative;
-}
-
-/* botão admin clicável */
-.admin-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  padding: 6px 12px;
-  font-size: 13px;
-  border: none;
-  border-radius: 6px;
-  background: #333;
-  color: #fff;
-  cursor: pointer;
-  z-index: 10;
-}
-
-/* modal admin */
-.admin-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.admin-box {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  width: 280px;
-  text-align: center;
-}
-
+/* Painel de Pedidos */
 .painel-pedidos {
   display: none;
   position: fixed;
@@ -278,6 +240,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  display: flex;
 }
 
 .painel-box {
@@ -314,50 +277,14 @@ body {
   cursor: pointer;
 }
 
-/* 🔹 Subtotal e total mais visual */
-.total {
-  font-size: 16px;
-  font-weight: bold;
-  color: #25d366; /* verde do WhatsApp */
-  margin-bottom: 10px;
-}
-
-.total-geral {
-  font-size: 20px;
-  font-weight: bold;
-  color: #ff6600; /* destaque laranja */
-  text-align: center;
-  margin: 15px 0;
-  padding: 8px;
-  border-radius: 6px;
-  background: #fff3e0;
-}
-
-.listaPedidos button:hover {
-  opacity: 0.8;
-}
-
-
+/* Contadores */
 .contadores {
   font-size: 14px;
   margin-bottom: 12px;
   color: #333;
 }
 
-.painel-box {
-  max-height: 80%;
-  overflow-y: auto;
-  padding: 20px;
-}
-
-.painel-box div {
-  word-wrap: break-word;
-}
-
-.painel-box button {
-  cursor: pointer;
-}
-
+/* Histórico de Pedidos */
 .historico-box {
   margin-top: 20px;
   padding-top: 10px;
@@ -378,50 +305,8 @@ body {
   word-wrap: break-word;
 }
 
-.admin-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.admin-box {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 280px;
-  text-align: center;
-}
-
-.admin-box input {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.admin-box button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border-radius: 6px;
-  border: none;
-  background: #25d366;
-  color: #fff;
-  cursor: pointer;
-}
-
-.admin-box span {
-  display: block;
-  margin-top: 10px;
-  color: #555;
-  cursor: pointer;
-  font-size: 14px;
+/* Botão desativado */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
