@@ -149,3 +149,29 @@ body {
   color: #666;
   padding: 20px;
 }
+
+.finalizar {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+}
+
+.total-geral {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.finalizar-btn {
+  width: 100%;
+  padding: 14px;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
