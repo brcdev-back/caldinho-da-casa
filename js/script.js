@@ -217,3 +217,92 @@ function atualizarTotais() {
   totalElem.style.background = "#fff3e0";
   setTimeout(() => { totalElem.style.background = "transparent"; }, 300);
 }
+
+// Modifica a função atualizarPainel para incluir botão Entregue
+function atualizarPainel() {
+  const lista = document.getElementById("listaPedidos");
+  lista.innerHTML = "";
+
+  if (pedidos.length === 0) {
+    lista.innerHTML = "<p>Nenhum pedido até o momento.</p>";
+    return;
+  }
+
+  pedidos.forEach((p, i) => {
+    const div = document.createElement("div");
+    div.style.borderBottom = "1px solid #ddd";
+    div.style.padding = "8px 0";
+    div.style.transition = "0.3s";
+    
+    // cor do pedido conforme status
+    div.style.background = p.entregue ? "#d4edda" : "#fff";
+
+    div.innerHTML = `
+      <strong>Pedido ${i + 1}</strong><br>${p.text.replace(/\n/g, "<br>")}
+      <br><button onclick="marcarEntregue(${i})" style="
+        margin-top: 5px;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 5px;
+        background: ${p.entregue ? '#6c757d' : '#28a745'};
+        color: #fff;
+        cursor: pointer;
+        font-size: 13px;
+      ">${p.entregue ? 'Entregue' : 'Marcar como Entregue'}</button>
+    `;
+    lista.appendChild(div);
+  });
+}
+
+// marcar pedido como entregue
+function marcarEntregue(index) {
+  pedidos[index].entregue = true;
+  atualizarPainel();
+}
+
+// Modificar função finalizarPedido para salvar pedido como objeto
+function finalizarPedido() {
+  const bloco = document.getElementById("bloco").value;
+  const apto = document.getElementById("apto").value;
+  const piscina = document.getElementById("piscina").checked;
+
+  if (!bloco || !apto) {
+    alert("Informe bloco e apartamento.");
+    return;
+  }
+
+  let msg = "PEDIDO – CALDINHO DE FEIJÃO\n\n";
+  let temProduto = false;
+  let total = 0;
+
+  for (let tipo in produtos) {
+    if (produtos[tipo].qtd > 0) {
+      temProduto = true;
+      const subtotal = produtos[tipo].qtd * produtos[tipo].preco;
+      total += subtotal;
+      msg += `• ${produtos[tipo].nome}\nQtd: ${produtos[tipo].qtd} | R$ ${subtotal.toFixed(2).replace(".", ",")}\n\n`;
+    }
+  }
+
+  if (!temProduto) {
+    alert("Selecione ao menos um produto.");
+    return;
+  }
+
+  msg +=
+`Total Geral: R$ ${total.toFixed(2).replace(".", ",")}
+
+Bloco: ${bloco}
+Apartamento: ${apto}
+Entrega: ${piscina ? "Piscina" : "Apartamento"}
+Pagamento: Pix`;
+
+  // adiciona no painel admin como objeto com status
+  pedidos.push({ text: msg, entregue: false });
+
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
+
+  // reseta carrinho
+  for (let tipo in produtos) produtos[tipo].qtd = 0;
+  atualizarTotais();
+}
