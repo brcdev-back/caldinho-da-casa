@@ -228,3 +228,44 @@ body {
   color: #666;
   cursor: pointer;
 }
+
+/* 🔐 ADMIN FIX */
+
+/* garante que o botão funcione */
+.topo {
+  position: relative;
+}
+
+/* botão admin clicável */
+.admin-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* modal admin */
+.admin-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.admin-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 280px;
+  text-align: center;
+}
