@@ -72,3 +72,29 @@ Pagamento: Pix`;
 
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
+
+const admin = {
+  user: "admin",
+  pass: "1234"
+};
+
+function abrirLogin() {
+  document.getElementById("adminModal").style.display = "flex";
+}
+
+function fecharLogin() {
+  document.getElementById("adminModal").style.display = "none";
+}
+
+function loginAdmin() {
+  const u = document.getElementById("adminUser").value;
+  const p = document.getElementById("adminPass").value;
+
+  if (u === admin.user && p === admin.pass) {
+    alert("Login admin realizado com sucesso!");
+    fecharLogin();
+    // futuro: ativar modo admin
+  } else {
+    alert("Usuário ou senha incorretos.");
+  }
+}
