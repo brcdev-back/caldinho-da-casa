@@ -21,24 +21,22 @@
 <main class="cardapio">
   <h2>Nosso Cardápio</h2>
 
+  <!-- ENDEREÇO ÚNICO -->
+  <div class="endereco-geral">
+    <input id="bloco" placeholder="Bloco">
+    <input id="apto" placeholder="Apartamento">
+  </div>
+
+  <label class="piscina-geral">
+    <input type="checkbox" id="piscina"> Estou na piscina
+  </label>
+
   <div class="produtos">
 
-    <!-- FEIJÃO COMPLETO -->
     <div class="produto">
       <h3>Feijão Completo</h3>
-      <p class="descricao">
-        Caldinho de feijão com <strong>charque, ovos de codorna e azeitona</strong>.
-      </p>
+      <p class="descricao">Com charque, ovos de codorna e azeitona</p>
       <span class="preco">R$ 5,00</span>
-
-      <div class="endereco">
-        <input id="bloco1" placeholder="Bloco">
-        <input id="apto1" placeholder="Apartamento">
-      </div>
-
-      <label class="piscina">
-        <input type="checkbox" id="piscina1"> Estou na piscina
-      </label>
 
       <div class="quantidade">
         <button onclick="alterarQtd('completo', -1)">−</button>
@@ -47,27 +45,12 @@
       </div>
 
       <div class="total" id="total-completo">Total: R$ 0,00</div>
-
-      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-      <button class="whats" onclick="pedido(1)">Pedir no WhatsApp</button>
     </div>
 
-    <!-- FEIJÃO SEM CHARQUE -->
     <div class="produto">
       <h3>Feijão sem Charque</h3>
-      <p class="descricao">
-        Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
-      </p>
+      <p class="descricao">Com ovos de codorna e azeitona</p>
       <span class="preco">R$ 4,00</span>
-
-      <div class="endereco">
-        <input id="bloco2" placeholder="Bloco">
-        <input id="apto2" placeholder="Apartamento">
-      </div>
-
-      <label class="piscina">
-        <input type="checkbox" id="piscina2"> Estou na piscina
-      </label>
 
       <div class="quantidade">
         <button onclick="alterarQtd('simples', -1)">−</button>
@@ -76,24 +59,19 @@
       </div>
 
       <div class="total" id="total-simples">Total: R$ 0,00</div>
-
-      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-      <button class="whats" onclick="pedido(2)">Pedir no WhatsApp</button>
     </div>
 
   </div>
 </main>
 
-  <div class="finalizar">
-  <div class="total-geral" id="total-geral">
-    Total: R$ 0,00
-  </div>
+<!-- BARRA FIXA -->
+<div class="finalizar">
+  <div id="total-geral">Total: R$ 0,00</div>
   <button onclick="finalizarPedido()">Finalizar Pedido</button>
 </div>
-  
+
 <footer class="rodape">
-  Pedidos via WhatsApp | Pagamento via Pix<br>
-  Funcionamento conforme disponibilidade
+  Pagamento via Pix | Pedido pelo WhatsApp
 </footer>
 
 <script src="js/script.js"></script>
