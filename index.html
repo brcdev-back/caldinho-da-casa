@@ -1,102 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Caldinho de Feijão</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <title>Caldinhos do Condomínio</title>   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <header class="topo">
-  <h1>Caldinho de Feijão</h1>
-  <p>Receita caseira, bem temperada e servida bem quentinha</p>
+  
+    <img src="https://via.placeholder.com/80x80?text=LOGO" alt="Logo Caldinhos" class="logo">
+  
+  <h1>Caldinhos da Vovó</h1>   <p>Receita caseira, bem temperada e servida bem quentinha</p>
 </header>
 
 <div class="aviso">
-  Entrega exclusiva para moradores do condomínio
+  📣 **Entrega exclusiva para moradores do condomínio!** (Horário de funcionamento: 18h às 22h)
 </div>
 
 <main class="cardapio">
-  <h2>Nosso Cardápio</h2>
+  <h2>Nosso Cardápio Quentinho</h2>
 
-  <div class="produtos">
+  <div class="produtos">
 
-    <!-- PRODUTO 1 -->
-    <div class="produto">
-      <h3>Feijão Completo</h3>
-      <p class="descricao">
-        Caldinho de feijão acompanhado de <strong>charque, ovos de codorna e azeitona</strong>.
-      </p>
+        <div class="produto">
+      <h3>Feijão Completo</h3>
+            <img src="https://via.placeholder.com/280x180?text=FEIJÃO+COMPLETO" alt="Caldinho Completo" class="img-produto">
+      
+      <p class="descricao">
+        O nosso clássico! Caldinho de feijão acompanhado de **charque, ovos de codorna e azeitona**.
+      </p>
 
-      <!-- PREÇO COM DATA -->
-      <span class="preco" data-preco="5.00">R$ 5,00</span>
+            <span class="preco" data-preco="5.00">R$ 5,00</span>
 
-      <div class="endereco">
-        <input id="bloco1" placeholder="Bloco">
-        <input id="apto1" placeholder="Apartamento">
-      </div>
+            
+      <div class="quantidade">
+        <button type="button" class="btn-qtd" onclick="alterarQtd('completo', -1)">−</button>
+        <span id="qtd-completo">0</span>
+        <button type="button" class="btn-qtd" onclick="alterarQtd('completo', 1)">+</button>
+      </div>
 
-      <label class="piscina">
-        <input type="checkbox" id="piscina1"> Estou na piscina
-      </label>
+      <div class="total" id="total-completo">Total: R$ 0,00</div>
+      
+          </div>
 
-      <div class="quantidade">
-        <button type="button" onclick="alterarQtd('completo', -1)">−</button>
-        <span id="qtd-completo">0</span>
-        <button type="button" onclick="alterarQtd('completo', 1)">+</button>
-      </div>
+        <div class="produto">
+      <h3>Feijão Veggie</h3>       <img src="https://via.placeholder.com/280x180?text=FEIJÃO+SIMPLES" alt="Caldinho Simples" class="img-produto">
+      
+      <p class="descricao">
+        Caldinho de feijão delicioso com **ovos de codorna e azeitona**, perfeito para quem prefere sem carne.
+      </p>
 
-      <div class="total" id="total-completo">Total: R$ 0,00</div>
+      <span class="preco" data-preco="4.00">R$ 4,00</span>
+      
+            <div class="quantidade">
+        <button type="button" class="btn-qtd" onclick="alterarQtd('simples', -1)">−</button>
+        <span id="qtd-simples">0</span>
+        <button type="button" classz="btn-qtd" onclick="alterarQtd('simples', 1)">+</button>
+      </div>
 
-      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-      <button class="whats" onclick="pedido('Feijão Completo', 1)">Pedir no WhatsApp</button>
-    </div>
+      <div class="total" id="total-simples">Total: R$ 0,00</div>
+      
+          </div>
 
-    <!-- PRODUTO 2 -->
-    <div class="produto">
-      <h3>Feijão sem Charque</h3>
-      <p class="descricao">
-        Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
-      </p>
+  </div>
+  
+  <div class="checkout">
+    <h3>Dados para Entrega</h3>
+    <div class="endereco">
+            <input id="bloco-final" placeholder="Bloco (Ex: B)" required>
+      <input id="apto-final" placeholder="Apto (Ex: 204)" required>
+    </div>
 
-      <!-- PREÇO COM DATA -->
-      <span class="preco" data-preco="4.00">R$ 4,00</span>
-
-      <div class="endereco">
-        <input id="bloco2" placeholder="Bloco">
-        <input id="apto2" placeholder="Apartamento">
-      </div>
-
-      <label class="piscina">
-        <input type="checkbox" id="piscina2"> Estou na piscina
-      </label>
-
-      <div class="quantidade">
-        <button type="button" onclick="alterarQtd('simples', -1)">−</button>
-        <span id="qtd-simples">0</span>
-        <button type="button" onclick="alterarQtd('simples', 1)">+</button>
-      </div>
-
-      <div class="total" id="total-simples">Total: R$ 0,00</div>
-
-      <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-      <button class="whats" onclick="pedido('Feijão sem Charque', 2)">Pedir no WhatsApp</button>
-    </div>
-
-  </div>
-
-  <!-- TOTAL GERAL DO PEDIDO -->
-  <div id="total-geral" style="margin-top:20px; font-weight:bold; text-align:center;">
-    Total do pedido: R$ 0,00
+    <label class="piscina">
+      <input type="checkbox" id="piscina-final"> Estou na piscina / área de lazer
+    </label>
+    
+        <div id="total-geral" class="total-final">
+      Total do pedido: R$ 0,00
+    </div>
+    
+    <button class="whats-final" onclick="pedido()">Finalizar Pedido no WhatsApp</button>
+    <button class="pix-final" onclick="copiarPix()">Copiar Chave Pix para Pagamento</button>
   </div>
 
 </main>
 
 <footer class="rodape">
-  Pedidos via WhatsApp | Pagamento via Pix<br>
-  Funcionamento conforme disponibilidade
+  <p>Pedidos via WhatsApp | Pagamento via Pix. Suporte: 81 99161-0473</p>
+  <p>Funcionamento conforme disponibilidade (Consulte no Status do WhatsApp).</p>
 </footer>
 
 <script src="js/script.js"></script>
