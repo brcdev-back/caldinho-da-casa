@@ -1,5 +1,4 @@
 const numero = "5581991610473";
-const chavePix = "81991610473";
 
 const produtos = {
   completo: { preco: 5, qtd: 0 },
@@ -15,22 +14,24 @@ function alterarQtd(tipo, valor) {
 }
 
 function atualizarTotais() {
+  const totalCompleto = produtos.completo.qtd * produtos.completo.preco;
+  const totalSimples = produtos.simples.qtd * produtos.simples.preco;
+  const totalGeral = totalCompleto + totalSimples;
+
   document.getElementById("total-completo").innerText =
-    `Total: R$ ${(produtos.completo.qtd * produtos.completo.preco).toFixed(2).replace(".", ",")}`;
+    `Total: R$ ${totalCompleto.toFixed(2).replace(".", ",")}`;
 
   document.getElementById("total-simples").innerText =
-    `Total: R$ ${(produtos.simples.qtd * produtos.simples.preco).toFixed(2).replace(".", ",")}`;
+    `Total: R$ ${totalSimples.toFixed(2).replace(".", ",")}`;
+
+  document.getElementById("total-geral").innerText =
+    `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
 }
 
-function copiarPix() {
-  navigator.clipboard.writeText(chavePix);
-  alert("Chave Pix copiada!");
-}
-
-function pedido(id) {
-  const bloco = document.getElementById("bloco" + id).value;
-  const apto = document.getElementById("apto" + id).value;
-  const piscina = document.getElementById("piscina" + id).checked;
+function finalizarPedido() {
+  const bloco = document.getElementById("bloco").value;
+  const apto = document.getElementById("apto").value;
+  const piscina = document.getElementById("piscina").checked;
 
   if (!bloco || !apto) {
     alert("Informe bloco e apartamento.");
@@ -42,7 +43,7 @@ function pedido(id) {
     return;
   }
 
-  let msg = "PEDIDO – CALDINHO DE FEIJÃO\n\n";
+  let msg = " *NOVO PEDIDO – CALDINHO*\n\n";
 
   if (produtos.completo.qtd > 0)
     msg += `• Feijão Completo: ${produtos.completo.qtd}\n`;
@@ -50,7 +51,7 @@ function pedido(id) {
   if (produtos.simples.qtd > 0)
     msg += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
 
-  msg += `\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina ? "Piscina" : "Apartamento"}\nPagamento: Pix`;
+  msg += `\n Bloco: ${bloco}\n Apto: ${apto}\n Entrega: ${piscina ? "Piscina" : "Apartamento"}`;
 
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
