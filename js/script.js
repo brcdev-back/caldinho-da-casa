@@ -1,21 +1,20 @@
 const chavePix = "81991610473"; // TUA CHAVE PIX
-const numero = "5581991610473"; // TEU NÚMERO DE WHATSAPP
+const numero = "5581991610473"; // TEU NÚMERO DE WHATSAPP (Ex: 5511999998888)
 
-// Estrutura de produtos aprimorada com o nome completo
 const produtos = {
-  completo: { nome: "Feijão Completo", preco: 5.00, qtd: 0 },
-  simples: { nome: "Feijão Veggie", preco: 4.00, qtd: 0 }
+  completo: { nome: "Feijão Completo (Com Charque)", preco: 5.00, qtd: 0 },
+  simples: { nome: "Feijão Simples (Veggie)", preco: 4.00, qtd: 0 }
 };
 
 // ================= QUANTIDADE =================
 function alterarQtd(tipo, valor) {
-  productos[tipo].qtd += valor;
+  produtos[tipo].qtd += valor;
 
-  if (productos[tipo].qtd < 0) {
-    productos[tipo].qtd = 0;
+  if (produtos[tipo].qtd < 0) {
+    produtos[tipo].qtd = 0;
   }
 
-  document.getElementById(`qtd-${tipo}`).innerText = productos[tipo].qtd;
+  document.getElementById(`qtd-${tipo}`).innerText = produtos[tipo].qtd;
   atualizarTotais();
 }
 
@@ -27,12 +26,10 @@ function atualizarTotais() {
     const total = produtos[tipo].qtd * produtos[tipo].preco;
     totalGeral += total;
 
-    // Atualiza o total individual
     document.getElementById(`total-${tipo}`).innerText =
       `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
   }
 
-  // Atualiza o total geral
   const totalGeralEl = document.getElementById("total-geral");
   if (totalGeralEl) {
     totalGeralEl.innerText =
@@ -47,7 +44,7 @@ atualizarTotais();
 // ================= PIX =================
 function copiarPix() {
   navigator.clipboard.writeText(chavePix);
-  alert("Chave Pix copiada! Envia o comprovativo após finalizar o pedido no WhatsApp.");
+  alert("Chave Pix copiada! Envie o comprovativo no WhatsApp após finalizar o pedido.");
 }
 
 // ================= PEDIDO (FINAL) =================
@@ -65,7 +62,7 @@ function pedido() {
   for (const tipo in produtos) {
       const item = produtos[tipo];
       if (item.qtd > 0) {
-          mensagemDetalhes += `• ${item.nome}: ${item.qtd} unidade(s)\n`;
+          mensagemDetalhes += `• ${item.nome} x ${item.qtd} (R$ ${(item.qtd * item.preco).toFixed(2).replace(".", ",")})\n`;
           totalFinal += item.qtd * item.preco;
           itensPedidos++;
       }
@@ -73,12 +70,12 @@ function pedido() {
 
   // 2. VALIDAÇÕES
   if (itensPedidos === 0) {
-    alert("Selecione a quantidade de caldinhos que desejas pedir.");
+    alert("Por favor, adicione ao menos um caldinho ao teu pedido.");
     return;
   }
 
   if (!bloco || !apto) {
-    alert("Por favor, preencha o Bloco e o Apartamento para a entrega.");
+    alert("Preencha o Bloco e o Apartamento para a entrega.");
     return;
   }
 
@@ -86,17 +83,17 @@ function pedido() {
   const local = piscina ? "Piscina / Área de Lazer" : `Apartamento ${apto}`;
   
   let mensagem =
-`*NOVO PEDIDO – CALDINHOS GOURMET*
+`*PEDIDO - SABOR NA PANELA*
 -----------------------------
 
 *Itens:*
 ${mensagemDetalhes}
 -----------------------------
-*Dados da Entrega:*
+*Entrega:*
 Bloco: ${bloco}
 Local: ${local}
 
-*TOTAL A PAGAR:* R$ ${totalFinal.toFixed(2).replace(".", ",")}
+*TOTAL FINAL:* R$ ${totalFinal.toFixed(2).replace(".", ",")}
 *Pagamento:* PIX
 
 Obrigado!
