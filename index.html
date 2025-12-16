@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <title>Caldinho de Feijão</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="topo">
   <h1>Caldinho de Feijão</h1>
-  <p>Caseiro • Quentinho • Saboroso</p>
+  <p>Caseiro, quentinho e bem temperado</p>
 </header>
 
 <div class="aviso">
@@ -19,64 +18,55 @@
 </div>
 
 <main class="cardapio">
+  <h2>Nosso Cardápio</h2>
 
-  <!-- PRODUTO COMPLETO -->
-  <div class="produto">
-    <h3>Feijão Completo</h3>
-    <p class="descricao">Charque, ovos de codorna e azeitona</p>
-    <span class="preco">R$ 5,00</span>
+  <div class="produtos">
 
-    <div class="quantidade">
-      <button onclick="alterarQtd('completo', -1)">−</button>
-      <span id="qtd-completo">0</span>
-      <button onclick="alterarQtd('completo', 1)">+</button>
+    <!-- COMPLETO -->
+    <div class="produto">
+      <h3>Feijão Completo</h3>
+      <p class="descricao">
+        Caldinho com <b>charque</b>, <b>ovos de codorna</b> e <b>azeitona</b>.
+      </p>
+      <span class="preco">R$ 5,00</span>
+
+      <div class="endereco">
+        <input id="bloco" placeholder="Bloco">
+        <input id="apto" placeholder="Apartamento">
+      </div>
+
+      <label class="piscina">
+        <input type="checkbox" id="piscina"> Estou na piscina
+      </label>
+
+      <div class="quantidade">
+        <button onclick="alterarQtd(-1)">−</button>
+        <span id="qtd">1</span>
+        <button onclick="alterarQtd(1)">+</button>
+      </div>
+
+      <div class="total" id="total-produto">
+        Total: R$ 5,00
+      </div>
     </div>
 
-    <div class="total" id="total-completo">Total: R$ 0,00</div>
   </div>
-
-  <!-- PRODUTO SIMPLES -->
-  <div class="produto">
-    <h3>Feijão sem Charque</h3>
-    <p class="descricao">Ovos de codorna e azeitona</p>
-    <span class="preco">R$ 4,00</span>
-
-    <div class="quantidade">
-      <button onclick="alterarQtd('simples', -1)">−</button>
-      <span id="qtd-simples">0</span>
-      <button onclick="alterarQtd('simples', 1)">+</button>
-    </div>
-
-    <div class="total" id="total-simples">Total: R$ 0,00</div>
-  </div>
-
-  <!-- ENDEREÇO -->
-  <div class="endereco">
-    <input id="bloco" placeholder="Bloco">
-    <input id="apto" placeholder="Apartamento">
-  </div>
-
-  <label class="piscina">
-    <input type="checkbox" id="piscina"> Estou na piscina
-  </label>
 
   <!-- FINALIZAR -->
   <div class="finalizar">
     <div class="total-geral" id="total-geral">
-      Total do pedido: R$ 0,00
+      Total do pedido: R$ 5,00
     </div>
-
-    <button onclick="finalizarPedido()">
-      Finalizar Pedido no WhatsApp
+    <button class="finalizar-btn" onclick="finalizarPedido()">
+      Finalizar Pedido
     </button>
   </div>
-
 </main>
 
 <footer class="rodape">
-  Pagamento via Pix • Atendimento via WhatsApp
+  Pagamento via Pix | Pedido sujeito à confirmação
 </footer>
 
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
