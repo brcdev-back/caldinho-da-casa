@@ -1,3 +1,39 @@
+/* ===== CONFIGURAÇÕES ===== */
+const numero = "5581991610473"; // SEU WHATSAPP
+const chavePix = "81991610473"; // SEU PIX (guardado, não exibido)
+
+/* ===== PRODUTOS ===== */
+const produtos = {
+  completo: { preco: 5, qtd: 0 },
+  simples: { preco: 4, qtd: 0 }
+};
+
+/* ===== QUANTIDADE ===== */
+function alterarQtd(tipo, valor) {
+  produtos[tipo].qtd += valor;
+  if (produtos[tipo].qtd < 0) produtos[tipo].qtd = 0;
+
+  document.getElementById(`qtd-${tipo}`).innerText = produtos[tipo].qtd;
+  atualizarTotais();
+}
+
+/* ===== TOTAIS ===== */
+function atualizarTotais() {
+  const totalCompleto = produtos.completo.qtd * produtos.completo.preco;
+  const totalSimples = produtos.simples.qtd * produtos.simples.preco;
+  const totalGeral = totalCompleto + totalSimples;
+
+  document.getElementById("total-completo").innerText =
+    `Total: R$ ${totalCompleto.toFixed(2).replace(".", ",")}`;
+
+  document.getElementById("total-simples").innerText =
+    `Total: R$ ${totalSimples.toFixed(2).replace(".", ",")}`;
+
+  document.getElementById("total-geral").innerText =
+    `Total do pedido: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
+}
+
+/* ===== FINALIZAR PEDIDO ===== */
 function finalizarPedido() {
   const bloco = document.getElementById("bloco").value.trim();
   const apto = document.getElementById("apto").value.trim();
@@ -24,7 +60,7 @@ function finalizarPedido() {
   }
 
   msg += `\n Bloco: ${bloco}`;
-  msg += `\ Apartamento: ${apto}`;
+  msg += `\n Apartamento: ${apto}`;
   msg += `\n Entrega: ${piscina ? "Piscina" : "Apartamento"}`;
 
   const total =
@@ -32,6 +68,7 @@ function finalizarPedido() {
     produtos.simples.qtd * produtos.simples.preco;
 
   msg += `\n\n Total: R$ ${total.toFixed(2).replace(".", ",")}`;
+  msg += `\n Pagamento: Pix`;
 
   window.location.href =
     `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
