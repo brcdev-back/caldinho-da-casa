@@ -149,29 +149,3 @@ body {
   color: #666;
   padding: 20px;
 }
-
-@media (max-width: 600px) {
-
-  .endereco {
-    display: flex;
-    flex-wrap: nowrap;   /* PROÍBE QUEBRA DE LINHA */
-    gap: 6px;
-  }
-
-  .endereco input {
-    padding: 6px 8px;
-    font-size: 13px;
-    border-radius: 6px;
-  }
-
-  /* Bloco */
-  .endereco input:first-child {
-    width: 40%;
-  }
-
-  /* Apartamento */
-  .endereco input:last-child {
-    width: 50%;
-  }
-
-}
