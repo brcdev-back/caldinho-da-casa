@@ -4,50 +4,67 @@
   box-sizing: border-box;
 }
 
+/* BASE */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f2f2f2;
+  background: #f4f4f4;
   color: #333;
 }
 
 /* TOPO */
 .topo {
-  background: #6b2f0f;
-  color: #fff;
+  background: #ffffff;
   text-align: center;
-  padding: 22px;
+  padding: 24px 16px;
+  border-bottom: 1px solid #ddd;
 }
 
 .topo h1 {
-  font-size: 22px;
+  font-size: 24px;
+  margin-bottom: 6px;
 }
 
 .topo p {
-  font-size: 13px;
-  opacity: 0.9;
+  font-size: 14px;
+  color: #666;
 }
 
 /* AVISO */
 .aviso {
-  margin: 14px;
-  background: #fff3cd;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 13px;
+  max-width: 900px;
+  margin: 16px auto;
+  background: #fff4d6;
+  border: 1px solid #ffe6a3;
+  padding: 12px;
   text-align: center;
+  border-radius: 10px;
+  font-size: 14px;
 }
 
 /* CARDÁPIO */
 .cardapio {
-  padding: 14px;
+  max-width: 900px;
+  margin: auto;
+  padding: 16px;
 }
 
-/* PRODUTO */
+.cardapio h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* PRODUTOS */
+.produtos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* CARD */
 .produto {
   background: #fff;
-  border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 16px;
+  padding: 18px;
+  border-radius: 14px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
 
@@ -56,7 +73,7 @@ body {
 }
 
 .descricao {
-  font-size: 13px;
+  font-size: 14px;
   color: #555;
   margin-bottom: 8px;
 }
@@ -64,15 +81,55 @@ body {
 .preco {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* ENDEREÇO */
+.endereco {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.endereco input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.endereco input:first-child {
+  flex: 0.8;
+}
+
+.endereco input:last-child {
+  flex: 1.2;
+}
+
+/* PISCINA */
+.piscina {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  margin-bottom: 12px;
 }
 
 /* QUANTIDADE */
 .quantidade {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.quantidade span {
+  font-size: 16px;
+  min-width: 20px;
+  text-align: center;
 }
 
 .quantidade button {
@@ -80,68 +137,58 @@ body {
   height: 32px;
   border-radius: 50%;
   border: none;
-  background: #6b2f0f;
+  background: #333;
   color: #fff;
   font-size: 18px;
+  cursor: pointer;
 }
 
+/* TOTAL POR PRODUTO */
 .total {
-  font-size: 13px;
   text-align: center;
-}
-
-/* ENDEREÇO */
-.endereco {
-  display: flex;
-  gap: 8px;
+  font-size: 14px;
   margin-bottom: 10px;
-}
-
-.endereco input {
-  flex: 1;
-  padding: 8px;
-  font-size: 13px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-/* PISCINA */
-.piscina {
-  font-size: 13px;
-  margin-bottom: 12px;
-  display: block;
+  font-weight: bold;
 }
 
 /* FINALIZAR */
 .finalizar {
-  background: #fff;
-  border-radius: 16px;
-  padding: 16px;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  margin-top: 20px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
 
 .total-geral {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 12px;
   text-align: center;
+  margin-bottom: 14px;
 }
 
-.finalizar button {
+.finalizar-btn {
   width: 100%;
   padding: 14px;
-  border-radius: 12px;
+  border-radius: 10px;
   border: none;
   background: #25d366;
   color: #fff;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 /* RODAPÉ */
 .rodape {
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: #666;
-  padding: 16px;
+  padding: 20px;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .produtos {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
