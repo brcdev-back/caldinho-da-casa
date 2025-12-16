@@ -51,31 +51,35 @@ function pedido(tipo, id) {
   const apto = document.getElementById("apto" + id).value.trim();
   const piscina = document.getElementById("piscina" + id).checked;
 
-  if (!bloco || !apto) {
-    alert("Informe o bloco e o apartamento.");
+  // Valida se há pelo menos um item selecionado
+  if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
+    alert("Selecione ao menos um produto.");
     return;
   }
   
-  // Usamos o objeto `produtos` para somar a quantidade total antes de enviar
-  if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
-    alert("Selecione ao menos um produto.");
+  // A validação de endereço só deve ocorrer se houver itens neste card,
+  // mas como o pedido é enviado por card, validamos aqui.
+  if (!bloco || !apto) {
+    alert("Informe o bloco e o apartamento.");
     return;
   }
 
   const local = piscina ? "Piscina" : `Apto ${apto}`;
 
-  // Criamos a lista de itens pedidos
+  // Lista de itens pedidos
   let itensLista = '';
-  if (produtos.completo.qtd > 0) {
-      itensLista += `• ${produtos.completo.nome}: ${produtos.completo.qtd} un\n`;
+  const itemCompleto = produtos.completo;
+  const itemSimples = produtos.simples;
+  
+  if (itemCompleto.qtd > 0) {
+      itensLista += `• ${itemCompleto.nome}: ${itemCompleto.qtd} un\n`;
   }
-  if (produtos.simples.qtd > 0) {
-      itensLista += `• ${produtos.simples.nome}: ${produtos.simples.qtd} un\n`;
+  if (itemSimples.qtd > 0) {
+      itensLista += `• ${itemSimples.nome}: ${itemSimples.qtd} un\n`;
   }
 
-  const totalFinal =
-    produtos.completo.qtd * produtos.completo.preco +
-    produtos.simples.qtd * produtos.simples.preco;
+  const totalFinal = itemCompleto.qtd * itemCompleto.preco + itemSimples.qtd * itemSimples.preco;
+
 
   let mensagem =
 `*PEDIDO – SABOR NA PANELA*
