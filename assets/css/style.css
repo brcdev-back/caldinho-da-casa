@@ -1,174 +1,253 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Caldinho de Feijão</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f4f4;
-  color:#333;
+/* BASE */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f2f2f2;
+  color: #333;
+  line-height: 1.4;
 }
 
 /* TOPO */
-.topo{
-  background:#fff;
-  text-align:center;
-  padding:25px;
-  border-bottom:1px solid #ddd;
-}
-.topo h1{font-size:26px}
-.topo p{font-size:14px;color:#666}
-
-/* CARD */
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
+.topo {
+  background: linear-gradient(135deg, #5a2d0c, #8b4513);
+  color: #fff;
+  text-align: center;
+  padding: 22px 14px;
+  border-radius: 0 0 20px 20px;
 }
 
-/* BOTÃO ADMIN */
-.admin-btn{
-  position:fixed;
-  bottom:15px;
-  right:15px;
-  background:#333;
-  color:#fff;
-  border:none;
-  padding:10px 14px;
-  border-radius:10px;
-  font-size:13px;
-  cursor:pointer;
+.topo h1 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.topo p {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* AVISO */
+.aviso {
+  margin: 14px;
+  padding: 10px;
+  background: #fff4d6;
+  border: 1px solid #ffe3a0;
+  border-radius: 12px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* CARDÁPIO */
+.cardapio {
+  padding: 14px;
+}
+
+.cardapio h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+/* GRID */
+.produtos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* CARD PRODUTO */
+.produto {
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+.produto h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.descricao {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.preco {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5a2d0c;
+  margin-bottom: 10px;
+}
+
+/* ENDEREÇO */
+.endereco {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.endereco input {
+  padding: 7px 8px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.endereco input:first-child {
+  width: 38%;
+}
+
+.endereco input:last-child {
+  width: 62%;
+}
+
+/* CHECK */
+.piscina {
+  font-size: 13px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* QUANTIDADE */
+.quantidade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.quantidade button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #5a2d0c;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.quantidade span {
+  font-size: 15px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* TOTAL */
+.total {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* FINALIZAR */
+.finalizar {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 14px;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -6px 18px rgba(0,0,0,0.1);
+}
+
+.total-geral {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.finalizar-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #25d366, #1ebe5d);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* ADMIN BUTTON */
+.admin-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 14px;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 12px;
 }
 
 /* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,.6);
-  justify-content:center;
-  align-items:center;
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
-.modal-content{
-  background:#fff;
-  padding:25px;
-  border-radius:16px;
-  width:90%;
-  max-width:420px;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 360px;
+  padding: 18px;
+  border-radius: 20px;
 }
-.modal-content h2{
-  text-align:center;
-  margin-bottom:15px;
+
+.modal-content h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 12px;
 }
+
 .modal-content input,
-.modal-content textarea{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-.modal-content textarea{height:110px;resize:none}
-.modal-content button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  background:#25d366;
-  color:#fff;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
+.modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
 }
 
-/* ESCONDER PAINEL */
-#painelAdmin{display:none}
-</style>
-</head>
-
-<body>
-
-<header class="topo">
-  <h1>Caldinho de Feijão</h1>
-  <p>Pedidos rápidos e quentinhos 🍲</p>
-</header>
-
-<div class="container">
-  <p style="text-align:center;font-size:14px;color:#666">
-    Faça seu pedido normalmente pelo site.
-  </p>
-</div>
-
-<!-- BOTÃO ADMIN -->
-<button class="admin-btn" onclick="abrirLogin()">
-  Área Administrativa
-</button>
-
-<!-- LOGIN ADMIN -->
-<div class="modal" id="loginModal">
-  <div class="modal-content">
-    <h2>Login Admin</h2>
-    <input type="password" id="senhaAdmin" placeholder="Senha">
-    <button onclick="loginAdmin()">Entrar</button>
-  </div>
-</div>
-
-<!-- PAINEL ADMIN -->
-<div class="modal" id="painelAdmin">
-  <div class="modal-content">
-    <h2>Confirmar Pedido</h2>
-
-    <input type="text" id="numeroCliente" placeholder="Número WhatsApp (5581...)">
-
-    <textarea id="mensagem">
-🍲 Pedido Confirmado!
-
-Seu pedido foi confirmado com sucesso ✅
-Obrigado pela preferência ❤️
-    </textarea>
-
-    <button onclick="enviarConfirmacao()">
-      Enviar no WhatsApp
-    </button>
-  </div>
-</div>
-
-<script>
-const SENHA_ADMIN = "1234";
-
-function abrirLogin(){
-  document.getElementById("loginModal").style.display="flex";
+.modal-content textarea {
+  resize: none;
+  height: 100px;
 }
 
-function loginAdmin(){
-  const senha = document.getElementById("senhaAdmin").value;
-  if(senha === SENHA_ADMIN){
-    document.getElementById("loginModal").style.display="none";
-    document.getElementById("painelAdmin").style.display="flex";
-  }else{
-    alert("Senha incorreta");
-  }
+.modal-content button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #25d366;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
 }
 
-function enviarConfirmacao(){
-  const numero = document.getElementById("numeroCliente").value.trim();
-  const msg = document.getElementById("mensagem").value.trim();
-
-  if(!numero || !msg){
-    alert("Preencha tudo");
-    return;
-  }
-
-  const link = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
-  window.open(link,"_blank");
+/* RODAPÉ */
+.rodape {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  padding: 18px;
 }
-</script>
-
-</body>
-</html>
