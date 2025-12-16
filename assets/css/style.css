@@ -5,188 +5,152 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f4f4;
-  color: #333;
+  font-family: 'Arial', sans-serif;
+  background: #f3efe9;
+  color: #3b2a1a;
 }
 
-.topo {
-  background: #fff;
+/* HEADER */
+.header {
+  height: 180px;
+  background: linear-gradient(135deg, #5a3a1e, #3b2412);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-overlay {
   text-align: center;
-  padding: 25px;
-  border-bottom: 1px solid #ddd;
+  color: #fff;
 }
 
-.topo h1 {
-  font-size: 26px;
+.header h1 {
+  font-size: 28px;
 }
 
-.topo p {
+.header p {
   font-size: 14px;
-  color: #666;
+  opacity: 0.9;
 }
 
+/* AVISO */
 .aviso {
-  max-width: 900px;
-  margin: 20px auto;
   background: #fff4d6;
-  border: 1px solid #ffe6a3;
-  padding: 12px;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 14px;
-}
-
-.cardapio {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-.cardapio h2 {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.produtos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.produto {
-  background: #fff;
-  padding: 20px;
+  margin: 16px;
+  padding: 14px;
   border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-.descricao {
+  text-align: center;
   font-size: 14px;
-  color: #555;
-  margin-bottom: 10px;
 }
 
-.preco {
+/* CONTAINER */
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #6b5a4a;
+}
+
+.price {
+  display: block;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 12px;
-  display: block;
+  margin: 10px 0;
 }
 
-.endereco {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.endereco input {
-  padding: 6px 8px;
-  font-size: 13px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.endereco input:first-child {
-  width: 40%;
-}
-
-.endereco input:last-child {
-  width: 60%;
-}
-
-.piscina {
-  font-size: 14px;
-  margin-bottom: 12px;
-  display: block;
-}
-
-.quantidade {
+/* CONTADOR */
+.counter {
   display: flex;
   justify-content: center;
-  gap: 14px;
-  margin-bottom: 10px;
+  align-items: center;
+  gap: 18px;
+  margin: 12px 0;
 }
 
-.quantidade button {
-  width: 30px;
-  height: 30px;
+.counter button {
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: none;
-  background: #333;
+  background: #5a3a1e;
   color: #fff;
+  font-size: 20px;
+}
+
+.counter span {
   font-size: 18px;
 }
 
-.total {
+/* SUBTOTAL */
+.subtotal {
+  text-align: center;
+  font-weight: bold;
   font-size: 14px;
+}
+
+/* INPUTS */
+.inputs {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.inputs input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+/* CHECK */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+/* FINALIZAR */
+.finalizar {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 16px;
+  box-shadow: 0 -6px 20px rgba(0,0,0,0.15);
+  border-radius: 20px 20px 0 0;
+}
+
+.finalizar div {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.pix {
+.finalizar button {
   width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background: #f1f1f1;
-  margin-bottom: 8px;
-}
-
-.whats {
-  width: 100%;
-  padding: 12px;
-  border-radius: 6px;
-  border: none;
-  background: #25d366;
-  color: #fff;
-  font-size: 15px;
-}
-
-.rodape {
-  text-align: center;
-  font-size: 13px;
-  color: #666;
-  padding: 20px;
-}
-
-/* ===== FINALIZAR PEDIDO (DESIGN PREMIUM) ===== */
-.finalizar {
-  position: sticky;
-  bottom: 12px;
-  background: #fff;
   padding: 16px;
+  background: linear-gradient(135deg, #5a3a1e, #3b2412);
+  color: #fff;
+  border: none;
   border-radius: 16px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
-  margin-top: 24px;
-}
-
-.total-geral {
-  text-align: center;
   font-size: 18px;
-  font-weight: bold;
-  color: #5a3b22;
-  margin-bottom: 12px;
 }
-
-/* BOTÃO PRINCIPAL */
-.finalizar-btn {
-  width: 100%;
-  padding: 16px;
-  border-radius: 14px;
-  border: none;
-  background: linear-gradient(135deg, #6b3f1d, #4a2c15);
-  color: #fff;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-}
-
-/* EFEITO CLIQUE */
-.finalizar-btn:active {
-  transform: scale(0.97);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-}
-
