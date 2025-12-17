@@ -437,8 +437,7 @@ header.topo p {
   cursor: pointer;
 }
 
-/* --- estilos básicos --- */
-* { margin:0; padding:0; box-sizing:border-box; }
+/* { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; background:#fff8f0; color:#333; font-size:16px; }
 
 header.topo { background:#fff; text-align:center; padding:20px; border-bottom:2px solid #f05a28; position:sticky; top:0; z-index:100; }
@@ -469,8 +468,7 @@ header.topo p { font-size:14px; color:#666; }
 .carrinho-fixo {
   position:fixed; bottom:0; left:0; width:100%; max-width:480px; background:#fff;
   display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-top:2px solid #f05a28;
-  box-shadow:0 -3px 12px rgba(0,0,0,0.08);
-  z-index:150;
+  box-shadow:0 -3px 12px rgba(0,0,0,0.08); z-index:150;
 }
 
 .carrinho-fixo button { padding:10px 16px; border:none; background:#f05a28; color:#fff; border-radius:8px; cursor:pointer; }
