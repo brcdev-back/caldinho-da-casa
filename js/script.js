@@ -27,41 +27,33 @@ function copiarPix() {
   alert("Chave Pix copiada!");
 }
 
-function pedido(id) {
-  const bloco = document.getElementById("bloco" + id).value;
-  const apto = document.getElementById("apto" + id).value;
-  const piscina = document.getElementById("piscina" + id).checked;
+/* Modal */
+const modal = document.getElementById("modalPedido");
+const resumo = document.getElementById("resumo-pedido");
 
-  if (!bloco || !apto) {
-    alert("Informe bloco e apartamento.");
-    return;
+function abrirModal(id) {
+  let msg = "";
+  if (id === 1 && produtos.completo.qtd > 0) msg += `Feijão Completo: ${produtos.completo.qtd}\n`;
+  if (id === 2 && produtos.simples.qtd > 0) msg += `Feijão sem Charque: ${produtos.simples.qtd}\n`;
+  if (!id) {
+    if (produtos.completo.qtd > 0) msg += `Feijão Completo: ${produtos.completo.qtd}\n`;
+    if (produtos.simples.qtd > 0) msg += `Feijão sem Charque: ${produtos.simples.qtd}\n`;
   }
+  if (!msg) { alert("Selecione ao menos um produto."); return; }
+  resumo.innerText = msg;
+  modal.style.display = "flex";
+}
 
-  if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
-    alert("Selecione ao menos um produto.");
-    return;
-  }
+function fecharModal() { modal.style.display = "none"; }
 
+function confirmarPedido() {
   let msg = "PEDIDO – SABOR DE PANELA\n\n";
   if (produtos.completo.qtd > 0) msg += `• Feijão Completo: ${produtos.completo.qtd}\n`;
   if (produtos.simples.qtd > 0) msg += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
-
-  msg += `\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina ? "Piscina" : "Apartamento"}\nPagamento: Pix`;
-
-  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
-}
-
-function finalizarPedido() {
-  if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) {
-    alert("Selecione ao menos um produto antes de finalizar.");
-    return;
-  }
-
-  let msg = "PEDIDO – SABOR DE PANELA\n\n";
-  if (produtos.completo.qtd > 0) msg += `• Feijão Completo: ${produtos.completo.qtd}\n`;
-  if (produtos.simples.qtd > 0) msg += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
-
-  msg += `\nTotal Geral: R$ ${(produtos.completo.qtd*produtos.completo.preco + produtos.simples.qtd*produtos.simples.preco).toFixed(2).replace(".", ",")}\nPagamento: Pix`;
+  msg += `\nTotal Geral: ${document.getElementById("total-geral").innerText}\nPagamento: Pix`;
 
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
+  fecharModal();
 }
+
+window.onclick = function(event) { if (event.target == modal) fecharModal(); }
