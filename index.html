@@ -32,11 +32,23 @@
       </p>
       <span class="preco" data-preco="5">R$ 5,00</span>
 
+      <!-- Quantidade -->
       <div class="quantidade">
         <button onclick="alterarQtd('completo', -1)">−</button>
         <span id="qtd-completo">0</span>
         <button onclick="alterarQtd('completo', 1)">+</button>
       </div>
+
+      <!-- Endereço -->
+      <div class="endereco">
+        <input type="text" id="bloco-completo" placeholder="Bloco">
+        <input type="text" id="apartamento-completo" placeholder="Apartamento">
+      </div>
+
+      <!-- Piscina -->
+      <label class="piscina">
+        <input type="checkbox" id="piscina-completo"> Estou na piscina
+      </label>
 
       <div class="botoes-produto">
         <button class="pix" onclick="copiarPix()">Copiar Pix</button>
@@ -52,11 +64,23 @@
       </p>
       <span class="preco" data-preco="4">R$ 4,00</span>
 
+      <!-- Quantidade -->
       <div class="quantidade">
         <button onclick="alterarQtd('simples', -1)">−</button>
         <span id="qtd-simples">0</span>
         <button onclick="alterarQtd('simples', 1)">+</button>
       </div>
+
+      <!-- Endereço -->
+      <div class="endereco">
+        <input type="text" id="bloco-simples" placeholder="Bloco">
+        <input type="text" id="apartamento-simples" placeholder="Apartamento">
+      </div>
+
+      <!-- Piscina -->
+      <label class="piscina">
+        <input type="checkbox" id="piscina-simples"> Estou na piscina
+      </label>
 
       <div class="botoes-produto">
         <button class="pix" onclick="copiarPix()">Copiar Pix</button>
