@@ -20,13 +20,12 @@ function adicionarCarrinho(tipo) {
     return;
   }
 
-  // Salvar informações do cliente no produto
   produtos[tipo].bloco = document.getElementById(`bloco-${tipo}`).value || "Não informado";
   produtos[tipo].apartamento = document.getElementById(`apartamento-${tipo}`).value || "Não informado";
   produtos[tipo].piscina = document.getElementById(`piscina-${tipo}`).checked ? "Sim" : "Não";
 
-  produtos[tipo].carrinho += produtos[tipo].qtd; // incrementa no carrinho
-  produtos[tipo].qtd = 0; // reseta card
+  produtos[tipo].carrinho += produtos[tipo].qtd;
+  produtos[tipo].qtd = 0;
   document.getElementById(`qtd-${tipo}`).innerText = 0;
   atualizarCarrinho();
   alert("Produto adicionado ao carrinho!");
@@ -61,7 +60,10 @@ function abrirModal() {
     msg += `Feijão sem Charque: ${produtos.simples.carrinho}\nBloco: ${produtos.simples.bloco}\nApartamento: ${produtos.simples.apartamento}\nPiscina: ${produtos.simples.piscina}\n\n`;
   }
 
-  if (!msg) { alert("Carrinho vazio."); return; }
+  if (!msg) { 
+    alert("Carrinho vazio."); 
+    return; 
+  }
 
   const total = produtos.completo.carrinho * produtos.completo.preco +
                 produtos.simples.carrinho * produtos.simples.preco;
@@ -71,16 +73,8 @@ function abrirModal() {
   modal.style.display = "flex";
 }
 
-// Fechar modal
-function fecharModal() { modal.style.display = "none"; }
-
-// Confirmar pedido
-function confirmarPedido() {
-  const texto = "PEDIDO – SABOR DE PANELA\n\n" + resumo.innerText;
-  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`);
-  fecharModal();
-
-  // Limpar carrinho
+// Limpar carrinho direto do modal
+function limparCarrinho() {
   produtos.completo.carrinho = 0;
   produtos.simples.carrinho = 0;
   produtos.completo.bloco = "";
@@ -90,7 +84,23 @@ function confirmarPedido() {
   produtos.completo.piscina = "";
   produtos.simples.piscina = "";
   atualizarCarrinho();
+  resumo.innerText = "Carrinho limpo!";
 }
+
+// Confirmar pedido
+function confirmarPedido() {
+  if (produtos.completo.carrinho === 0 && produtos.simples.carrinho === 0) {
+    alert("Carrinho vazio!");
+    return;
+  }
+  const texto = "PEDIDO – SABOR DE PANELA\n\n" + resumo.innerText;
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`);
+  fecharModal();
+  limparCarrinho();
+}
+
+// Fechar modal
+function fecharModal() { modal.style.display = "none"; }
 
 // Fechar modal clicando fora
 window.onclick = function(event) {
