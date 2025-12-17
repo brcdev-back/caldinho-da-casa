@@ -2,16 +2,18 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Caldinho de Feijão</title>
+  <title>Sabor de Panela</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
 </head>
 
 <body>
 
 <header class="topo">
-  <h1>Caldinho de Feijão</h1>
-  <p>Receita caseira, bem temperada e servida bem quentinha</p>
+  <img src="assets/img/logo.png" alt="Sabor de Panela" class="logo">
+  <h1>Sabor de Panela</h1>
+  <p>Receitas caseiras, bem temperadas e servidas quentinhas</p>
 </header>
 
 <div class="aviso">
@@ -23,11 +25,22 @@
 
   <div class="produtos">
 
-    <!-- COMPLETO -->
+    <!-- FEIJÃO COMPLETO -->
     <div class="produto">
       <h3>Feijão Completo</h3>
-      <p class="descricao">Com charque, ovos de codorna e azeitona</p>
+      <p class="descricao">
+        Caldinho de feijão com <strong>charque, ovos de codorna e azeitona</strong>.
+      </p>
       <span class="preco">R$ 5,00</span>
+
+      <div class="endereco">
+        <input id="bloco1" placeholder="Bloco">
+        <input id="apto1" placeholder="Apartamento">
+      </div>
+
+      <label class="piscina">
+        <input type="checkbox" id="piscina1"> Estou na piscina
+      </label>
 
       <div class="quantidade">
         <button onclick="alterarQtd('completo', -1)">−</button>
@@ -36,13 +49,29 @@
       </div>
 
       <div class="total" id="total-completo">Total: R$ 0,00</div>
+
+      <div class="botoes-produto">
+        <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
+        <button class="whats" onclick="pedido(1)">Pedir no WhatsApp</button>
+      </div>
     </div>
 
-    <!-- SIMPLES -->
+    <!-- FEIJÃO SEM CHARQUE -->
     <div class="produto">
       <h3>Feijão sem Charque</h3>
-      <p class="descricao">Com ovos de codorna e azeitona</p>
+      <p class="descricao">
+        Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
+      </p>
       <span class="preco">R$ 4,00</span>
+
+      <div class="endereco">
+        <input id="bloco2" placeholder="Bloco">
+        <input id="apto2" placeholder="Apartamento">
+      </div>
+
+      <label class="piscina">
+        <input type="checkbox" id="piscina2"> Estou na piscina
+      </label>
 
       <div class="quantidade">
         <button onclick="alterarQtd('simples', -1)">−</button>
@@ -51,33 +80,24 @@
       </div>
 
       <div class="total" id="total-simples">Total: R$ 0,00</div>
+
+      <div class="botoes-produto">
+        <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
+        <button class="whats" onclick="pedido(2)">Pedir no WhatsApp</button>
+      </div>
     </div>
 
   </div>
 
-  <!-- 📦 CARRINHO -->
-  <div class="carrinho">
-    <h3>🧾 Resumo do Pedido</h3>
-
-    <input id="bloco" placeholder="Bloco">
-    <input id="apto" placeholder="Apartamento">
-
-    <label class="piscina">
-      <input type="checkbox" id="piscina"> Estou na piscina
-    </label>
-
-    <div class="total-geral" id="total-geral">
-      Total Geral: R$ 0,00
-    </div>
-
-    <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-    <button class="whats" onclick="finalizarPedido()">Finalizar Pedido</button>
+  <div class="total-geral">
+    <h3>Total Geral: <span id="total-geral">R$ 0,00</span></h3>
+    <button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
   </div>
-
 </main>
 
 <footer class="rodape">
-  Pedidos via WhatsApp | Pagamento via Pix
+  Pedidos via WhatsApp | Pagamento via Pix<br>
+  Funcionamento conforme disponibilidade
 </footer>
 
 <script src="js/script.js"></script>
