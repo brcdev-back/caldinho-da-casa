@@ -12,9 +12,6 @@
 <header class="topo">
   <h1>Caldinho de Feijão</h1>
   <p>Receita caseira, bem temperada e servida bem quentinha</p>
-
-  <!-- BOTÃO ADMIN -->
-  <button class="admin-btn" onclick="abrirLogin()">Admin</button>
 </header>
 
 <div class="aviso">
@@ -26,7 +23,7 @@
 
   <div class="produtos">
 
-    <!-- FEIJÃO COMPLETO -->
+    <!-- COMPLETO -->
     <div class="produto">
       <h3>Feijão Completo</h3>
       <p class="descricao">Com charque, ovos de codorna e azeitona</p>
@@ -38,10 +35,10 @@
         <button onclick="alterarQtd('completo', 1)">+</button>
       </div>
 
-      <div class="total" id="total-completo">Subtotal: R$ 0,00</div>
+      <div class="total" id="total-completo">Total: R$ 0,00</div>
     </div>
 
-    <!-- FEIJÃO SIMPLES -->
+    <!-- SIMPLES -->
     <div class="produto">
       <h3>Feijão sem Charque</h3>
       <p class="descricao">Com ovos de codorna e azeitona</p>
@@ -53,19 +50,17 @@
         <button onclick="alterarQtd('simples', 1)">+</button>
       </div>
 
-      <div class="total" id="total-simples">Subtotal: R$ 0,00</div>
+      <div class="total" id="total-simples">Total: R$ 0,00</div>
     </div>
 
   </div>
 
-  <!-- CARRINHO -->
+  <!-- 📦 CARRINHO -->
   <div class="carrinho">
-    <h3> Resumo do Pedido</h3>
+    <h3>🧾 Resumo do Pedido</h3>
 
-    <div class="endereco">
-      <input id="bloco" placeholder="Bloco">
-      <input id="apto" placeholder="Apartamento">
-    </div>
+    <input id="bloco" placeholder="Bloco">
+    <input id="apto" placeholder="Apartamento">
 
     <label class="piscina">
       <input type="checkbox" id="piscina"> Estou na piscina
@@ -85,47 +80,6 @@
   Pedidos via WhatsApp | Pagamento via Pix
 </footer>
 
-<!-- MODAL LOGIN ADMIN -->
-<div class="admin-modal" id="adminModal">
-  <div class="admin-box">
-    <h3>Login Admin</h3>
-
-    <input type="text" id="adminUser" placeholder="Usuário">
-    <input type="password" id="adminPass" placeholder="Senha">
-
-    <button onclick="loginAdmin()">Entrar</button>
-    <span onclick="fecharLogin()">Cancelar</span>
-  </div>
-</div>
-
-<!-- PAINEL DE PEDIDOS (ADMIN) -->
-<div class="painel-pedidos" id="painelPedidos">
-  <div class="painel-box">
-    <h3> Pedidos do Dia</h3>
-
-    <div class="contadores">
-      Total de Pedidos: <span id="contadorTotal">0</span> | 
-      Entregues: <span id="contadorEntregues">0</span>
-    </div>
-
-    <div id="listaPedidos">
-      <p>Nenhum pedido até o momento.</p>
-    </div>
-
-    <button onclick="limparPedidos()">Limpar Pedidos</button>
-    <span onclick="fecharPainel()" class="fechar-painel">Cancelar</span>
-
-    <!-- Histórico de Pedidos -->
-    <div class="historico-box">
-      <h4> Histórico de Pedidos</h4>
-      <div id="listaHistorico">
-        <p>Nenhum pedido histórico ainda.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script src="js/script.js"></script>
-
 </body>
 </html>
