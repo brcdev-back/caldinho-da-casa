@@ -30,16 +30,7 @@
       <p class="descricao">
         Caldinho de feijão com <strong>charque, ovos de codorna e azeitona</strong>.
       </p>
-      <span class="preco">R$ 5,00</span>
-
-      <div class="endereco">
-        <input id="bloco1" placeholder="Bloco">
-        <input id="apto1" placeholder="Apartamento">
-      </div>
-
-      <label class="piscina">
-        <input type="checkbox" id="piscina1"> Estou na piscina
-      </label>
+      <span class="preco" data-preco="5">R$ 5,00</span>
 
       <div class="quantidade">
         <button onclick="alterarQtd('completo', -1)">−</button>
@@ -47,11 +38,9 @@
         <button onclick="alterarQtd('completo', 1)">+</button>
       </div>
 
-      <div class="total" id="total-completo">Total: R$ 0,00</div>
-
       <div class="botoes-produto">
         <button class="pix" onclick="copiarPix()">Copiar Pix</button>
-        <button class="whats" onclick="abrirModal('completo')">Pedir</button>
+        <button class="carrinho" onclick="adicionarCarrinho('completo')">Adicionar ao Carrinho</button>
       </div>
     </div>
 
@@ -61,16 +50,7 @@
       <p class="descricao">
         Caldinho de feijão com <strong>ovos de codorna e azeitona</strong>, sem charque.
       </p>
-      <span class="preco">R$ 4,00</span>
-
-      <div class="endereco">
-        <input id="bloco2" placeholder="Bloco">
-        <input id="apto2" placeholder="Apartamento">
-      </div>
-
-      <label class="piscina">
-        <input type="checkbox" id="piscina2"> Estou na piscina
-      </label>
+      <span class="preco" data-preco="4">R$ 4,00</span>
 
       <div class="quantidade">
         <button onclick="alterarQtd('simples', -1)">−</button>
@@ -78,21 +58,20 @@
         <button onclick="alterarQtd('simples', 1)">+</button>
       </div>
 
-      <div class="total" id="total-simples">Total: R$ 0,00</div>
-
       <div class="botoes-produto">
         <button class="pix" onclick="copiarPix()">Copiar Pix</button>
-        <button class="whats" onclick="abrirModal('simples')">Pedir</button>
+        <button class="carrinho" onclick="adicionarCarrinho('simples')">Adicionar ao Carrinho</button>
       </div>
     </div>
 
   </div>
-
-  <div class="total-geral-fixo">
-    <span>Total Geral: <strong id="total-geral">R$ 0,00</strong></span>
-    <button class="finalizar" onclick="abrirModal('geral')">Finalizar Pedido</button>
-  </div>
 </main>
+
+<!-- Carrinho Fixo -->
+<div class="carrinho-fixo" id="carrinhoFixo">
+  <span id="itens-carrinho">0</span> item(s) | Total: <strong id="total-carrinho">R$ 0,00</strong>
+  <button onclick="abrirModal('carrinho')">Finalizar Pedido</button>
+</div>
 
 <!-- Modal -->
 <div id="modalPedido" class="modal">
