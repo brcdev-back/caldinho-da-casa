@@ -41,8 +41,8 @@
 
       <!-- Endereço -->
       <div class="endereco">
-        <input type="text" id="bloco-completo" placeholder="Bloco">
-        <input type="text" id="apartamento-completo" placeholder="Apartamento">
+        <input type="text" id="bloco-completo" placeholder="Bloco" class="input-pequeno">
+        <input type="text" id="apartamento-completo" placeholder="Apartamento" class="input-pequeno">
       </div>
 
       <!-- Piscina -->
@@ -73,8 +73,8 @@
 
       <!-- Endereço -->
       <div class="endereco">
-        <input type="text" id="bloco-simples" placeholder="Bloco">
-        <input type="text" id="apartamento-simples" placeholder="Apartamento">
+        <input type="text" id="bloco-simples" placeholder="Bloco" class="input-pequeno">
+        <input type="text" id="apartamento-simples" placeholder="Apartamento" class="input-pequeno">
       </div>
 
       <!-- Piscina -->
@@ -94,7 +94,7 @@
 <!-- Carrinho Fixo -->
 <div class="carrinho-fixo" id="carrinhoFixo">
   <span id="itens-carrinho">0</span> item(s) | Total: <strong id="total-carrinho">R$ 0,00</strong>
-  <button onclick="abrirModal()">Finalizar Pedido</button>
+  <button class="finalizar-btn" onclick="abrirModal()">Finalizar Pedido</button>
 </div>
 
 <!-- Modal -->
@@ -103,6 +103,7 @@
     <h3>Confirmar Pedido</h3>
     <p id="resumo-pedido"></p>
     <button class="confirmar" onclick="confirmarPedido()">Confirmar e Enviar</button>
+    <button class="limpar" onclick="limparCarrinho()">Limpar Carrinho</button>
     <button class="fechar" onclick="fecharModal()">Cancelar</button>
   </div>
 </div>
