@@ -6,14 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
 
 <header class="topo">
   <h1>Caldinho de Feijão</h1>
   <p>Receita caseira, bem temperada e servida bem quentinha</p>
-
-  <!-- BOTÃO ADMIN -->
   <button class="admin-btn" onclick="abrirLogin()">Admin</button>
 </header>
 
@@ -25,60 +22,44 @@
   <h2>Nosso Cardápio</h2>
 
   <div class="produtos">
-
-    <!-- FEIJÃO COMPLETO -->
     <div class="produto">
       <h3>Feijão Completo</h3>
       <p class="descricao">Com charque, ovos de codorna e azeitona</p>
       <span class="preco">R$ 5,00</span>
-
       <div class="quantidade">
         <button onclick="alterarQtd('completo', -1)">−</button>
         <span id="qtd-completo">0</span>
         <button onclick="alterarQtd('completo', 1)">+</button>
       </div>
-
       <div class="total" id="total-completo">Subtotal: R$ 0,00</div>
     </div>
 
-    <!-- FEIJÃO SIMPLES -->
     <div class="produto">
       <h3>Feijão sem Charque</h3>
       <p class="descricao">Com ovos de codorna e azeitona</p>
       <span class="preco">R$ 4,00</span>
-
       <div class="quantidade">
         <button onclick="alterarQtd('simples', -1)">−</button>
         <span id="qtd-simples">0</span>
         <button onclick="alterarQtd('simples', 1)">+</button>
       </div>
-
       <div class="total" id="total-simples">Subtotal: R$ 0,00</div>
     </div>
-
   </div>
 
-  <!-- CARRINHO -->
   <div class="carrinho">
-    <h3> Resumo do Pedido</h3>
-
+    <h3>Resumo do Pedido</h3>
     <div class="endereco">
       <input id="bloco" placeholder="Bloco">
       <input id="apto" placeholder="Apartamento">
     </div>
-
     <label class="piscina">
       <input type="checkbox" id="piscina"> Estou na piscina
     </label>
-
-    <div class="total-geral" id="total-geral">
-      Total Geral: R$ 0,00
-    </div>
-
+    <div class="total-geral" id="total-geral">Total Geral: R$ 0,00</div>
     <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
     <button class="whats" onclick="finalizarPedido()">Finalizar Pedido</button>
   </div>
-
 </main>
 
 <footer class="rodape">
@@ -89,43 +70,32 @@
 <div class="admin-modal" id="adminModal">
   <div class="admin-box">
     <h3>Login Admin</h3>
-
     <input type="text" id="adminUser" placeholder="Usuário">
     <input type="password" id="adminPass" placeholder="Senha">
-
     <button onclick="loginAdmin()">Entrar</button>
     <span onclick="fecharLogin()">Cancelar</span>
   </div>
 </div>
 
-<!-- PAINEL DE PEDIDOS (ADMIN) -->
+<!-- PAINEL DE PEDIDOS -->
 <div class="painel-pedidos" id="painelPedidos">
   <div class="painel-box">
-    <h3> Pedidos do Dia</h3>
-
+    <h3>Pedidos do Dia</h3>
     <div class="contadores">
       Total de Pedidos: <span id="contadorTotal">0</span> | 
       Entregues: <span id="contadorEntregues">0</span>
     </div>
-
-    <div id="listaPedidos">
-      <p>Nenhum pedido até o momento.</p>
-    </div>
-
+    <div id="listaPedidos"><p>Nenhum pedido até o momento.</p></div>
     <button onclick="limparPedidos()">Limpar Pedidos</button>
     <span onclick="fecharPainel()" class="fechar-painel">Cancelar</span>
 
-    <!-- Histórico de Pedidos -->
     <div class="historico-box">
-      <h4> Histórico de Pedidos</h4>
-      <div id="listaHistorico">
-        <p>Nenhum pedido histórico ainda.</p>
-      </div>
+      <h4>Histórico de Pedidos</h4>
+      <div id="listaHistorico"><p>Nenhum pedido histórico ainda.</p></div>
     </div>
   </div>
 </div>
 
-<script src="js/script.js"></script>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>
