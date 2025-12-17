@@ -1,3 +1,4 @@
+// ======== CONFIGURAÇÕES ========
 const numero = "5581991610473";
 const chavePix = "81991610473";
 
@@ -6,27 +7,38 @@ const produtos = {
   simples: { nome: "Feijão sem Charque", preco: 4, qtd: 0 }
 };
 
-let pedidos = [];
-let historicoPedidos = [];
+let pedidos = []; // pedidos atuais
+let historicoPedidos = []; // histórico completo
 
 // ======== FUNÇÕES DE CARRINHO ========
 function alterarQtd(tipo, valor) {
   produtos[tipo].qtd += valor;
   if (produtos[tipo].qtd < 0) produtos[tipo].qtd = 0;
+
   document.getElementById(`qtd-${tipo}`).innerText = produtos[tipo].qtd;
   atualizarTotais();
 }
 
 function atualizarTotais() {
   let totalGeral = 0;
+
   for (let tipo in produtos) {
     const total = produtos[tipo].qtd * produtos[tipo].preco;
-    document.getElementById(`total-${tipo}`).innerText =
-      `Subtotal: R$ ${total.toFixed(2).replace(".", ",")}`;
+    document.getElementById(`total-${tipo}`).innerText = `Subtotal: R$ ${total.toFixed(2).replace(".", ",")}`;
     totalGeral += total;
+
+    // efeito visual
+    const elem = document.getElementById(`total-${tipo}`);
+    elem.style.transition = "0.3s";
+    elem.style.background = "#e0ffe0";
+    setTimeout(() => { elem.style.background = "transparent"; }, 300);
   }
-  document.getElementById("total-geral").innerText =
-    `Total Geral: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
+
+  const totalElem = document.getElementById("total-geral");
+  totalElem.innerText = `Total Geral: R$ ${totalGeral.toFixed(2).replace(".", ",")}`;
+  totalElem.style.transition = "0.3s";
+  totalElem.style.background = "#fff3e0";
+  setTimeout(() => { totalElem.style.background = "transparent"; }, 300);
 }
 
 function copiarPix() {
@@ -36,8 +48,8 @@ function copiarPix() {
 
 // ======== FINALIZAR PEDIDO ========
 function finalizarPedido() {
-  const bloco = document.getElementById("bloco").value;
-  const apto = document.getElementById("apto").value;
+  const bloco = document.getElementById("bloco").value.trim();
+  const apto = document.getElementById("apto").value.trim();
   const piscina = document.getElementById("piscina").checked;
 
   if (!bloco || !apto) {
@@ -65,31 +77,41 @@ function finalizarPedido() {
 
   msg += `Total Geral: R$ ${total.toFixed(2).replace(".", ",")}\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina ? "Piscina" : "Apartamento"}\nPagamento: Pix`;
 
+  // adiciona ao painel admin e histórico
   const pedidoObj = { text: msg, entregue: false };
   pedidos.push(pedidoObj);
   historicoPedidos.push(pedidoObj);
 
+  // abre WhatsApp
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 
+  // reseta carrinho
   for (let tipo in produtos) produtos[tipo].qtd = 0;
   atualizarTotais();
   atualizarPainel();
   atualizarHistorico();
 }
 
-// ======== MODAL ADMIN ========
-function abrirLogin() { document.getElementById("adminModal").style.display = "flex"; }
-function fecharLogin() { document.getElementById("adminModal").style.display = "none"; }
+// ======== LOGIN ADMIN ========
+function abrirLogin() {
+  document.getElementById("adminModal").style.display = "flex";
+}
+
+function fecharLogin() {
+  document.getElementById("adminModal").style.display = "none";
+}
 
 function loginAdmin() {
-  const user = document.getElementById("adminUser").value;
-  const pass = document.getElementById("adminPass").value;
+  const user = document.getElementById("adminUser").value.trim();
+  const pass = document.getElementById("adminPass").value.trim();
 
   if (user === "admin" && pass === "1234") {
     alert("Login realizado com sucesso!");
     fecharLogin();
     abrirPainel();
-  } else alert("Usuário ou senha incorretos!");
+  } else {
+    alert("Usuário ou senha incorretos!");
+  }
 }
 
 // ======== PAINEL ADMIN ========
@@ -99,7 +121,9 @@ function abrirPainel() {
   atualizarHistorico();
 }
 
-function fecharPainel() { document.getElementById("painelPedidos").style.display = "none"; }
+function fecharPainel() {
+  document.getElementById("painelPedidos").style.display = "none";
+}
 
 function limparPedidos() {
   if (confirm("Deseja realmente limpar todos os pedidos?")) {
@@ -113,41 +137,66 @@ function marcarEntregue(index) {
   atualizarPainel();
 }
 
-// ======== ATUALIZAR PAINEL E HISTÓRICO ========
+// ======== ATUALIZAR PAINEL ========
 function atualizarPainel() {
   const lista = document.getElementById("listaPedidos");
   const totalSpan = document.getElementById("contadorTotal");
   const entreguesSpan = document.getElementById("contadorEntregues");
+
   lista.innerHTML = "";
-  totalSpan.innerText = pedidos.length;
-  entreguesSpan.innerText = pedidos.filter(p => p.entregue).length;
 
-  if (pedidos.length === 0) { lista.innerHTML = "<p>Nenhum pedido até o momento.</p>"; return; }
+  const totalPedidos = pedidos.length;
+  const totalEntregues = pedidos.filter(p => p.entregue).length;
 
-  pedidos.forEach((p,i)=>{
+  totalSpan.innerText = totalPedidos;
+  entreguesSpan.innerText = totalEntregues;
+
+  if (totalPedidos === 0) {
+    lista.innerHTML = "<p>Nenhum pedido até o momento.</p>";
+    return;
+  }
+
+  pedidos.forEach((p, i) => {
     const div = document.createElement("div");
-    div.style.borderBottom="1px solid #ddd";
-    div.style.padding="8px 0";
-    div.style.background=p.entregue?"#d4edda":"#fff";
-    div.innerHTML=`<strong>Pedido ${i+1}</strong><br>${p.text.replace(/\n/g,"<br>")}<br>
+    div.style.borderBottom = "1px solid #ddd";
+    div.style.padding = "8px 0";
+    div.style.transition = "0.3s";
+    div.style.background = p.entregue ? "#d4edda" : "#fff";
+
+    div.innerHTML = `
+      <strong>Pedido ${i + 1}</strong><br>${p.text.replace(/\n/g, "<br>")}
+      <br>
       <button onclick="marcarEntregue(${i})" style="
-        margin-top:5px;padding:6px 10px;border:none;border-radius:5px;
-        background:${p.entregue?'#6c757d':'#28a745'};
-        color:#fff;cursor:pointer;font-size:13px;">${p.entregue?'Entregue':'Marcar como Entregue'}</button>`;
+        margin-top: 5px;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 5px;
+        background: ${p.entregue ? '#6c757d' : '#28a745'};
+        color: #fff;
+        cursor: pointer;
+        font-size: 13px;
+      ">${p.entregue ? 'Entregue' : 'Marcar como Entregue'}</button>
+    `;
     lista.appendChild(div);
   });
 }
 
+// ======== ATUALIZAR HISTÓRICO ========
 function atualizarHistorico() {
   const lista = document.getElementById("listaHistorico");
   lista.innerHTML = "";
-  if(historicoPedidos.length===0){ lista.innerHTML="<p>Nenhum pedido histórico ainda.</p>"; return; }
-  historicoPedidos.forEach((p,i)=>{
+
+  if (historicoPedidos.length === 0) {
+    lista.innerHTML = "<p>Nenhum pedido histórico ainda.</p>";
+    return;
+  }
+
+  historicoPedidos.forEach((p, i) => {
     const div = document.createElement("div");
     div.style.background = p.entregue ? "#d4edda" : "#fff";
     div.style.padding = "6px 0";
-    div.style.borderBottom="1px solid #ddd";
-    div.innerHTML=`<strong>Pedido ${i+1}</strong><br>${p.text.replace(/\n/g,"<br>")}`;
+    div.style.borderBottom = "1px solid #ddd";
+    div.innerHTML = `<strong>Pedido ${i + 1}</strong><br>${p.text.replace(/\n/g, "<br>")}`;
     lista.appendChild(div);
   });
 }
