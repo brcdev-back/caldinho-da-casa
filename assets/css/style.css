@@ -16,32 +16,31 @@ body {
 header.topo {
   background: #fff;
   text-align: center;
-  padding: 20px;
+  padding: 20px 10px; /* espaço interno do topo */
   border-bottom: 2px solid #f05a28;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-/* LOGO */
 header.topo .logo {
-  width: 90px;
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 16px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 180px;   /* aumenta a largura da logo */
+  max-width: 90%; /* limita no mobile para não estourar */
+  height: auto;   /* mantém proporção */
+  margin-bottom: 10px;
+  object-fit: contain; /* não corta nem distorce */
 }
 
 header.topo h1 {
-  font-size: 26px;
+  font-size: 28px; /* aumenta o título junto com a logo */
   color: #f05a28;
+  margin-bottom: 6px;
 }
 
 header.topo p {
-  font-size: 14px;
+  font-size: 16px; /* aumenta a descrição */
   color: #666;
+  margin-bottom: 0;
 }
 
 /* AVISO */
