@@ -5,41 +5,34 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f4f4;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background: #f9f7f2;
   color: #333;
 }
 
-.topo {
+header.topo {
   background: #fff;
   text-align: center;
   padding: 25px;
-  border-bottom: 1px solid #ddd;
-  position: relative; /* garante que o botão admin fique posicionado */
+  border-bottom: 2px solid #f0c040;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.topo h1 {
-  font-size: 26px;
+header.topo .logo {
+  width: 80px;
+  margin-bottom: 12px;
 }
 
-.topo p {
-  font-size: 14px;
+header.topo h1 {
+  font-size: 28px;
+  color: #f05a28;
+}
+
+header.topo p {
+  font-size: 15px;
   color: #666;
-}
-
-/* Botão Admin */
-.admin-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  padding: 6px 12px;
-  font-size: 13px;
-  border: none;
-  border-radius: 6px;
-  background: #333;
-  color: #fff;
-  cursor: pointer;
-  z-index: 10;
 }
 
 .aviso {
@@ -51,6 +44,7 @@ body {
   text-align: center;
   border-radius: 10px;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .cardapio {
@@ -61,20 +55,27 @@ body {
 
 .cardapio h2 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  color: #f05a28;
 }
 
 .produtos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 25px;
 }
 
 .produto {
   background: #fff;
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.produto:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
 .descricao {
@@ -88,28 +89,25 @@ body {
   font-weight: bold;
   margin-bottom: 12px;
   display: block;
+  color: #f05a28;
 }
 
 .endereco {
   display: flex;
-  gap: 8px;
+  flex-wrap: nowrap;
+  gap: 6px;
   margin-bottom: 12px;
 }
 
 .endereco input {
-  padding: 10px;
+  padding: 8px 10px;
   font-size: 14px;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
-.endereco input:first-child {
-  width: 35%;
-}
-
-.endereco input:last-child {
-  width: 65%;
-}
+.endereco input:first-child { width: 40%; }
+.endereco input:last-child { width: 60%; }
 
 .piscina {
   font-size: 14px;
@@ -121,56 +119,71 @@ body {
   display: flex;
   justify-content: center;
   gap: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .quantidade button {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
-  background: #333;
+  background: #f05a28;
   color: #fff;
   font-size: 18px;
   cursor: pointer;
 }
 
 .total {
-  font-size: 16px;
-  font-weight: bold;
-  color: #25d366; /* verde do WhatsApp */
+  font-size: 15px;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
-.total-geral {
-  font-size: 20px;
-  font-weight: bold;
-  color: #ff6600; /* destaque laranja */
-  text-align: center;
-  margin: 15px 0;
-  padding: 8px;
-  border-radius: 6px;
-  background: #fff3e0;
+.botoes-produto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .pix {
   width: 100%;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  background: #f1f1f1;
-  margin-bottom: 8px;
+  background: #fff4d6;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .whats {
   width: 100%;
   padding: 12px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: none;
   background: #25d366;
   color: #fff;
   font-size: 15px;
+  cursor: pointer;
+}
+
+.total-geral {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.total-geral h3 {
+  font-size: 20px;
+  color: #f05a28;
+  margin-bottom: 12px;
+}
+
+.finalizar {
+  padding: 12px 18px;
+  border: none;
+  background: #f05a28;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -179,134 +192,4 @@ body {
   font-size: 13px;
   color: #666;
   padding: 20px;
-}
-
-/* Admin Modal */
-.admin-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  display: flex;
-}
-
-.admin-box {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  width: 280px;
-  text-align: center;
-}
-
-.admin-box h3 {
-  margin-bottom: 15px;
-}
-
-.admin-box input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.admin-box button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  background: #25d366;
-  color: #fff;
-  font-size: 15px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.admin-box span {
-  font-size: 13px;
-  color: #666;
-  cursor: pointer;
-}
-
-/* Painel de Pedidos */
-.painel-pedidos {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  display: flex;
-}
-
-.painel-box {
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  width: 320px;
-  max-height: 80%;
-  overflow-y: auto;
-  text-align: center;
-}
-
-.painel-box h3 {
-  margin-bottom: 15px;
-}
-
-.painel-box button {
-  padding: 10px;
-  width: 100%;
-  border: none;
-  border-radius: 6px;
-  background: #f44336;
-  color: #fff;
-  font-size: 14px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.fechar-painel {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 13px;
-  color: #666;
-  cursor: pointer;
-}
-
-/* Contadores */
-.contadores {
-  font-size: 14px;
-  margin-bottom: 12px;
-  color: #333;
-}
-
-/* Histórico de Pedidos */
-.historico-box {
-  margin-top: 20px;
-  padding-top: 10px;
-  border-top: 2px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.historico-box h4 {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-#listaHistorico div {
-  border-bottom: 1px solid #ddd;
-  padding: 6px 0;
-  font-size: 13px;
-  word-wrap: break-word;
-}
-
-/* Botão desativado */
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.7;
 }
