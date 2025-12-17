@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Caldinho de Feijão</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
 <header class="topo">
   <h1>Caldinho de Feijão</h1>
   <p>Receita caseira, bem temperada e servida bem quentinha</p>
-  <button class="admin-btn" onclick="abrirLogin()">Admin</button>
 </header>
 
 <div class="aviso">
@@ -65,37 +54,3 @@
 <footer class="rodape">
   Pedidos via WhatsApp | Pagamento via Pix
 </footer>
-
-<!-- MODAL LOGIN ADMIN -->
-<div class="admin-modal" id="adminModal">
-  <div class="admin-box">
-    <h3>Login Admin</h3>
-    <input type="text" id="adminUser" placeholder="Usuário">
-    <input type="password" id="adminPass" placeholder="Senha">
-    <button onclick="loginAdmin()">Entrar</button>
-    <span onclick="fecharLogin()">Cancelar</span>
-  </div>
-</div>
-
-<!-- PAINEL DE PEDIDOS -->
-<div class="painel-pedidos" id="painelPedidos">
-  <div class="painel-box">
-    <h3>Pedidos do Dia</h3>
-    <div class="contadores">
-      Total de Pedidos: <span id="contadorTotal">0</span> | 
-      Entregues: <span id="contadorEntregues">0</span>
-    </div>
-    <div id="listaPedidos"><p>Nenhum pedido até o momento.</p></div>
-    <button onclick="limparPedidos()">Limpar Pedidos</button>
-    <span onclick="fecharPainel()" class="fechar-painel">Cancelar</span>
-
-    <div class="historico-box">
-      <h4>Histórico de Pedidos</h4>
-      <div id="listaHistorico"><p>Nenhum pedido histórico ainda.</p></div>
-    </div>
-  </div>
-</div>
-
-<script src="assets/js/script.js"></script>
-</body>
-</html>
