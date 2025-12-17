@@ -10,6 +10,7 @@ body {
   background: #fff8f0;
   color: #333;
   font-size: 16px;
+  line-height: 1.4;
 }
 
 /* HEADER */
@@ -101,16 +102,27 @@ header.topo p {
   display: flex;
   gap: 6px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .endereco input {
-  flex: 1;
+  flex: 1 1 auto;
   padding: 8px;
   font-size: 14px;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
 
+/* Inputs menores */
+.input-bloco {
+  flex: 0 0 80px;
+}
+
+.input-apartamento {
+  flex: 0 0 120px;
+}
+
+/* PISCINA */
 .piscina {
   font-size: 14px;
   margin-bottom: 10px;
@@ -186,7 +198,7 @@ header.topo p {
 }
 
 /* CARRINHO FIXO */
-.total-geral-fixo {
+.carrinho-fixo {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -199,29 +211,30 @@ header.topo p {
   padding: 12px 16px;
   border-top: 2px solid #f05a28;
   box-shadow: 0 -3px 12px rgba(0,0,0,0.08);
+  z-index: 100;
 }
 
-.total-geral-fixo span {
+.carrinho-fixo span {
   font-size: 16px;
   font-weight: bold;
   color: #f05a28;
 }
 
-/* FINALIZAR PEDIDO */
-.finalizar {
-  padding: 12px 20px;
+/* BOTÃO FINALIZAR PEDIDO */
+.carrinho-fixo button {
+  padding: 12px 16px;
   border: none;
-  background: linear-gradient(135deg, #25d366, #1ebe5a);
-  color: #fff;
+  border-radius: 12px;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #25d366, #1ebe5a);
+  color: #fff;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(37,211,102,0.4);
   transition: all 0.3s ease;
 }
 
-.finalizar:hover {
+.carrinho-fixo button:hover {
   background: linear-gradient(135deg, #1ebe5a, #25d366);
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 6px 16px rgba(37,211,102,0.5);
@@ -239,13 +252,14 @@ header.topo p {
   background: rgba(0,0,0,0.5);
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .modal-conteudo {
   background: #fff;
   padding: 20px;
   border-radius: 16px;
-  width: 90%;
+  width: 100%;
   max-width: 400px;
   text-align: center;
 }
@@ -258,6 +272,8 @@ header.topo p {
 .modal-conteudo p {
   margin-bottom: 16px;
   font-size: 14px;
+  text-align: left;
+  white-space: pre-line; /* mantém quebras de linha */
 }
 
 .modal-conteudo .confirmar {
@@ -269,6 +285,8 @@ header.topo p {
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s ease;
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .modal-conteudo .confirmar:hover {
@@ -282,4 +300,36 @@ header.topo p {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  width: 100%;
+}
+
+/* RESPONSIVO */
+@media (max-width: 480px) {
+  .produtos {
+    gap: 12px;
+  }
+
+  .quantidade button {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .cardapio h2 {
+    font-size: 22px;
+  }
+
+  header.topo h1 {
+    font-size: 22px;
+  }
+
+  .endereco input {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .pix, .carrinho, .carrinho-fixo button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
