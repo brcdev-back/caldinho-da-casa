@@ -17,6 +17,7 @@ function alterarQtd(tipo, valor) {
 function atualizarTotais() {
   const totalCompleto = produtos.completo.qtd * produtos.completo.preco;
   const totalSimples = produtos.simples.qtd * produtos.simples.preco;
+
   document.getElementById("total-completo").innerText = `Total: R$ ${totalCompleto.toFixed(2).replace(".", ",")}`;
   document.getElementById("total-simples").innerText = `Total: R$ ${totalSimples.toFixed(2).replace(".", ",")}`;
   document.getElementById("total-geral").innerText = `R$ ${(totalCompleto + totalSimples).toFixed(2).replace(".", ",")}`;
@@ -31,14 +32,43 @@ function copiarPix() {
 const modal = document.getElementById("modalPedido");
 const resumo = document.getElementById("resumo-pedido");
 
-function abrirModal(id) {
+function abrirModal(tipo) {
   let msg = "";
-  if (id === 1 && produtos.completo.qtd > 0) msg += `Feijão Completo: ${produtos.completo.qtd}\n`;
-  if (id === 2 && produtos.simples.qtd > 0) msg += `Feijão sem Charque: ${produtos.simples.qtd}\n`;
-  if (!id) {
-    if (produtos.completo.qtd > 0) msg += `Feijão Completo: ${produtos.completo.qtd}\n`;
-    if (produtos.simples.qtd > 0) msg += `Feijão sem Charque: ${produtos.simples.qtd}\n`;
+  
+  if (tipo === "completo" && produtos.completo.qtd > 0) {
+    const bloco = document.getElementById("bloco1").value;
+    const apto = document.getElementById("apto1").value;
+    const piscina = document.getElementById("piscina1").checked ? "Piscina" : "Apartamento";
+    if (!bloco || !apto) { alert("Informe bloco e apartamento."); return; }
+    msg += `Feijão Completo: ${produtos.completo.qtd}\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina}\n`;
   }
+  
+  if (tipo === "simples" && produtos.simples.qtd > 0) {
+    const bloco = document.getElementById("bloco2").value;
+    const apto = document.getElementById("apto2").value;
+    const piscina = document.getElementById("piscina2").checked ? "Piscina" : "Apartamento";
+    if (!bloco || !apto) { alert("Informe bloco e apartamento."); return; }
+    msg += `Feijão sem Charque: ${produtos.simples.qtd}\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina}\n`;
+  }
+
+  if (tipo === "geral") {
+    if (produtos.completo.qtd === 0 && produtos.simples.qtd === 0) { alert("Selecione ao menos um produto."); return; }
+    if (produtos.completo.qtd > 0) {
+      const bloco = document.getElementById("bloco1").value;
+      const apto = document.getElementById("apto1").value;
+      const piscina = document.getElementById("piscina1").checked ? "Piscina" : "Apartamento";
+      if (!bloco || !apto) { alert("Informe bloco e apartamento do Feijão Completo."); return; }
+      msg += `Feijão Completo: ${produtos.completo.qtd}\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina}\n`;
+    }
+    if (produtos.simples.qtd > 0) {
+      const bloco = document.getElementById("bloco2").value;
+      const apto = document.getElementById("apto2").value;
+      const piscina = document.getElementById("piscina2").checked ? "Piscina" : "Apartamento";
+      if (!bloco || !apto) { alert("Informe bloco e apartamento do Feijão sem Charque."); return; }
+      msg += `Feijão sem Charque: ${produtos.simples.qtd}\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina}\n`;
+    }
+  }
+
   if (!msg) { alert("Selecione ao menos um produto."); return; }
   resumo.innerText = msg;
   modal.style.display = "flex";
@@ -47,13 +77,12 @@ function abrirModal(id) {
 function fecharModal() { modal.style.display = "none"; }
 
 function confirmarPedido() {
-  let msg = "PEDIDO – SABOR DE PANELA\n\n";
-  if (produtos.completo.qtd > 0) msg += `• Feijão Completo: ${produtos.completo.qtd}\n`;
-  if (produtos.simples.qtd > 0) msg += `• Feijão sem Charque: ${produtos.simples.qtd}\n`;
+  let msg = "PEDIDO – SABOR DE PANELA\n\n" + resumo.innerText;
   msg += `\nTotal Geral: ${document.getElementById("total-geral").innerText}\nPagamento: Pix`;
-
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
   fecharModal();
 }
 
-window.onclick = function(event) { if (event.target == modal) fecharModal(); }
+window.onclick = function(event) {
+  if (event.target == modal) fecharModal();
+}
