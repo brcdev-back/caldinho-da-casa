@@ -88,9 +88,6 @@ function finalizarPedido() {
   atualizarHistorico();
 }
 
-let pedidos = [];
-let historicoPedidos = [];
-
 function abrirLogin() {
   document.getElementById("adminModal").style.display = "flex";
 }
@@ -111,7 +108,6 @@ function loginAdmin() {
     alert("Usuário ou senha incorretos!");
   }
 }
-
 
 // ======== PAINEL ADMIN ========
 function abrirPainel() {
@@ -162,19 +158,18 @@ function atualizarPainel() {
     div.style.transition = "0.3s";
     div.style.background = p.entregue ? "#d4edda" : "#fff";
 
-    div.innerHTML = `
+    div.innerHTML = ` 
       <strong>Pedido ${i + 1}</strong><br>${p.text.replace(/\n/g, "<br>")}
       <br>
-      <button onclick="marcarEntregue(${i})" style="
-        margin-top: 5px;
-        padding: 6px 10px;
-        border: none;
-        border-radius: 5px;
-        background: ${p.entregue ? '#6c757d' : '#28a745'};
-        color: #fff;
-        cursor: pointer;
-        font-size: 13px;
-      ">${p.entregue ? 'Entregue' : 'Marcar como Entregue'}</button>
+      <button onclick="marcarEntregue(${i})" style=" 
+        margin-top: 5px; 
+        padding: 6px 10px; 
+        border: none; 
+        border-radius: 5px; 
+        background: ${p.entregue ? '#6c757d' : '#28a745'}; 
+        color: #fff; 
+        cursor: pointer; 
+        font-size: 13px;">${p.entregue ? 'Entregue' : 'Marcar como Entregue'}</button>
     `;
     lista.appendChild(div);
   });
@@ -199,3 +194,4 @@ function atualizarHistorico() {
     lista.appendChild(div);
   });
 }
+``
