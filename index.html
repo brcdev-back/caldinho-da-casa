@@ -7,13 +7,12 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" type="image/png" href="assets/img/logo.png">
 </head>
-
 <body>
 
 <header class="topo">
   <img src="assets/img/logo.png" alt="Sabor de Panela" class="logo">
   <h1>Sabor de Panela</h1>
-  <p>Receitas caseiras, bem temperadas e servidas quentinhas</p>
+  <p>Receitas caseiras, quentinhas e entregues rápido</p>
 </header>
 
 <div class="aviso">
@@ -51,8 +50,8 @@
       <div class="total" id="total-completo">Total: R$ 0,00</div>
 
       <div class="botoes-produto">
-        <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-        <button class="whats" onclick="pedido(1)">Pedir no WhatsApp</button>
+        <button class="pix" onclick="copiarPix()">Copiar Pix</button>
+        <button class="whats" onclick="abrirModal(1)">Pedir</button>
       </div>
     </div>
 
@@ -82,18 +81,28 @@
       <div class="total" id="total-simples">Total: R$ 0,00</div>
 
       <div class="botoes-produto">
-        <button class="pix" onclick="copiarPix()">Copiar chave Pix</button>
-        <button class="whats" onclick="pedido(2)">Pedir no WhatsApp</button>
+        <button class="pix" onclick="copiarPix()">Copiar Pix</button>
+        <button class="whats" onclick="abrirModal(2)">Pedir</button>
       </div>
     </div>
 
   </div>
 
-  <div class="total-geral">
-    <h3>Total Geral: <span id="total-geral">R$ 0,00</span></h3>
-    <button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+  <div class="total-geral-fixo">
+    <span>Total Geral: <strong id="total-geral">R$ 0,00</strong></span>
+    <button class="finalizar" onclick="abrirModal()">Finalizar Pedido</button>
   </div>
 </main>
+
+<!-- Modal -->
+<div id="modalPedido" class="modal">
+  <div class="modal-conteudo">
+    <h3>Confirmar Pedido</h3>
+    <p id="resumo-pedido"></p>
+    <button class="confirmar" onclick="confirmarPedido()">Confirmar e Enviar</button>
+    <button class="fechar" onclick="fecharModal()">Cancelar</button>
+  </div>
+</div>
 
 <footer class="rodape">
   Pedidos via WhatsApp | Pagamento via Pix<br>
