@@ -23,9 +23,15 @@ header.topo {
   z-index: 100;
 }
 
+/* LOGO */
 header.topo .logo {
-  width: 70px;
-  margin-bottom: 8px;
+  width: 90px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header.topo h1 {
@@ -310,5 +316,9 @@ header.topo p {
   }
   .quantidade {
     gap: 6px;
+  }
+  header.topo .logo {
+    width: 70px;
+    margin-bottom: 12px;
   }
 }
