@@ -88,7 +88,9 @@ function finalizarPedido() {
   atualizarHistorico();
 }
 
-// ======== LOGIN ADMIN ========
+let pedidos = [];
+let historicoPedidos = [];
+
 function abrirLogin() {
   document.getElementById("adminModal").style.display = "flex";
 }
@@ -101,10 +103,7 @@ function loginAdmin() {
   const user = document.getElementById("adminUser").value;
   const pass = document.getElementById("adminPass").value;
 
-  const usuarioAdmin = "admin";
-  const senhaAdmin = "1234";
-
-  if (user === usuarioAdmin && pass === senhaAdmin) {
+  if (user === "admin" && pass === "1234") {
     alert("Login realizado com sucesso!");
     fecharLogin();
     abrirPainel();
@@ -112,6 +111,7 @@ function loginAdmin() {
     alert("Usuário ou senha incorretos!");
   }
 }
+
 
 // ======== PAINEL ADMIN ========
 function abrirPainel() {
