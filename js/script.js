@@ -2,56 +2,55 @@ const numero = "5581991610473";
 const chavePix = "81991610473";
 
 const produtos = {
-  completo: { preco: 5, qtd: 0 },
-  simples: { preco: 4, qtd: 0 }
+  completo: { preco: 5, qtd: 0, carrinho:0 },
+  simples: { preco: 4, qtd: 0, carrinho:0 }
 };
 
+/* quantidade do produto */
 function alterarQtd(tipo, valor) {
   produtos[tipo].qtd += valor;
-  if (produtos[tipo].qtd < 0) produtos[tipo].qtd = 0;
+  if(produtos[tipo].qtd < 0) produtos[tipo].qtd = 0;
   document.getElementById(`qtd-${tipo}`).innerText = produtos[tipo].qtd;
-  atualizarTotais();
 }
 
-function atualizarTotais() {
-  const totalCompleto = produtos.completo.qtd * produtos.completo.preco;
-  const totalSimples = produtos.simples.qtd * produtos.simples.preco;
-  document.getElementById("total-completo").innerText = `Total: R$ ${totalCompleto.toFixed(2).replace(".", ",")}`;
-  document.getElementById("total-simples").innerText = `Total: R$ ${totalSimples.toFixed(2).replace(".", ",")}`;
-  document.getElementById("total-geral").innerText = `R$ ${(totalCompleto + totalSimples).toFixed(2).replace(".", ",")}`;
+/* atualizar carrinho */
+function atualizarCarrinho() {
+  const total = produtos.completo.carrinho * produtos.completo.preco + produtos.simples.carrinho * produtos.simples.preco;
+  const itens = produtos.completo.carrinho + produtos.simples.carrinho;
+  document.getElementById('total-carrinho').innerText = `R$ ${total.toFixed(2).replace(".",",")}`;
+  document.getElementById('itens-carrinho').innerText = itens;
 }
 
+/* copiar pix */
 function copiarPix() {
   navigator.clipboard.writeText(chavePix);
   alert("Chave Pix copiada!");
 }
 
-/* Modal */
+/* adicionar ao carrinho */
+function adicionarCarrinho(tipo) {
+  if(produtos[tipo].qtd === 0) { alert("Selecione a quantidade."); return; }
+  produtos[tipo].carrinho = produtos[tipo].qtd;
+  atualizarCarrinho();
+  alert("Produto adicionado ao carrinho!");
+}
+
+/* modal */
 const modal = document.getElementById("modalPedido");
 const resumo = document.getElementById("resumo-pedido");
 
 function abrirModal(tipo) {
   let msg = "";
-
-  // Produto Completo
-  if ((tipo === "completo" || tipo === "geral") && produtos.completo.qtd > 0) {
-    const bloco = document.getElementById("bloco1").value;
-    const apto = document.getElementById("apto1").value;
-    const piscina = document.getElementById("piscina1").checked ? "Piscina" : "Apartamento";
-    if (!bloco || !apto) { alert("Informe bloco e apartamento do Feijão Completo."); return; }
-    msg += `Feijão Completo: ${produtos.completo.qtd}\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina}\n\n`;
+  if(produtos.completo.carrinho > 0) {
+    msg += `Feijão Completo: ${produtos.completo.carrinho}\n`;
   }
-
-  // Produto Simples
-  if ((tipo === "simples" || tipo === "geral") && produtos.simples.qtd > 0) {
-    const bloco = document.getElementById("bloco2").value;
-    const apto = document.getElementById("apto2").value;
-    const piscina = document.getElementById("piscina2").checked ? "Piscina" : "Apartamento";
-    if (!bloco || !apto) { alert("Informe bloco e apartamento do Feijão sem Charque."); return; }
-    msg += `Feijão sem Charque: ${produtos.simples.qtd}\nBloco: ${bloco}\nApartamento: ${apto}\nEntrega: ${piscina}\n\n`;
+  if(produtos.simples.carrinho > 0) {
+    msg += `Feijão sem Charque: ${produtos.simples.carrinho}\n`;
   }
+  if(!msg) { alert("Carrinho vazio."); return; }
 
-  if (!msg) { alert("Selecione ao menos um produto."); return; }
+  const total = produtos.completo.carrinho * produtos.completo.preco + produtos.simples.carrinho * produtos.simples.preco;
+  msg += `\nTotal: R$ ${total.toFixed(2).replace(".",",")}\nPagamento: Pix`;
 
   resumo.innerText = msg;
   modal.style.display = "flex";
@@ -60,13 +59,14 @@ function abrirModal(tipo) {
 function fecharModal() { modal.style.display = "none"; }
 
 function confirmarPedido() {
-  let msg = "PEDIDO – SABOR DE PANELA\n\n" + resumo.innerText;
-  msg += `Total Geral: ${document.getElementById("total-geral").innerText}\nPagamento: Pix`;
-  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
+  const texto = "PEDIDO – SABOR DE PANELA\n\n" + resumo.innerText;
+  window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`);
   fecharModal();
+  // limpar carrinho
+  produtos.completo.carrinho = 0;
+  produtos.simples.carrinho = 0;
+  atualizarCarrinho();
 }
 
-// Fecha modal clicando fora
-window.onclick = function(event) {
-  if (event.target == modal) fecharModal();
-}
+// fecha modal clicando fora
+window.onclick = function(event) { if(event.target == modal) fecharModal(); }
