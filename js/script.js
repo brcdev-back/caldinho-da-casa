@@ -15,15 +15,11 @@ function alterarQtd(tipo, valor) {
 
 // Adicionar ao carrinho
 function adicionarCarrinho(tipo) {
-  if (produtos[tipo].qtd === 0) {
-    alert("Selecione a quantidade.");
-    return;
-  }
-  produtos[tipo].carrinho += produtos[tipo].qtd; // incrementa no carrinho
-  produtos[tipo].qtd = 0; // reseta card
+  if (produtos[tipo].qtd === 0) return; // não adiciona 0
+  produtos[tipo].carrinho += produtos[tipo].qtd;
+  produtos[tipo].qtd = 0;
   document.getElementById(`qtd-${tipo}`).innerText = 0;
   atualizarCarrinho();
-  alert("Produto adicionado ao carrinho!");
 }
 
 // Atualizar total do carrinho
@@ -31,8 +27,12 @@ function atualizarCarrinho() {
   const total = produtos.completo.carrinho * produtos.completo.preco +
                 produtos.simples.carrinho * produtos.simples.preco;
   const itens = produtos.completo.carrinho + produtos.simples.carrinho;
+
   document.getElementById('total-carrinho').innerText = `R$ ${total.toFixed(2).replace(".", ",")}`;
   document.getElementById('itens-carrinho').innerText = itens;
+
+  // Se quiser, desabilitar botão finalizar se carrinho vazio
+  document.querySelector('.carrinho-fixo button').disabled = (itens === 0);
 }
 
 // Copiar Pix
@@ -45,11 +45,15 @@ function copiarPix() {
 const modal = document.getElementById("modalPedido");
 const resumo = document.getElementById("resumo-pedido");
 
-function abrirModal(tipo) {
+function abrirModal() {
   let msg = "";
   if (produtos.completo.carrinho > 0) msg += `Feijão Completo: ${produtos.completo.carrinho}\n`;
   if (produtos.simples.carrinho > 0) msg += `Feijão sem Charque: ${produtos.simples.carrinho}\n`;
-  if (!msg) { alert("Carrinho vazio."); return; }
+
+  if (!msg) { 
+    alert("Carrinho vazio."); 
+    return; 
+  }
 
   const total = produtos.completo.carrinho * produtos.completo.preco +
                 produtos.simples.carrinho * produtos.simples.preco;
@@ -62,7 +66,7 @@ function abrirModal(tipo) {
 // Fechar modal
 function fecharModal() { modal.style.display = "none"; }
 
-// Confirmar pedido
+// Confirmar pedido via WhatsApp
 function confirmarPedido() {
   const texto = "PEDIDO – SABOR DE PANELA\n\n" + resumo.innerText;
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`);
@@ -76,5 +80,8 @@ function confirmarPedido() {
 
 // Fechar modal clicando fora
 window.onclick = function(event) {
-  if (event.target == modal) fecharModal();
+  if (event.target === modal) fecharModal();
 }
+
+// Inicializa carrinho
+atualizarCarrinho();
